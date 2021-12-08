@@ -1,9 +1,13 @@
 import React from 'react';
+import Header from '../components/HeaderSearch';
 
 function Comidas() {
   return (
     <div>
-      <h1>Hello world</h1>
+      <Header title="Comidas" />
+      <div>
+        <h1>Hello world</h1>
+      </div>
     </div>
   );
 }
