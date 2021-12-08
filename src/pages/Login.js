@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function Login() {
+function Login({history}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [btnLoginDisabled, setBtnLoginDisabled] = useState(true);
@@ -24,6 +24,7 @@ function Login() {
     localStorage.setItem('mealsToken', JSON.stringify(token));
     localStorage.setItem('cocktailsToken', JSON.stringify(token));
     localStorage.setItem('user', JSON.stringify({email}))
+    history.push("/comidas")
   }
 
   return (
