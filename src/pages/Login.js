@@ -7,8 +7,8 @@ function Login() {
 
   useEffect(() => {
     function checkIfLoginIsValid() {
-      const maxPasswordLength = 5;
-      const emailRegex = /^[\w.]+@[\w]+\.com/;
+      const maxPasswordLength = 6;
+      const emailRegex = /^[\w._]+@[\w]+\.com/;
       const isEmailValid = email.match(emailRegex);
       if (password.length > maxPasswordLength && isEmailValid) {
         return setBtnLoginDisabled(false);
@@ -17,10 +17,19 @@ function Login() {
     }
     checkIfLoginIsValid();
   }, [email, password]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const token = 1;
+    localStorage.setItem('mealsToken', JSON.stringify(token));
+    localStorage.setItem('cocktailsToken', JSON.stringify(token));
+    localStorage.setItem('user', JSON.stringify({email}))
+  }
+
   return (
     <section>
       Login
-      <form>
+      <form onSubmit={ handleSubmit }>
         <div>
           <label htmlFor="email">
             Email
@@ -51,7 +60,6 @@ function Login() {
           disabled={ btnLoginDisabled }
         >
           Entrar
-
         </button>
       </form>
     </section>
