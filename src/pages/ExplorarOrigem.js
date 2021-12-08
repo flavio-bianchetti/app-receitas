@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/HeaderSearch';
 
-function ExplorarComidasArea() {
+function ExplorarOrigem() {
   return (
     <div>
       <Header title="Explorar Origem" />
@@ -9,4 +9,4 @@ function ExplorarComidasArea() {
   );
 }
 
-export default ExplorarComidasArea;
+export default ExplorarOrigem;
