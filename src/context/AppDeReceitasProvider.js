@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import AppDeReceitasContext from './AppDeReceitasContext';
 import { ingredientRequest, nameRequest, firstLetterRequest } from '../services/apiComidas';
@@ -31,5 +32,9 @@ function AppDeReceitasProvider({ children }) {
     </AppDeReceitasContext.Provider>
   );
 }
+
+AppDeReceitasProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default AppDeReceitasProvider;
