@@ -1,16 +1,13 @@
 import PropTypes from 'prop-types';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
-import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
-function Header({ title }) {
+function Header({ title, handleSearch }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
-
-  const { handleSearch } = useContext(AppDeReceitasContext);
 
   const handleSearchType = (e) => {
     const { value } = e.target;
@@ -110,6 +107,7 @@ function Header({ title }) {
 }
 
 Header.propTypes = {
+  handleSearch: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
 
