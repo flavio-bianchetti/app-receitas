@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
@@ -17,5 +18,9 @@ function Header({ title }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
 export default Header;
