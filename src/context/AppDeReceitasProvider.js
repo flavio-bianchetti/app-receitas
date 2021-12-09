@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import AppDeReceitasContext from './AppDeReceitasContext';
-import { ingredientRequest, nameRequest, firstLetterRequest } from '../services/apiComidas';
+import { ingredientRequest,
+  nameRequest, firstLetterRequest } from '../services/apiComidas';
 
 function AppDeReceitasProvider({ children }) {
   const handleSearch = (type, value) => {
