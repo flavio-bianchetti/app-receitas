@@ -24,7 +24,7 @@ describe('Testa página de login', () => {
 
   it(`Verifica se botao começa desativado e é habilitado
    quando os inputs são preenchidos corretamente`, () => {
-    const {getByLabelText, getByRole } = renderWithRouter(<App />,)  
+    const {getByLabelText, getByRole } = renderWithRouter(<App />)  
 
     const button = getByRole('button', {name: /Entrar/i})
     const emailInput = getByLabelText(/Email/i)

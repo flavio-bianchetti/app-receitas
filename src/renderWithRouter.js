@@ -3,9 +3,9 @@ import { render } from '@testing-library/react';
 import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
 
-const renderWithRouter = (component, rota = '/') => {
+const renderWithRouter = (component, route = '/') => {
   const history = createMemoryHistory();
-  history.push(rota);
+  history.push(route);
   return ({ ...render(<Router history={ history }>{component}</Router>),
     history });
 };
