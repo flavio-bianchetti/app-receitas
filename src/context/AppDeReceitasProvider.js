@@ -11,13 +11,13 @@ function AppDeReceitasProvider({ children }) {
   console.log(dishesOrDrinks);
   const handleSearchFoods = (type, value) => {
     if (type === 'search-ingredient') {
-      dishesRequest(dishesByIngredient(value))
-        .then(({ meals }) => setDishesOrDrinks(meals));
+      dishesRequest(dishesByIngredient(value), 'meals')
+        .then(({ meals }) => (meals ? setDishesOrDrinks(meals) : setDishesOrDrinks([])));
     }
 
     if (type === 'search-name') {
       dishesRequest(dishesByName(value))
-        .then(({ meals }) => setDishesOrDrinks(meals));
+        .then(({ meals }) => (meals ? setDishesOrDrinks(meals) : setDishesOrDrinks([])));
     }
 
     if (type === 'search-first-letter') {
@@ -25,18 +25,23 @@ function AppDeReceitasProvider({ children }) {
         return alert('Sua busca deve conter somente 1 (um) caracter');
       }
       dishesRequest(dishesByLastLetter(value))
-        .then(({ meals }) => setDishesOrDrinks(meals));
+        .then(({ meals }) => (meals ? setDishesOrDrinks(meals) : setDishesOrDrinks([])));
+    }
+    if (dishesOrDrinks.length === 0) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   };
   const handleSearchDrinks = (type, value) => {
     if (type === 'search-ingredient') {
       drinksRequest(drinksByIngredient(value))
-        .then(({ drinks }) => setDishesOrDrinks(drinks));
+        .then(({ drinks }) => (
+          drinks ? setDishesOrDrinks(drinks) : setDishesOrDrinks([])));
     }
 
     if (type === 'search-name') {
       drinksRequest(drinksByName(value))
-        .then(({ drinks }) => setDishesOrDrinks(drinks));
+        .then(({ drinks }) => (
+          drinks ? setDishesOrDrinks(drinks) : setDishesOrDrinks([])));
     }
 
     if (type === 'search-first-letter') {
@@ -44,7 +49,11 @@ function AppDeReceitasProvider({ children }) {
         return alert('Sua busca deve conter somente 1 (um) caracter');
       }
       drinksRequest(drinksByLastLetter(value))
-        .then(({ drinks }) => setDishesOrDrinks(drinks));
+        .then(({ drinks }) => (
+          drinks ? setDishesOrDrinks(drinks) : setDishesOrDrinks([])));
+    }
+    if (dishesOrDrinks.length === 0) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   };
 
