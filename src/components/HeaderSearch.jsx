@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
+import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function Header({ title, handleSearch }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
-  const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
+  const { dishesOrDrinks } = useContext(AppDeReceitasContext);
+  const history = useHistory();
+  // const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
 
   const handleSearchType = (e) => {
     const { value } = e.target;
@@ -16,11 +19,18 @@ function Header({ title, handleSearch }) {
   };
 
   useEffect(() => {
-    if (searchInput !== '') {
-      return setRadioSearchDisabled(false);
+    if (dishesOrDrinks.length === 1) {
+      const id = dishesOrDrinks[0].idMeal || dishesOrDrinks[0].idDrink;
+      history.push(`/${title.toLowerCase()}/${id}`);
     }
-    setRadioSearchDisabled(true);
-  }, [searchInput]);
+  }, [dishesOrDrinks, history]);
+
+  // useEffect(() => {
+  //   if (searchInput !== '') {
+  //     return setRadioSearchDisabled(false);
+  //   }
+  //   setRadioSearchDisabled(true);
+  // }, [searchInput]);
 
   const searchForm = () => (
     <div>
@@ -43,7 +53,7 @@ function Header({ title, handleSearch }) {
                 value="search-ingredient"
                 checked={ searchType === 'search-ingredient' }
                 onChange={ (e) => handleSearchType(e) }
-                disabled={ title === 'Bebidas' ? radioSearchDisabled : false }
+                // disabled={ title === 'Bebidas' ? radioSearchDisabled : false }
               />
             </label>
           </div>
@@ -72,6 +82,7 @@ function Header({ title, handleSearch }) {
                 value="search-first-letter"
                 checked={ searchType === 'search-first-letter' }
                 onChange={ (e) => handleSearchType(e) }
+                // disabled={ radioSearchDisabled }
               />
             </label>
           </div>
