@@ -11,7 +11,7 @@ function Header({ title, handleSearch }) {
   const [searchType, setSearchType] = useState('');
   const { dishesOrDrinks } = useContext(AppDeReceitasContext);
   const history = useHistory();
-  const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
+  // const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
 
   const handleSearchType = (e) => {
     const { value } = e.target;
@@ -25,12 +25,12 @@ function Header({ title, handleSearch }) {
     }
   }, [dishesOrDrinks, history]);
 
-  useEffect(() => {
-    if (searchInput !== '') {
-      return setRadioSearchDisabled(false);
-    }
-    setRadioSearchDisabled(true);
-  }, [searchInput]);
+  // useEffect(() => {
+  //   if (searchInput !== '') {
+  //     return setRadioSearchDisabled(false);
+  //   }
+  //   setRadioSearchDisabled(true);
+  // }, [searchInput]);
 
   const searchForm = () => (
     <div>
@@ -53,7 +53,7 @@ function Header({ title, handleSearch }) {
                 value="search-ingredient"
                 checked={ searchType === 'search-ingredient' }
                 onChange={ (e) => handleSearchType(e) }
-                disabled={ title === 'Bebidas' ? radioSearchDisabled : false }
+                // disabled={ title === 'Bebidas' ? radioSearchDisabled : false }
               />
             </label>
           </div>
@@ -82,6 +82,7 @@ function Header({ title, handleSearch }) {
                 value="search-first-letter"
                 checked={ searchType === 'search-first-letter' }
                 onChange={ (e) => handleSearchType(e) }
+                // disabled={ radioSearchDisabled }
               />
             </label>
           </div>

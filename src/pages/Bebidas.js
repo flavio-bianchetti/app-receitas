@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Cards from '../components/Cards';
 import Header from '../components/HeaderSearch';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
@@ -7,6 +8,7 @@ function Bebidas() {
   return (
     <div>
       <Header title="Bebidas" handleSearch={ handleSearchDrinks } />
+      <Cards />
     </div>
   );
 }
