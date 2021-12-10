@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
@@ -8,11 +8,19 @@ function Header({ title, handleSearch }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
+  const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
 
   const handleSearchType = (e) => {
     const { value } = e.target;
     setSearchType(value);
   };
+
+  useEffect(() => {
+    if (searchInput !== '') {
+      return setRadioSearchDisabled(false);
+    }
+    setRadioSearchDisabled(true);
+  }, [searchInput]);
 
   const searchForm = () => (
     <div>
@@ -35,6 +43,7 @@ function Header({ title, handleSearch }) {
                 value="search-ingredient"
                 checked={ searchType === 'search-ingredient' }
                 onChange={ (e) => handleSearchType(e) }
+                disabled={ title === 'Bebidas' ? radioSearchDisabled : false }
               />
             </label>
           </div>
