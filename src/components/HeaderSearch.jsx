@@ -1,18 +1,28 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
+import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function Header({ title, handleSearch }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
+  const { dishesOrDrinks } = useContext(AppDeReceitasContext);
+  const history = useHistory();
 
   const handleSearchType = (e) => {
     const { value } = e.target;
     setSearchType(value);
   };
+
+  useEffect(() => {
+    if (dishesOrDrinks.length === 1) {
+      const id = dishesOrDrinks[0].idMeal || dishesOrDrinks[0].idDrink;
+      history.push(`/${title.toLowerCase()}/${id}`);
+    }
+  }, [dishesOrDrinks, history]);
 
   const searchForm = () => (
     <div>
