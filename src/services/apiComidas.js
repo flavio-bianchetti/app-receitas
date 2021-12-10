@@ -1,13 +1,16 @@
-const ingredientRequest = (ingredient) => fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`)
+const dishesRequest = (dishesUrl) => fetch(dishesUrl)
   .then((data) => data.json()
     .then((dishes) => (data.ok ? Promise.resolve(dishes) : Promise.reject(dishes))));
 
-const nameRequest = (name) => fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`)
-  .then((data) => data.json()
-    .then((dishes) => (data.ok ? Promise.resolve(dishes) : Promise.reject(dishes))));
+export const dishesByIngredient = (ingredient) => (
+  `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
 
-const firstLetterRequest = (firstLetter) => fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${firstLetter}`)
-  .then((data) => data.json()
-    .then((dishes) => (data.ok ? Promise.resolve(dishes) : Promise.reject(dishes))));
+export const dishesByName = (name) => (
+  `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`
+);
 
-export { ingredientRequest, nameRequest, firstLetterRequest };
+export const dishesByLastLetter = (lastLetter) => (
+  `https://www.themealdb.com/api/json/v1/1/search.php?f=${lastLetter}`
+);
+
+export default dishesRequest;

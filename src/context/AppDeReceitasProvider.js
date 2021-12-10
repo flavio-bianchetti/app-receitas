@@ -1,19 +1,20 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import AppDeReceitasContext from './AppDeReceitasContext';
-import { ingredientRequest,
-  nameRequest, firstLetterRequest } from '../services/apiComidas';
-import drinksRequest from '../services/apiDrinks';
+import dishesRequest, { dishesByIngredient,
+  dishesByName, dishesByLastLetter } from '../services/apiComidas';
+import drinksRequest, { drinksByIngredient,
+  drinksByName, drinksByLastLetter } from '../services/apiDrinks';
 
 function AppDeReceitasProvider({ children }) {
   const handleSearch = (type, value) => {
     if (type === 'search-ingredient') {
-      ingredientRequest(value)
+      dishesRequest(dishesByIngredient(value))
         .then((da) => console.log(da));
     }
 
     if (type === 'search-name') {
-      nameRequest(value)
+      dishesRequest(dishesByName(value))
         .then((da) => console.log(da));
     }
 
@@ -21,18 +22,18 @@ function AppDeReceitasProvider({ children }) {
       if (value.length > 1) {
         return alert('Sua busca deve conter somente 1 (um) caracter');
       }
-      firstLetterRequest(value)
+      dishesRequest(dishesByLastLetter(value))
         .then((da) => console.log(da));
     }
   };
   const handleSearchDrinks = (type, value) => {
     if (type === 'search-ingredient') {
-      drinksRequest(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${value}`)
+      drinksRequest(drinksByIngredient(value))
         .then((da) => console.log(da));
     }
 
     if (type === 'search-name') {
-      drinksRequest(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${value}`)
+      drinksRequest(drinksByName(value))
         .then((da) => console.log(da));
     }
 
@@ -40,7 +41,7 @@ function AppDeReceitasProvider({ children }) {
       if (value.length > 1) {
         return alert('Sua busca deve conter somente 1 (um) caracter');
       }
-      drinksRequest(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${value}`)
+      drinksRequest(drinksByLastLetter(value))
         .then((da) => console.log(da));
     }
   };
