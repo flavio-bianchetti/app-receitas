@@ -28,7 +28,7 @@ const checkFirstTwelveRecipes = (recipes, meal = true) => {
 
     cy.get(`[data-testid="${index}-card-name"]`).contains(recipe[`str${recipeType}`]);
   });
-
+  // cy.get('[data-testid="0-recipe-card"]').should('exist');
   cy.get('[data-testid="12-recipe-card"]').should('not.exist');
   cy.get('[data-testid="12-card-img"]').should('not.exist');
   cy.get('[data-testid="12-card-name"]').should('not.exist');

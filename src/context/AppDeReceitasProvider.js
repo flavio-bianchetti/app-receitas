@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppDeReceitasContext from './AppDeReceitasContext';
 import dishesRequest, { dishesByIngredient,
   dishesByName, dishesByLastLetter } from '../services/apiComidas';
@@ -7,17 +7,30 @@ import drinksRequest, { drinksByIngredient,
   drinksByName, drinksByLastLetter } from '../services/apiDrinks';
 
 function AppDeReceitasProvider({ children }) {
+  const [firstTime, setFirstTime] = useState(true);
   const [dishesOrDrinks, setDishesOrDrinks] = useState([]);
   console.log(dishesOrDrinks);
+
+  useEffect(() => {
+    if (dishesOrDrinks.length === 0 && !firstTime) {
+      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+    }
+    setFirstTime(false);
+  }, [dishesOrDrinks]);
   const handleSearchFoods = (type, value) => {
     if (type === 'search-ingredient') {
       dishesRequest(dishesByIngredient(value), 'meals')
-        .then(({ meals }) => (meals ? setDishesOrDrinks(meals) : setDishesOrDrinks([])));
+        .then(({ meals }) => setDishesOrDrinks(meals))
+        .catch(() => setDishesOrDrinks([]));
     }
 
     if (type === 'search-name') {
       dishesRequest(dishesByName(value))
-        .then(({ meals }) => (meals ? setDishesOrDrinks(meals) : setDishesOrDrinks([])));
+        .then((data) => {
+          console.log(data);
+          setDishesOrDrinks(data.meals);
+        })
+        .catch(() => setDishesOrDrinks([]));
     }
 
     if (type === 'search-first-letter') {
@@ -25,23 +38,24 @@ function AppDeReceitasProvider({ children }) {
         return alert('Sua busca deve conter somente 1 (um) caracter');
       }
       dishesRequest(dishesByLastLetter(value))
-        .then(({ meals }) => (meals ? setDishesOrDrinks(meals) : setDishesOrDrinks([])));
-    }
-    if (dishesOrDrinks.length === 0) {
-      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+        .then(({ meals }) => setDishesOrDrinks(meals))
+        .catch(() => setDishesOrDrinks([]));
     }
   };
-  const handleSearchDrinks = (type, value) => {
+  const handleSearchDrinks = async (type, value) => {
     if (type === 'search-ingredient') {
       drinksRequest(drinksByIngredient(value))
-        .then(({ drinks }) => (
-          drinks ? setDishesOrDrinks(drinks) : setDishesOrDrinks([])));
+        .then(({ drinks }) => {
+          console.log(drinks);
+          setDishesOrDrinks(drinks);
+        }).catch(() => setDishesOrDrinks([]));
     }
 
     if (type === 'search-name') {
       drinksRequest(drinksByName(value))
         .then(({ drinks }) => (
-          drinks ? setDishesOrDrinks(drinks) : setDishesOrDrinks([])));
+          setDishesOrDrinks(drinks)))
+        .catch(() => setDishesOrDrinks([]));
     }
 
     if (type === 'search-first-letter') {
@@ -50,17 +64,17 @@ function AppDeReceitasProvider({ children }) {
       }
       drinksRequest(drinksByLastLetter(value))
         .then(({ drinks }) => (
-          drinks ? setDishesOrDrinks(drinks) : setDishesOrDrinks([])));
+          setDishesOrDrinks(drinks)))
+        .catch(() => setDishesOrDrinks([]));
     }
-    if (dishesOrDrinks.length === 0) {
-      alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-    }
+    // drinksRequest(drinksByIngredient('dsad')).then((drinks) => console.log(drinks));
   };
 
   const appReceitasValue = {
     handleSearchFoods,
     handleSearchDrinks,
     dishesOrDrinks,
+    setDishesOrDrinks,
   };
 
   return (

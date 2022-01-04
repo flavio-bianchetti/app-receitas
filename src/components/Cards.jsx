@@ -8,19 +8,21 @@ function Cards() {
 
   return (
     <div className="foodAndDrinks-cards-container">
-      {dishesOrDrinks.filter((_, index) => {
-        if (index > maxCards) {
-          return false;
-        }
-        return true;
-      }).map((item, i) => (
-        <Card
-          key={ item.idDrink || item.idMeal }
-          index={ i }
-          nameItem={ item.strDrink || item.strMeal }
-          image={ item.strDrinkThumb || item.strMealThumb }
-        />
-      ))}
+      {dishesOrDrinks
+        .filter((_, index) => {
+          if (index > maxCards) {
+            return false;
+          }
+          return true;
+        })
+        .map((item, i) => (
+          <Card
+            key={ item.idDrink || item.idMeal }
+            index={ i }
+            nameItem={ item.strDrink || item.strMeal }
+            image={ item.strDrinkThumb || item.strMealThumb }
+          />
+        ))}
     </div>
   );
 }

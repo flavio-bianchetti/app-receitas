@@ -1,6 +1,6 @@
 const drinksRequest = (drinksUrl) => fetch(drinksUrl)
-  .then((data) => data.json()
-    .then((drink) => (data.ok ? Promise.resolve(drink) : Promise.reject(drink))));
+  .then((response) => response.json()
+    .then((data) => (data.drinks ? Promise.resolve(data) : Promise.reject(data))));
 
 export const drinksByIngredient = (ingredient) => (
   `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
