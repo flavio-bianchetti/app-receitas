@@ -13,4 +13,12 @@ export const dishesByLastLetter = (lastLetter) => (
   `https://www.themealdb.com/api/json/v1/1/search.php?f=${lastLetter}`
 );
 
+export const dishesById = (id) => (
+  `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+);
+
+export const randomDish = () => (
+  'https://www.themealdb.com/api/json/v1/1/random.php'
+);
+
 export default dishesRequest;
