@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import RecomendationCards from '../components/RecomendationCards';
 import dishesRequest, { dishesById } from '../services/apiComidas';
+import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 
 function Comida() {
   const [currentMeal, setCurrentMeal] = useState({});
@@ -25,39 +26,10 @@ function Comida() {
 
   return (
     <div>
-      <img
-        data-testid="recipe-photo"
-        src={ currentMeal.strMealThumb }
-        alt={ currentMeal.strMeal }
+      <DishOrDrinkRecipeDetails
+        dishOrDrink={ currentMeal }
+        ingredients={ ingredients }
       />
-      <h1
-        data-testid="recipe-title"
-      >
-        {currentMeal.strMeal}
-      </h1>
-      <button
-        type="button"
-        data-testid="share-btn"
-      >
-        Compartilhar
-      </button>
-      <button
-        type="button"
-        data-testid="favorite-btn"
-      >
-        Favoritar
-      </button>
-      <p data-testid="recipe-category">{currentMeal.strCategory}</p>
-      <ul>
-        {ingredients.map((ingredient, index) => (
-          <li
-            key={ ingredient }
-            data-testid={ `${index}-ingredient-name-and-measure` }
-          >
-            {ingredient}
-          </li>))}
-      </ul>
-      <p data-testid="instructions">{currentMeal.strInstructions}</p>
       <video data-testid="video" controls>
         <source src={ currentMeal.strYoutube } />
         <track src="" kind="captions" srcLang="en" label="English" />

@@ -10,12 +10,12 @@ function RecomendationCards({ id, page }) {
 
   useEffect(() => {
     if (page === 'comidas' && suggestedDishes.length < maxDishes) {
-      dishesRequest(randomDish())
-        .then(({ meals }) => setSuggestedDishes([...suggestedDishes, meals[0]]));
-    }
-    if (page === 'bebidas' && suggestedDishes.length < maxDishes) {
       drinksRequest(randomDrink())
         .then(({ drinks }) => setSuggestedDishes([...suggestedDishes, drinks[0]]));
+    }
+    if (page === 'bebidas' && suggestedDishes.length < maxDishes) {
+      dishesRequest(randomDish())
+        .then(({ meals }) => setSuggestedDishes([...suggestedDishes, meals[0]]));
     }
   }, [suggestedDishes]);
 
