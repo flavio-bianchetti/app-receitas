@@ -1,8 +1,14 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Ingredients from './Ingredients';
+import IngredientSteps from './IngredientSteps';
 
 function DishOrDrinkRecipeDetails({ dishOrDrink, ingredients }) {
+  const history = useHistory();
+  const page = history.location.pathname;
+  console.log(ingredients);
+
   return (
     <div>
       <img
@@ -33,9 +39,9 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredients }) {
         {dishOrDrink.strCategory || dishOrDrink.strMealThumb}
 
       </p>
-      {dishOrDrink.strDrink || dishOrDrink.strMealThumb
+      {!page.includes('in-progress')
         ? <Ingredients ingredients={ ingredients } />
-        : ''}
+        : <IngredientSteps ingredients={ ingredients } />}
 
       <p data-testid="instructions">{dishOrDrink.strInstructions}</p>
     </div>
