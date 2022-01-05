@@ -14,7 +14,7 @@ function FoodCategorieBtn({ categoryName, onCategorieButtonClick }) {
 }
 
 FoodCategorieBtn.propTypes = {
-  categoryName: PropTypes.shape({}).isRequired,
+  categoryName: PropTypes.string.isRequired,
   onCategorieButtonClick: PropTypes.func.isRequired,
 };
 
