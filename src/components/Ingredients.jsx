@@ -16,9 +16,7 @@ function Ingredients({ ingredients }) {
 }
 
 Ingredients.propTypes = {
-  ingredients: PropTypes.shape({
-    map: PropTypes.func.isRequired,
-  }).isRequired,
+  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default Ingredients;
