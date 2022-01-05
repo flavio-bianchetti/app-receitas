@@ -13,4 +13,12 @@ export const drinksByLastLetter = (lastLetter) => (
   `https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${lastLetter}`
 );
 
+export const drinksById = (id) => (
+  `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`
+);
+
+export const randomDrink = () => (
+  'https://www.thecocktaildb.com/api/json/v1/1/random.php'
+);
+
 export default drinksRequest;
