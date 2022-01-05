@@ -18,6 +18,7 @@ function Cards() {
         .map((item, i) => (
           <Card
             key={ item.idDrink || item.idMeal }
+            item={ item }
             index={ i }
             nameItem={ item.strDrink || item.strMeal }
             image={ item.strDrinkThumb || item.strMealThumb }
