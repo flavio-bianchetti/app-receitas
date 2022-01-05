@@ -10,6 +10,7 @@ function AppDeReceitasProvider({ children }) {
   const [firstTime, setFirstTime] = useState(true);
   const [dishesOrDrinks, setDishesOrDrinks] = useState([]);
   const [categorieRequest, setCategorieRequest] = useState(false);
+  const [currentDishOrDrink, setCurrentDishOrDrink] = useState({});
 
   console.log(dishesOrDrinks);
 
@@ -74,6 +75,8 @@ function AppDeReceitasProvider({ children }) {
     setDishesOrDrinks,
     categorieRequest,
     setCategorieRequest,
+    currentDishOrDrink,
+    setCurrentDishOrDrink,
   };
 
   return (
