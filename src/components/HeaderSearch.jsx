@@ -9,7 +9,8 @@ function Header({ title, handleSearch }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
-  const { dishesOrDrinks, categorieRequest, setCategorieRequest } = useContext(AppDeReceitasContext);
+  const { dishesOrDrinks, categorieRequest,
+    setCategorieRequest } = useContext(AppDeReceitasContext);
   const history = useHistory();
   // const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
 
