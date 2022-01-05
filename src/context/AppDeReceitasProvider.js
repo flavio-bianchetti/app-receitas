@@ -9,6 +9,8 @@ import drinksRequest, { drinksByIngredient,
 function AppDeReceitasProvider({ children }) {
   const [firstTime, setFirstTime] = useState(true);
   const [dishesOrDrinks, setDishesOrDrinks] = useState([]);
+  const [categorieRequest, setCategorieRequest] = useState(false);
+
   console.log(dishesOrDrinks);
 
   useEffect(() => {
@@ -26,10 +28,7 @@ function AppDeReceitasProvider({ children }) {
 
     if (type === 'search-name') {
       dishesRequest(dishesByName(value))
-        .then((data) => {
-          console.log(data);
-          setDishesOrDrinks(data.meals);
-        })
+        .then(({ meals }) => setDishesOrDrinks(meals))
         .catch(() => setDishesOrDrinks([]));
     }
 
@@ -45,10 +44,8 @@ function AppDeReceitasProvider({ children }) {
   const handleSearchDrinks = async (type, value) => {
     if (type === 'search-ingredient') {
       drinksRequest(drinksByIngredient(value))
-        .then(({ drinks }) => {
-          console.log(drinks);
-          setDishesOrDrinks(drinks);
-        }).catch(() => setDishesOrDrinks([]));
+        .then(({ drinks }) => setDishesOrDrinks(drinks))
+        .catch(() => setDishesOrDrinks([]));
     }
 
     if (type === 'search-name') {
@@ -75,6 +72,8 @@ function AppDeReceitasProvider({ children }) {
     handleSearchDrinks,
     dishesOrDrinks,
     setDishesOrDrinks,
+    categorieRequest,
+    setCategorieRequest,
   };
 
   return (

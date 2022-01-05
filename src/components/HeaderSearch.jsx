@@ -9,7 +9,7 @@ function Header({ title, handleSearch }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
-  const { dishesOrDrinks } = useContext(AppDeReceitasContext);
+  const { dishesOrDrinks, categorieRequest, setCategorieRequest } = useContext(AppDeReceitasContext);
   const history = useHistory();
   // const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
 
@@ -19,10 +19,11 @@ function Header({ title, handleSearch }) {
   };
 
   useEffect(() => {
-    if (dishesOrDrinks.length === 1) {
+    if (dishesOrDrinks.length === 1 && !categorieRequest) {
       const id = dishesOrDrinks[0].idMeal || dishesOrDrinks[0].idDrink;
       history.push(`/${title.toLowerCase()}/${id}`);
     }
+    setCategorieRequest(false);
   }, [dishesOrDrinks, history]);
 
   // useEffect(() => {
