@@ -11,7 +11,8 @@ import StartRecipeButton from '../components/StartRecipeButton';
 function Bebida() {
   const {
     currentDishOrDrink: currentDrink,
-    setCurrentDishOrDrink: setCurrentDrink } = useContext(AppDeReceitasContext);
+    setCurrentDishOrDrink: setCurrentDrink,
+    ingredientsAndMeasures } = useContext(AppDeReceitasContext);
 
   const { id } = useParams();
 
@@ -25,12 +26,6 @@ function Bebida() {
       .then(({ drinks }) => setCurrentDrink(drinks
         .find((drink) => drink.idDrink === id)));
   }, []);
-
-  const ingredients = getIngredients(currentDrink);
-
-  const measures = getMeasures(currentDrink);
-
-  const ingredientsAndMeasures = getingredientsAndMeasures(ingredients, measures);
 
   return (
     'idDrink' in currentDrink && (

@@ -5,14 +5,32 @@ import dishesRequest, { dishesByIngredient,
   dishesByName, dishesByLastLetter } from '../services/apiComidas';
 import drinksRequest, { drinksByIngredient,
   drinksByName, drinksByLastLetter } from '../services/apiDrinks';
+import { getIngredients, getMeasures,
+  getingredientsAndMeasures } from '../services/ingredientsAndMeasures';
 
 function AppDeReceitasProvider({ children }) {
   const [firstTime, setFirstTime] = useState(true);
   const [dishesOrDrinks, setDishesOrDrinks] = useState([]);
   const [categorieRequest, setCategorieRequest] = useState(false);
   const [currentDishOrDrink, setCurrentDishOrDrink] = useState({});
+  const [progressRecipes, setProgressRecipes] = useState({});
+  const [firstLoad, setFirstLoad] = useState(true);
+  const [ingredientsAndMeasures, setIngredientAndMeasures] = useState([]);
 
-  console.log(dishesOrDrinks);
+  const onChangeProgressRecipe = ({ target }) => {
+    const { name: ingredient } = target;
+    setProgressRecipes(
+      { ...progressRecipes, [ingredient]: !progressRecipes[ingredient] },
+    );
+  };
+
+  useEffect(() => {
+    if (!firstLoad) {
+      console.log('da');
+      localStorage.setItem('inProgressRecipes', JSON.stringify(progressRecipes));
+    }
+    setFirstLoad(false);
+  }, [progressRecipes]);
 
   useEffect(() => {
     if (dishesOrDrinks.length === 0 && !firstTime) {
@@ -20,6 +38,15 @@ function AppDeReceitasProvider({ children }) {
     }
     setFirstTime(false);
   }, [dishesOrDrinks]);
+
+  useEffect(() => {
+    const ingredients = getIngredients(currentDishOrDrink);
+
+    const measures = getMeasures(currentDishOrDrink);
+
+    const a = getingredientsAndMeasures(ingredients, measures);
+    setIngredientAndMeasures(a);
+  });
   const handleSearchFoods = (type, value) => {
     if (type === 'search-ingredient') {
       dishesRequest(dishesByIngredient(value), 'meals')
@@ -77,6 +104,10 @@ function AppDeReceitasProvider({ children }) {
     setCategorieRequest,
     currentDishOrDrink,
     setCurrentDishOrDrink,
+    setProgressRecipes,
+    progressRecipes,
+    onChangeProgressRecipe,
+    ingredientsAndMeasures,
   };
 
   return (
