@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 function StartRecipeButton({ dishOrDrink, meal, drink }) {
   const [recipe, setRecipe] = useState([]);
+
   const storage = localStorage;
   const today = new Date().toLocaleDateString();
 
@@ -22,9 +23,34 @@ function StartRecipeButton({ dishOrDrink, meal, drink }) {
     tags: dishOrDrink.strTags,
   }];
 
+  const inProgressRecipes = {
+    meals: {
+      [dishOrDrink.idMeal]: [],
+    },
+    cocktails: {
+      [dishOrDrink.idDrink]: [],
+    },
+  };
+
   function handleClick() {
     setRecipe([...recipe, doneRecipe]);
     storage.setItem('doneRecipe', JSON.stringify(doneRecipe));
+    storage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+  }
+
+  if (storage.getItem('inProgressRecipes')) {
+    return (
+      <div>
+        <button
+          className="start-recipe-btn"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
+        >
+          Continuar Receita
+        </button>
+      </div>
+    );
   }
 
   if (recipe.length === 0) {
@@ -36,15 +62,11 @@ function StartRecipeButton({ dishOrDrink, meal, drink }) {
           data-testid="start-recipe-btn"
           onClick={ () => handleClick() }
         >
-          Começar receita
+          Iniciar Receita
         </button>
       </div>
     );
   }
-
-  return (
-    <div />
-  );
 }
 
 StartRecipeButton.propTypes = {
