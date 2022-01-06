@@ -1,22 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function Ingredients({ ingredients }) {
+function Ingredients({ ingredientsAndMeasures }) {
   return (
     <ul>
-      {ingredients.map((ingredient, index) => (
+      {ingredientsAndMeasures.map((obj, index) => (
         <li
-          key={ ingredient }
+          key={ Object.keys(obj) }
           data-testid={ `${index}-ingredient-name-and-measure` }
         >
-          {ingredient}
+          {Object.entries(obj).join().replace(',', ': ')}
         </li>))}
     </ul>
   );
 }
 
 Ingredients.propTypes = {
-  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredientsAndMeasures: PropTypes.shape({
+    map: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 export default Ingredients;

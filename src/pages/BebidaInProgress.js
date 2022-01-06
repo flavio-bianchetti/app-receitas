@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import getIngredients from '../services/getIngredients';
+import { getIngredients, getMeasures } from '../services/ingredientsAndMeasures';
 import drinksRequest, { drinksById } from '../services/apiDrinks';
 
 function BebidaInProgress() {
@@ -21,11 +21,19 @@ function BebidaInProgress() {
 
   const ingredients = getIngredients(currentDrink);
 
+  const measures = getMeasures(currentDrink);
+
+  const ingredientsAndMeasures = ingredients.map((ingredient, index) => (
+    {
+      [ingredient]: measures[index],
+    }
+  ));
+
   return (
     <div>
       <DishOrDrinkRecipeDetails
         dishOrDrink={ currentDrink }
-        ingredients={ ingredients }
+        ingredientsAndMeasures={ ingredientsAndMeasures }
       />
     </div>
   );

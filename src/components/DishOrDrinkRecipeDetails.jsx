@@ -4,10 +4,9 @@ import { useHistory } from 'react-router-dom';
 import Ingredients from './Ingredients';
 import IngredientSteps from './IngredientSteps';
 
-function DishOrDrinkRecipeDetails({ dishOrDrink, ingredients }) {
+function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
   const history = useHistory();
   const page = history.location.pathname;
-  console.log(ingredients);
 
   return (
     <div>
@@ -19,7 +18,7 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredients }) {
       <h1
         data-testid="recipe-title"
       >
-        {dishOrDrink.strDrink || dishOrDrink.strMealThumb}
+        {dishOrDrink.strDrink || dishOrDrink.strMeal}
       </h1>
       <button
         type="button"
@@ -36,12 +35,12 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredients }) {
       <p
         data-testid="recipe-category"
       >
-        {dishOrDrink.strCategory || dishOrDrink.strMealThumb}
+        {dishOrDrink.idMeal ? dishOrDrink.strCategory : dishOrDrink.strAlcoholic}
 
       </p>
       {!page.includes('in-progress')
-        ? <Ingredients ingredients={ ingredients } />
-        : <IngredientSteps ingredients={ ingredients } />}
+        ? <Ingredients ingredientsAndMeasures={ ingredientsAndMeasures } />
+        : <IngredientSteps ingredientsAndMeasures={ ingredientsAndMeasures } />}
 
       <p data-testid="instructions">{dishOrDrink.strInstructions}</p>
     </div>
@@ -50,13 +49,16 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredients }) {
 
 DishOrDrinkRecipeDetails.propTypes = {
   dishOrDrink: PropTypes.shape({
+    idDrink: PropTypes.string,
+    strAlcoholic: PropTypes.string,
     strCategory: PropTypes.string,
     strDrink: PropTypes.string,
     strDrinkThumb: PropTypes.string,
     strInstructions: PropTypes.string,
+    strMeal: PropTypes.string,
     strMealThumb: PropTypes.string,
   }),
-  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredientsAndMeasures: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 DishOrDrinkRecipeDetails.defaultProps = {

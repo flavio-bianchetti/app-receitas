@@ -4,7 +4,8 @@ import RecomendationCards from '../components/RecomendationCards';
 import dishesRequest, { dishesById } from '../services/apiComidas';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import getIngredients from '../services/getIngredients';
+import { getIngredients, getMeasures } from '../services/ingredientsAndMeasures';
+import StartRecipeButton from '../components/StartRecipeButton';
 
 function Comida() {
   const {
@@ -26,6 +27,15 @@ function Comida() {
   }, []);
 
   const ingredients = getIngredients(currentMeal);
+
+  const measures = getMeasures(currentMeal);
+
+  const ingredientsAndMeasures = ingredients.map((ingredient, index) => (
+    {
+      [ingredient]: measures[index],
+    }
+  ));
+
   return (
 
   // Comando velha guarda =)
@@ -34,19 +44,14 @@ function Comida() {
       <div>
         <DishOrDrinkRecipeDetails
           dishOrDrink={ currentMeal }
-          ingredients={ ingredients }
+          ingredientsAndMeasures={ ingredientsAndMeasures }
         />
         <video data-testid="video" controls>
           <source src={ currentMeal.strYoutube } />
           <track src="" kind="captions" srcLang="en" label="English" />
         </video>
         <RecomendationCards page="comidas" id={ currentMeal.idMeal } />
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-        >
-          Começar receita
-        </button>
+        <StartRecipeButton dishOrDrink={ currentMeal } meal="comida" />
       </div>
     )
 
