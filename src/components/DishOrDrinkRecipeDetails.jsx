@@ -49,6 +49,7 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
 
 DishOrDrinkRecipeDetails.propTypes = {
   dishOrDrink: PropTypes.shape({
+    idMeal: PropTypes.string,
     idDrink: PropTypes.string,
     strAlcoholic: PropTypes.string,
     strCategory: PropTypes.string,

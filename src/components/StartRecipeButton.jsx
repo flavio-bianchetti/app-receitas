@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 
 function StartRecipeButton({ dishOrDrink, meal, drink }) {
@@ -45,5 +46,22 @@ function StartRecipeButton({ dishOrDrink, meal, drink }) {
     <div />
   );
 }
+
+StartRecipeButton.propTypes = {
+  dishOrDrink: PropTypes.shape({
+    idDrink: PropTypes.string,
+    idMeal: PropTypes.string,
+    strAlcoholic: PropTypes.string,
+    strArea: PropTypes.string,
+    strCategory: PropTypes.string,
+    strDrink: PropTypes.string,
+    strDrinkThumb: PropTypes.string,
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+    strTags: PropTypes.string,
+  }).isRequired,
+  drink: PropTypes.string.isRequired,
+  meal: PropTypes.string.isRequired,
+};
 
 export default StartRecipeButton;
