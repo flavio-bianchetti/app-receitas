@@ -7,3 +7,11 @@ export const getMeasures = (dishOrDrink) => Object.keys(dishOrDrink)
   .filter((key) => key.includes('strMeasure'))
   .map((key) => dishOrDrink[key])
   .filter((measure) => measure !== '' && measure !== null);
+
+export const getingredientsAndMeasures = (ingredients, measures) => (
+  ingredients.map((ingredient, index) => (
+    {
+      ingredient,
+      measure: measures[index],
+    }
+  )));

@@ -4,7 +4,8 @@ import RecomendationCards from '../components/RecomendationCards';
 import dishesRequest, { dishesById } from '../services/apiComidas';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import { getIngredients, getMeasures } from '../services/ingredientsAndMeasures';
+import { getIngredients, getMeasures,
+  getingredientsAndMeasures } from '../services/ingredientsAndMeasures';
 import StartRecipeButton from '../components/StartRecipeButton';
 
 function Comida() {
@@ -30,11 +31,7 @@ function Comida() {
 
   const measures = getMeasures(currentMeal);
 
-  const ingredientsAndMeasures = ingredients.map((ingredient, index) => (
-    {
-      [ingredient]: measures[index],
-    }
-  ));
+  const ingredientsAndMeasures = getingredientsAndMeasures(ingredients, measures);
 
   return (
 

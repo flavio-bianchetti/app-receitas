@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import { getIngredients, getMeasures } from '../services/ingredientsAndMeasures';
+import { getIngredients, getMeasures,
+  getingredientsAndMeasures } from '../services/ingredientsAndMeasures';
 import dishesRequest, { dishesById } from '../services/apiComidas';
 
 function ComidaInProgress() {
@@ -23,11 +24,7 @@ function ComidaInProgress() {
 
   const measures = getMeasures(currentMeal);
 
-  const ingredientsAndMeasures = ingredients.map((ingredient, index) => (
-    {
-      [ingredient]: measures[index],
-    }
-  ));
+  const ingredientsAndMeasures = getingredientsAndMeasures(ingredients, measures);
 
   return (
     <div>
