@@ -4,7 +4,8 @@ import drinksRequest, { drinksById } from '../services/apiDrinks';
 import RecomendationCards from '../components/RecomendationCards';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import { getIngredients, getMeasures } from '../services/ingredientsAndMeasures';
+import { getIngredients, getMeasures,
+  getingredientsAndMeasures } from '../services/ingredientsAndMeasures';
 import StartRecipeButton from '../components/StartRecipeButton';
 
 function Bebida() {
@@ -29,11 +30,7 @@ function Bebida() {
 
   const measures = getMeasures(currentDrink);
 
-  const ingredientsAndMeasures = ingredients.map((ingredient, index) => (
-    {
-      [ingredient]: measures[index],
-    }
-  ));
+  const ingredientsAndMeasures = getingredientsAndMeasures(ingredients, measures);
 
   return (
     'idDrink' in currentDrink && (

@@ -1,15 +1,16 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-function IngredientSteps({ ingredients }) {
+function IngredientSteps({ ingredientsAndMeasures }) {
+  console.log(ingredientsAndMeasures);
   return (
     <div>
-      {ingredients.map((ingredient, index) => (
+      {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
         <label
           key={ ingredient }
           htmlFor={ `${ingredient}-${index}` }
         >
-          {ingredient}
+          {`${ingredient}: ${measure}`}
           <input
             type="checkbox"
             id={ `${ingredient}-${index}` }
@@ -21,7 +22,7 @@ function IngredientSteps({ ingredients }) {
 }
 
 IngredientSteps.propTypes = {
-  ingredients: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredientsAndMeasures: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default IngredientSteps;

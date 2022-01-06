@@ -4,12 +4,12 @@ import React from 'react';
 function Ingredients({ ingredientsAndMeasures }) {
   return (
     <ul>
-      {ingredientsAndMeasures.map((obj, index) => (
+      {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
         <li
-          key={ Object.keys(obj) }
+          key={ ingredient }
           data-testid={ `${index}-ingredient-name-and-measure` }
         >
-          {Object.entries(obj).join().replace(',', ': ')}
+          {`${ingredient}: ${measure}`}
         </li>))}
     </ul>
   );
