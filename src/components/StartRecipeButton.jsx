@@ -40,7 +40,9 @@ function StartRecipeButton({ dishOrDrink, meal, drink }) {
     storage.setItem('doneRecipe', JSON.stringify(doneRecipe));
     storage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
     history
-      .push(`/${meal || drink}s/${dishOrDrink.idMeal || dishOrDrink.idDrink}/in-progress`);
+      .push(`/${meal
+        || drink}s/${dishOrDrink.idMeal
+        || dishOrDrink.idDrink}/in-progress`);
   }
 
   const storageRecipeInProgress = storage.getItem('inProgressRecipes');
