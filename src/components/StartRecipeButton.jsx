@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function StartRecipeButton({ dishOrDrink, meal, drink }) {
   const [recipe, setRecipe] = useState([]);
+
+  const history = useHistory();
 
   const storage = localStorage;
   const today = new Date().toLocaleDateString();
@@ -36,24 +39,13 @@ function StartRecipeButton({ dishOrDrink, meal, drink }) {
     setRecipe([...recipe, doneRecipe]);
     storage.setItem('doneRecipe', JSON.stringify(doneRecipe));
     storage.setItem('inProgressRecipes', JSON.stringify(inProgressRecipes));
+    history
+      .push(`/${meal || drink}s/${dishOrDrink.idMeal || dishOrDrink.idDrink}/in-progress`);
   }
 
-  if (storage.getItem('inProgressRecipes')) {
-    return (
-      <div>
-        <button
-          className="start-recipe-btn"
-          type="button"
-          data-testid="start-recipe-btn"
-          onClick={ () => handleClick() }
-        >
-          Continuar Receita
-        </button>
-      </div>
-    );
-  }
+  const storageRecipeInProgress = storage.getItem('inProgressRecipes');
 
-  if (recipe.length === 0) {
+  if (recipe.length === 0 && storageRecipeInProgress === null) {
     return (
       <div>
         <button
@@ -63,6 +55,21 @@ function StartRecipeButton({ dishOrDrink, meal, drink }) {
           onClick={ () => handleClick() }
         >
           Iniciar Receita
+        </button>
+      </div>
+    );
+  }
+
+  if (storageRecipeInProgress) {
+    return (
+      <div>
+        <button
+          className="start-recipe-btn"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
+        >
+          Continuar Receita
         </button>
       </div>
     );
