@@ -5,13 +5,11 @@ function RecomendationCard({ index, image, nameItem }) {
   return (
     <div data-testid={ `${index}-recomendation-card` }>
       <img
-        data-testid={ `${index}-recomendation-card-img` }
+        className="recomendation-img"
         src={ image }
         alt={ nameItem }
       />
-      <h2 data-testid={ `${index}-recomendation-card-name` }>
-        {nameItem}
-      </h2>
+      <h1 data-testid={ `${index}-recomendation-title` }>{nameItem}</h1>
     </div>
   );
 }

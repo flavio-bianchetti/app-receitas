@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecomendationCard from './RecomendationCard';
-import dishesRequest, { randomDish } from '../services/apiComidas';
-import drinksRequest, { randomDrink } from '../services/apiDrinks';
+import dishesRequest, { dishesByName } from '../services/apiComidas';
+import drinksRequest, { drinksByName } from '../services/apiDrinks';
 
 function RecomendationCards({ id, page }) {
   const [suggestedDishes, setSuggestedDishes] = useState([]);
-  const maxDishes = 3;
+  const maxDishes = 6;
 
   useEffect(() => {
     if (page === 'comidas' && suggestedDishes.length < maxDishes) {
-      drinksRequest(randomDrink())
-        .then(({ drinks }) => setSuggestedDishes([...suggestedDishes, drinks[0]]));
+      drinksRequest(drinksByName(''))
+        .then(({ drinks }) => setSuggestedDishes(drinks
+          .slice(0, maxDishes)));
     }
     if (page === 'bebidas' && suggestedDishes.length < maxDishes) {
-      dishesRequest(randomDish())
-        .then(({ meals }) => setSuggestedDishes([...suggestedDishes, meals[0]]));
+      dishesRequest(dishesByName(''))
+        .then(({ meals }) => setSuggestedDishes(meals
+          .slice(0, maxDishes)));
     }
   }, [suggestedDishes]);
 
+  console.log(suggestedDishes);
+
   return (
-    <div className="recomendation-cards-container">
+    <div className="rec-cards-container">
       {suggestedDishes
-        .filter((item) => item.idMeal !== id || item.idDrink !== id)
-        .slice(0, 2)
         .map((item, i) => (
           <RecomendationCard
             key={ item.idDrink || item.idMeal }

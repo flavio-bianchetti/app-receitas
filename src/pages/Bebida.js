@@ -4,7 +4,8 @@ import drinksRequest, { drinksById } from '../services/apiDrinks';
 import RecomendationCards from '../components/RecomendationCards';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import getIngredients from '../services/getIngredients';
+import { getIngredients, getMeasures } from '../services/ingredientsAndMeasures';
+import StartRecipeButton from '../components/StartRecipeButton';
 
 function Bebida() {
   const {
@@ -26,20 +27,23 @@ function Bebida() {
 
   const ingredients = getIngredients(currentDrink);
 
+  const measures = getMeasures(currentDrink);
+
+  const ingredientsAndMeasures = ingredients.map((ingredient, index) => (
+    {
+      [ingredient]: measures[index],
+    }
+  ));
+
   return (
     'idDrink' in currentDrink && (
       <div>
         <DishOrDrinkRecipeDetails
           dishOrDrink={ currentDrink }
-          ingredients={ ingredients }
+          ingredientsAndMeasures={ ingredientsAndMeasures }
         />
         <RecomendationCards page="bebidas" id={ currentDrink.iDrink } />
-        <button
-          type="button"
-          data-testid="start-recipe-btn"
-        >
-          Começar receita
-        </button>
+        <StartRecipeButton dishOrDrink={ currentDrink } drink="bebida" />
       </div>
     )
   );
