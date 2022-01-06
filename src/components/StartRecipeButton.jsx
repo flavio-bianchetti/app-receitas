@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function StartRecipeButton({ dishOrDrink, meal, drink }) {
+  const [recipe, setRecipe] = useState([]);
   const storage = localStorage;
   const today = new Date().toLocaleDateString();
+
+  useEffect(() => {
+    storage.setItem('doneRecipe', '');
+  }, []);
 
   const doneRecipe = [{
     id: dishOrDrink.idMeal || dishOrDrink.idDrink,
@@ -17,20 +22,27 @@ function StartRecipeButton({ dishOrDrink, meal, drink }) {
   }];
 
   function handleClick() {
-    storage.setItem('doneRecipes', JSON.stringify(doneRecipe));
+    setRecipe([...recipe, doneRecipe]);
+    storage.setItem('doneRecipe', JSON.stringify(doneRecipe));
+  }
+
+  if (recipe.length === 0) {
+    return (
+      <div>
+        <button
+          className="start-recipe-btn"
+          type="button"
+          data-testid="start-recipe-btn"
+          onClick={ () => handleClick() }
+        >
+          Começar receita
+        </button>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <button
-        className="start-recipe-btn"
-        type="button"
-        data-testid="start-recipe-btn"
-        onClick={ () => handleClick() }
-      >
-        Começar receita
-      </button>
-    </div>
+    <div />
   );
 }
 

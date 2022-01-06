@@ -21,8 +21,6 @@ function RecomendationCards({ id, page }) {
     }
   }, [suggestedDishes]);
 
-  console.log(suggestedDishes);
-
   return (
     <div className="rec-cards-container">
       {suggestedDishes

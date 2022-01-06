@@ -12,7 +12,6 @@ function Comida() {
   const {
     currentDishOrDrink: currentMeal,
     setCurrentDishOrDrink: setCurrentMeal } = useContext(AppDeReceitasContext);
-  console.log(currentMeal);
 
   const { id } = useParams();
 

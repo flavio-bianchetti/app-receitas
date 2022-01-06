@@ -12,8 +12,6 @@ function AppDeReceitasProvider({ children }) {
   const [categorieRequest, setCategorieRequest] = useState(false);
   const [currentDishOrDrink, setCurrentDishOrDrink] = useState({});
 
-  console.log(dishesOrDrinks);
-
   useEffect(() => {
     if (dishesOrDrinks.length === 0 && !firstTime) {
       alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
