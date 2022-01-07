@@ -7,7 +7,7 @@ afterEach(() => {
 });
 
 describe('47 - Desenvolva a tela de maneira que contenha uma imagem da receita, seu titulo, sua categoria (ou se a bebida é alcoólica ou não) uma lista de ingredientes com suas respectivas quantidade e suas instruções', () => {
-  it.only('verifica elementos de uma receita de comida', () => {
+  it('verifica elementos de uma receita de comida', () => {
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
         win.fetch = fetchMock;
@@ -43,7 +43,7 @@ describe('47 - Desenvolva a tela de maneira que contenha uma imagem da receita, 
 });
 
 describe('48 - Desenvolva um checkbox para cada item da lista de ingredientes', () => {
-  it('todos os ingredientes de uma receita de comida possuem um checkbox', () => {
+  it.only('todos os ingredientes de uma receita de comida possuem um checkbox', () => {
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
         win.fetch = fetchMock;

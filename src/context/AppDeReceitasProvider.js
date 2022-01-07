@@ -6,7 +6,7 @@ import dishesRequest, { dishesByIngredient,
 import drinksRequest, { drinksByIngredient,
   drinksByName, drinksByLastLetter } from '../services/apiDrinks';
 import { getIngredients, getMeasures,
-  getingredientsAndMeasures } from '../services/ingredientsAndMeasures';
+  getIngredientsAndMeasures } from '../services/ingredientsAndMeasures';
 
 function AppDeReceitasProvider({ children }) {
   const [firstTime, setFirstTime] = useState(true);
@@ -16,6 +16,9 @@ function AppDeReceitasProvider({ children }) {
   const [progressRecipes, setProgressRecipes] = useState({});
   const [firstLoad, setFirstLoad] = useState(true);
   const [ingredientsAndMeasures, setIngredientAndMeasures] = useState([]);
+  const [storageRecipesProgress, setStorageRecipesProgress] = useState([]);
+
+  console.log(progressRecipes);
 
   const onChangeProgressRecipe = ({ target }) => {
     const { name: ingredient } = target;
@@ -25,9 +28,32 @@ function AppDeReceitasProvider({ children }) {
   };
 
   useEffect(() => {
-    if (!firstLoad) {
-      console.log('da');
-      localStorage.setItem('inProgressRecipes', JSON.stringify(progressRecipes));
+    if (!localStorage.getItem('inProgressRecipes')) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify([]));
+    } else {
+      const savedRecipeProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      setStorageRecipesProgress(savedRecipeProgress);
+    }
+  }, []);
+  useEffect(() => {
+    const isRecipeInStorage = storageRecipesProgress.find(({ id }) => (
+      currentDishOrDrink.idMeal === id || currentDishOrDrink.idDrink === id));
+    if (!isRecipeInStorage && !firstLoad) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(
+        [...storageRecipesProgress, progressRecipes],
+      ));
+    } else if (!firstLoad) {
+      console.log(storageRecipesProgress, 'rodei');
+      const newRecipeStorage = storageRecipesProgress.map((recipe) => {
+        // console.log(recipe, 'recipe', currentDishOrDrink.idMeal || currentDishOrDrink.idDrink);
+        if (currentDishOrDrink.idMeal === recipe.id
+          || currentDishOrDrink.idDrink === recipe.id) {
+          return progressRecipes;
+        }
+        return recipe;
+      });
+      console.log(newRecipeStorage);
+      localStorage.setItem('inProgressRecipes', JSON.stringify(newRecipeStorage));
     }
     setFirstLoad(false);
   }, [progressRecipes]);
@@ -41,12 +67,13 @@ function AppDeReceitasProvider({ children }) {
 
   useEffect(() => {
     const ingredients = getIngredients(currentDishOrDrink);
+    console.log('da');
 
     const measures = getMeasures(currentDishOrDrink);
 
-    const a = getingredientsAndMeasures(ingredients, measures);
-    setIngredientAndMeasures(a);
-  });
+    const ingredientsAndMeasuresList = getIngredientsAndMeasures(ingredients, measures);
+    setIngredientAndMeasures(ingredientsAndMeasuresList);
+  }, [currentDishOrDrink]);
   const handleSearchFoods = (type, value) => {
     if (type === 'search-ingredient') {
       dishesRequest(dishesByIngredient(value), 'meals')

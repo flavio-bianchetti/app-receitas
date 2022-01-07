@@ -37,6 +37,7 @@ function ComidaInProgress() {
       <DishOrDrinkRecipeDetails
         dishOrDrink={ currentMeal }
         ingredientsAndMeasures={ ingredientsAndMeasures }
+        id={ id }
       />
       <FinishRecipeButton />
     </div>

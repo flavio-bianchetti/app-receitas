@@ -24,6 +24,7 @@ function BebidaInProgress() {
       <DishOrDrinkRecipeDetails
         dishOrDrink={ currentDrink }
         ingredientsAndMeasures={ ingredientsAndMeasures }
+        id={ id }
       />
       <FinishRecipeButton />
     </div>

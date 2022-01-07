@@ -15,12 +15,6 @@ function Comida() {
 
   const { id } = useParams();
 
-  // const history = useHistory();
-  // const path = history.location.pathname;
-  // const page = path.split('/')[1];
-  // console.log(page);
-  // const id = path.match(/(\d+)/)[0];
-
   useEffect(() => {
     dishesRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals.find((meal) => meal.idMeal === id)));

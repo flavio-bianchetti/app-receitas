@@ -41,7 +41,10 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
         </p>
         {!page.includes('in-progress')
           ? <Ingredients ingredientsAndMeasures={ ingredientsAndMeasures } />
-          : <IngredientSteps ingredientsAndMeasures={ ingredientsAndMeasures } />}
+          : (
+            <IngredientSteps
+              ingredientsAndMeasures={ ingredientsAndMeasures }
+            />)}
 
         <p data-testid="instructions">{dishOrDrink.strInstructions}</p>
       </div>
@@ -52,6 +55,7 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
 DishOrDrinkRecipeDetails.propTypes = {
   dishOrDrink: PropTypes.shape({
     idDrink: PropTypes.string,
+    idMeal: PropTypes.string,
     strAlcoholic: PropTypes.string,
     strCategory: PropTypes.string,
     strDrink: PropTypes.string,
@@ -61,6 +65,11 @@ DishOrDrinkRecipeDetails.propTypes = {
     strMealThumb: PropTypes.string,
   }),
   ingredientsAndMeasures: PropTypes.arrayOf(PropTypes.object).isRequired,
+  strCategory: PropTypes.string,
+  strDrink: PropTypes.string,
+  strDrinkThumb: PropTypes.string,
+  strInstructions: PropTypes.string,
+  strMealThumb: PropTypes.string,
 };
 
 DishOrDrinkRecipeDetails.defaultProps = {
@@ -71,6 +80,12 @@ DishOrDrinkRecipeDetails.defaultProps = {
     strInstructions: '',
     strMealThumb: '',
   }),
+
+  strCategory: '',
+  strDrink: '',
+  strDrinkThumb: '',
+  strInstructions: '',
+  strMealThumb: '',
 };
 
 export default DishOrDrinkRecipeDetails;

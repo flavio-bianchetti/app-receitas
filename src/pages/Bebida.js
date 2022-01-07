@@ -4,8 +4,6 @@ import drinksRequest, { drinksById } from '../services/apiDrinks';
 import RecomendationCards from '../components/RecomendationCards';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import { getIngredients, getMeasures,
-  getingredientsAndMeasures } from '../services/ingredientsAndMeasures';
 import StartRecipeButton from '../components/StartRecipeButton';
 
 function Bebida() {
@@ -15,11 +13,6 @@ function Bebida() {
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
 
   const { id } = useParams();
-
-  // const history = useHistory();
-  // const path = history.location.pathname;
-  // const page = path.split('/')[1];
-  // const id = path.match(/(\d+)/)[0];
 
   useEffect(() => {
     drinksRequest(drinksById(id))
