@@ -1,12 +1,19 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Ingredients from './Ingredients';
 import IngredientSteps from './IngredientSteps';
 
 function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
+  const [isCopied, setIsCopied] = useState(false);
   const history = useHistory();
   const page = history.location.pathname;
+
+  function handleShare() {
+    const actualUrl = window.location.href;
+    navigator.clipboard.writeText(actualUrl);
+    setIsCopied(true);
+  }
 
   return (
     <div>
@@ -23,8 +30,10 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
       <button
         type="button"
         data-testid="share-btn"
+        onClick={ () => handleShare() }
+        disabled={ isCopied }
       >
-        Compartilhar
+        {isCopied ? 'Link copiado!' : 'Compartilhar'}
       </button>
       <button
         type="button"
@@ -49,6 +58,7 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
 
 DishOrDrinkRecipeDetails.propTypes = {
   dishOrDrink: PropTypes.shape({
+    idMeal: PropTypes.string,
     idDrink: PropTypes.string,
     strAlcoholic: PropTypes.string,
     strCategory: PropTypes.string,

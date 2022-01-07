@@ -4,7 +4,7 @@ import RecomendationCard from './RecomendationCard';
 import dishesRequest, { dishesByName } from '../services/apiComidas';
 import drinksRequest, { drinksByName } from '../services/apiDrinks';
 
-function RecomendationCards({ id, page }) {
+function RecomendationCards({ page }) {
   const [suggestedDishes, setSuggestedDishes] = useState([]);
   const maxDishes = 6;
 
@@ -20,8 +20,6 @@ function RecomendationCards({ id, page }) {
           .slice(0, maxDishes)));
     }
   }, [suggestedDishes]);
-
-  console.log(suggestedDishes);
 
   return (
     <div className="rec-cards-container">
@@ -39,7 +37,6 @@ function RecomendationCards({ id, page }) {
 }
 
 RecomendationCards.propTypes = {
-  id: PropTypes.string.isRequired,
   page: PropTypes.string.isRequired,
 };
 
