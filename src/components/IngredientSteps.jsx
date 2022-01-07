@@ -11,34 +11,21 @@ function IngredientSteps({ ingredientsAndMeasures }) {
 
   const { id } = useParams();
 
-  // useEffect(() => {
-  //   drinksRequest(drinksById(id))
-  //     .then(({ drinks }) => setCurrentDishOrDrink(drinks
-  //       .find((drink) => drink.idDrink === id)));
-  // }, []);
-
   const progressRecipesCheckBoxes = ingredientsAndMeasures
     .reduce((acc, { ingredient }) => {
       acc[ingredient] = false;
       return acc;
     }, {});
-
   useEffect(() => {
     const savedRecipeProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     const actualRecipe = savedRecipeProgress
       .find(({ id: recipeId }) => recipeId === id);
 
-    console.log(actualRecipe, 'actual recipe');
-
     if (!actualRecipe) {
-      console.log(id, progressRecipesCheckBoxes);
-
       setProgressRecipes({ ...progressRecipesCheckBoxes, id });
     } else {
-      console.log(actualRecipe, 'set actual recipe');
       setProgressRecipes(actualRecipe);
     }
-    // console.log(savedRecipeProgress);
   }, []);
 
   return (
@@ -47,6 +34,7 @@ function IngredientSteps({ ingredientsAndMeasures }) {
         <label
           key={ ingredient }
           htmlFor={ `${ingredient}-${index}` }
+          data-testid={ `${index}-ingredient-step` }
           style={
             { textDecoration: progressRecipes[ingredient] ? 'line-through' : 'none' }
           }
@@ -55,7 +43,6 @@ function IngredientSteps({ ingredientsAndMeasures }) {
           <input
             type="checkbox"
             id={ `${ingredient}-${index}` }
-            data-testid={ `${index}-ingredient-step` }
             name={ ingredient }
             checked={ progressRecipes[ingredient] }
             onChange={ (e) => onChangeProgressRecipe(e) }

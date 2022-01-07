@@ -18,7 +18,7 @@ function AppDeReceitasProvider({ children }) {
   const [ingredientsAndMeasures, setIngredientAndMeasures] = useState([]);
   const [storageRecipesProgress, setStorageRecipesProgress] = useState([]);
 
-  console.log(progressRecipes);
+  // console.log(progressRecipes);
 
   const onChangeProgressRecipe = ({ target }) => {
     const { name: ingredient } = target;
@@ -43,16 +43,13 @@ function AppDeReceitasProvider({ children }) {
         [...storageRecipesProgress, progressRecipes],
       ));
     } else if (!firstLoad) {
-      console.log(storageRecipesProgress, 'rodei');
       const newRecipeStorage = storageRecipesProgress.map((recipe) => {
-        // console.log(recipe, 'recipe', currentDishOrDrink.idMeal || currentDishOrDrink.idDrink);
         if (currentDishOrDrink.idMeal === recipe.id
           || currentDishOrDrink.idDrink === recipe.id) {
           return progressRecipes;
         }
         return recipe;
       });
-      console.log(newRecipeStorage);
       localStorage.setItem('inProgressRecipes', JSON.stringify(newRecipeStorage));
     }
     setFirstLoad(false);
@@ -67,13 +64,13 @@ function AppDeReceitasProvider({ children }) {
 
   useEffect(() => {
     const ingredients = getIngredients(currentDishOrDrink);
-    console.log('da');
 
     const measures = getMeasures(currentDishOrDrink);
 
     const ingredientsAndMeasuresList = getIngredientsAndMeasures(ingredients, measures);
     setIngredientAndMeasures(ingredientsAndMeasuresList);
   }, [currentDishOrDrink]);
+
   const handleSearchFoods = (type, value) => {
     if (type === 'search-ingredient') {
       dishesRequest(dishesByIngredient(value), 'meals')
@@ -119,7 +116,6 @@ function AppDeReceitasProvider({ children }) {
           setDishesOrDrinks(drinks)))
         .catch(() => setDishesOrDrinks([]));
     }
-    // drinksRequest(drinksByIngredient('dsad')).then((drinks) => console.log(drinks));
   };
 
   const appReceitasValue = {

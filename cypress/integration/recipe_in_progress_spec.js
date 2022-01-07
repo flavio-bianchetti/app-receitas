@@ -43,7 +43,7 @@ describe('47 - Desenvolva a tela de maneira que contenha uma imagem da receita, 
 });
 
 describe('48 - Desenvolva um checkbox para cada item da lista de ingredientes', () => {
-  it.only('todos os ingredientes de uma receita de comida possuem um checkbox', () => {
+  it('todos os ingredientes de uma receita de comida possuem um checkbox', () => {
     cy.visit('http://localhost:3000/comidas/52771/in-progress', {
       onBeforeLoad(win) {
         win.fetch = fetchMock;

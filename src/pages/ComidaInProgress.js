@@ -20,24 +20,11 @@ function ComidaInProgress() {
         .find((meal) => meal.idMeal === id)));
   }, []);
 
-  // useEffect(() => {
-  //   if (Object.keys(currentMeal).length > 0) {
-  //     const ingredients = getIngredients(currentMeal);
-
-  //     const measures = getMeasures(currentMeal);
-
-  //     const ingredientsAndMeasures = getingredientsAndMeasures(ingredients, measures);
-  //     console.log(ingredientsAndMeasures, 'measures');
-  //     seta(ingredientsAndMeasures);
-  //   }
-  // }, [currentMeal]);
-
   return (
     <div>
       <DishOrDrinkRecipeDetails
         dishOrDrink={ currentMeal }
         ingredientsAndMeasures={ ingredientsAndMeasures }
-        id={ id }
       />
       <FinishRecipeButton />
     </div>
