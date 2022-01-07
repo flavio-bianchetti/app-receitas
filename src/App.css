@@ -79,3 +79,7 @@
 		transform: rotate(-10deg);
 	}
 }
+
+img {
+	width: 300px
+}
