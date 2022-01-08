@@ -15,7 +15,6 @@ function AppDeReceitasProvider({ children }) {
   const [currentDishOrDrink, setCurrentDishOrDrink] = useState({});
   const [progressRecipes, setProgressRecipes] = useState({});
   const [currentIdAndType, setCurrentIdAndType] = useState({ id: '', type: '' });
-  // const [firstLoad, setFirstLoad] = useState(true);
   const [ingredientsAndMeasures, setIngredientAndMeasures] = useState([]);
   const [storageRecipesProgress, setStorageRecipesProgress] = useState(
     { cocktails: {}, meals: {} },
@@ -44,7 +43,6 @@ function AppDeReceitasProvider({ children }) {
 
   useEffect(() => {
     if (currentIdAndType.id !== '') {
-      console.log('a');
       const isRecipeInStorage = Object.keys(
         storageRecipesProgress[currentIdAndType.type],
       ).find((id) => {

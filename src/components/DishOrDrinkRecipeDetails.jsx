@@ -40,7 +40,7 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
       setFavoriteRecipesStorage(favoriteRecipesInStorage);
       if (isRecipeInStorage(favoriteRecipesInStorage)) {
         console.log('c');
-        setFavoriteRecipe(!favoriteRecipe);
+        setFavoriteRecipe(true);
       }
     }
   }, []);
@@ -50,10 +50,8 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
     if (!isRecipeInStorage(favoriteRecipesStorage)) {
       localStorage.setItem('favoriteRecipes',
         JSON.stringify([...favoriteRecipesStorage, doneRecipe]));
-      console.log('a');
       setFavoriteRecipesStorage([...favoriteRecipesStorage, doneRecipe]);
     } else {
-      console.log('b');
       const newFavoriteRecipes = favoriteRecipesStorage.filter(({ id }) => (
         id !== dishOrDrink.idMeal && id !== dishOrDrink.idDrink));
       console.log(newFavoriteRecipes);
