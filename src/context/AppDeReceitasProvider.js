@@ -14,9 +14,12 @@ function AppDeReceitasProvider({ children }) {
   const [categorieRequest, setCategorieRequest] = useState(false);
   const [currentDishOrDrink, setCurrentDishOrDrink] = useState({});
   const [progressRecipes, setProgressRecipes] = useState({});
-  const [firstLoad, setFirstLoad] = useState(true);
+  const [currentIdAndType, setCurrentIdAndType] = useState({ id: '', type: '' });
+  // const [firstLoad, setFirstLoad] = useState(true);
   const [ingredientsAndMeasures, setIngredientAndMeasures] = useState([]);
-  const [storageRecipesProgress, setStorageRecipesProgress] = useState([]);
+  const [storageRecipesProgress, setStorageRecipesProgress] = useState(
+    { cocktails: {}, meals: {} },
+  );
 
   // console.log(progressRecipes);
 
@@ -29,30 +32,33 @@ function AppDeReceitasProvider({ children }) {
 
   useEffect(() => {
     if (!localStorage.getItem('inProgressRecipes')) {
-      localStorage.setItem('inProgressRecipes', JSON.stringify([]));
+      localStorage.setItem('inProgressRecipes', JSON.stringify(
+        storageRecipesProgress,
+      ));
     } else {
-      const savedRecipeProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      setStorageRecipesProgress(savedRecipeProgress);
+      const recipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
+      console.log(recipes);
+      setStorageRecipesProgress(recipes);
     }
   }, []);
+
   useEffect(() => {
-    const isRecipeInStorage = storageRecipesProgress.find(({ id }) => (
-      currentDishOrDrink.idMeal === id || currentDishOrDrink.idDrink === id));
-    if (!isRecipeInStorage && !firstLoad) {
-      localStorage.setItem('inProgressRecipes', JSON.stringify(
-        [...storageRecipesProgress, progressRecipes],
-      ));
-    } else if (!firstLoad) {
-      const newRecipeStorage = storageRecipesProgress.map((recipe) => {
-        if (currentDishOrDrink.idMeal === recipe.id
-          || currentDishOrDrink.idDrink === recipe.id) {
-          return progressRecipes;
-        }
-        return recipe;
+    if (currentIdAndType.id !== '') {
+      console.log('a');
+      const isRecipeInStorage = Object.keys(
+        storageRecipesProgress[currentIdAndType.type],
+      ).find((id) => {
+        console.log(id, currentIdAndType.id, 'jdsioasad');
+        return id === currentIdAndType.id;
       });
-      localStorage.setItem('inProgressRecipes', JSON.stringify(newRecipeStorage));
+
+      const newRecipe = storageRecipesProgress;
+      newRecipe[currentIdAndType.type][currentIdAndType.id] = progressRecipes;
+      console.log(newRecipe, progressRecipes);
+      localStorage.setItem('inProgressRecipes', JSON.stringify(newRecipe));
+
+      console.log(isRecipeInStorage);
     }
-    setFirstLoad(false);
   }, [progressRecipes]);
 
   useEffect(() => {
@@ -131,6 +137,8 @@ function AppDeReceitasProvider({ children }) {
     progressRecipes,
     onChangeProgressRecipe,
     ingredientsAndMeasures,
+    setCurrentIdAndType,
+    storageRecipesProgress,
   };
 
   return (

@@ -17,14 +17,15 @@ function Comida() {
 
   useEffect(() => {
     dishesRequest(dishesById(id))
-      .then(({ meals }) => setCurrentMeal(meals.find((meal) => meal.idMeal === id)));
+      .then(({ meals }) => setCurrentMeal(meals
+        .find((meal) => meal.idMeal === id)));
   }, []);
 
   return (
 
   // Comando velha guarda =)
 
-    'idMeal' in currentMeal && (
+    Object.keys(currentMeal).length > 0 && (
       <div>
         <DishOrDrinkRecipeDetails
           dishOrDrink={ currentMeal }
@@ -34,8 +35,12 @@ function Comida() {
           <source src={ currentMeal.strYoutube } />
           <track src="" kind="captions" srcLang="en" label="English" />
         </video>
-        <RecomendationCards page="comidas" id={ currentMeal.idMeal } />
-        <StartRecipeButton dishOrDrink={ currentMeal } meal="comida" />
+        <RecomendationCards page="comidas" />
+        <StartRecipeButton
+          dishOrDrink={ currentMeal }
+          page="comidas"
+          dishOrDrinkId={ currentMeal.idMeal }
+        />
       </div>
     )
 

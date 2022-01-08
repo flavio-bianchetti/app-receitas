@@ -13,6 +13,7 @@ function Bebida() {
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
 
   const { id } = useParams();
+  console.log(id, currentDrink.idDrink);
 
   useEffect(() => {
     drinksRequest(drinksById(id))
@@ -21,14 +22,18 @@ function Bebida() {
   }, []);
 
   return (
-    'idDrink' in currentDrink && (
+    Object.keys(currentDrink).length > 0 && (
       <div>
         <DishOrDrinkRecipeDetails
           dishOrDrink={ currentDrink }
           ingredientsAndMeasures={ ingredientsAndMeasures }
         />
-        <RecomendationCards page="bebidas" id={ currentDrink.iDrink } />
-        <StartRecipeButton dishOrDrink={ currentDrink } drink="bebida" />
+        <RecomendationCards page="bebidas" />
+        <StartRecipeButton
+          dishOrDrink={ currentDrink }
+          page="bebidas"
+          dishOrDrinkId={ currentDrink.idDrink }
+        />
       </div>
     )
   );

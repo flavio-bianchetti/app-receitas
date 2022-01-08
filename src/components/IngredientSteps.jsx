@@ -5,7 +5,8 @@ import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function IngredientSteps({ ingredientsAndMeasures }) {
   const { onChangeProgressRecipe, setProgressRecipes,
-    progressRecipes } = useContext(AppDeReceitasContext);
+    progressRecipes, currentDishOrDrink,
+    setCurrentIdAndType } = useContext(AppDeReceitasContext);
 
   // const { setCurrentDishOrDrink } = useContext(AppDeReceitasContext);
 
@@ -17,14 +18,22 @@ function IngredientSteps({ ingredientsAndMeasures }) {
       return acc;
     }, {});
   useEffect(() => {
+    const isDishOrDrink = currentDishOrDrink.idMeal ? 'meals' : 'cocktails';
+    setCurrentIdAndType({ id, type: isDishOrDrink });
     const savedRecipeProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-    const actualRecipe = savedRecipeProgress
-      .find(({ id: recipeId }) => recipeId === id);
 
-    if (!actualRecipe) {
-      setProgressRecipes({ ...progressRecipesCheckBoxes, id });
+    console.log(savedRecipeProgress, id, isDishOrDrink);
+
+    const actualRecipe = Object.keys(savedRecipeProgress[isDishOrDrink])
+      .filter((recipeId) => recipeId === id);
+
+    console.log(id, actualRecipe);
+    console.log(actualRecipe);
+    if (actualRecipe.length === 0) {
+      setProgressRecipes(progressRecipesCheckBoxes);
     } else {
-      setProgressRecipes(actualRecipe);
+      const realActualRecipe = savedRecipeProgress[isDishOrDrink][id];
+      setProgressRecipes(realActualRecipe);
     }
   }, []);
 
