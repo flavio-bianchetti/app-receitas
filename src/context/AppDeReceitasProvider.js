@@ -20,8 +20,18 @@ function AppDeReceitasProvider({ children }) {
   const [storageRecipesProgress, setStorageRecipesProgress] = useState(
     { cocktails: {}, meals: {} },
   );
+  const [storageDoneRecipes, setStorageDoneRecipes] = useState([]);
 
-  // console.log(progressRecipes);
+  useEffect(() => {
+    if (!localStorage.getItem('doneRecipes')) {
+      localStorage.setItem('doneRecipes', JSON.stringify(
+        storageDoneRecipes,
+      ));
+    } else {
+      const recipes = JSON.parse(localStorage.getItem('doneRecipes'));
+      setStorageDoneRecipes(recipes);
+    }
+  }, []);
 
   const onChangeProgressRecipe = ({ target }) => {
     const { name: ingredient } = target;
