@@ -382,6 +382,7 @@ describe('43 - Implemente a solução de forma que, ao clicar no botão de compa
     cy.get('[data-testid="share-btn"]').click();
     cy.contains('Link copiado!');
     cy.window().then((win) => {
+
       cy.wrap(win.navigator.clipboard.readText())
         .should('eq', 'http://localhost:3000/comidas/52771');
     });
