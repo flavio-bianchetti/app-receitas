@@ -1,10 +1,21 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
-import Ingredients from './Ingredients';
-import IngredientSteps from './IngredientSteps';
+import RecipeDetails from './RecipeDetails';
+
+const getDoneRecipe = (dishOrDrink) => {
+  console.log(dishOrDrink);
+  const doneRecipe = {
+    id: dishOrDrink.idMeal || dishOrDrink.idDrink,
+    type: dishOrDrink.idMeal ? 'comida' : 'bebida',
+    area: dishOrDrink.strArea || '',
+    category: dishOrDrink.strCategory,
+    alcoholicOrNot: dishOrDrink.strAlcoholic || '',
+    name: dishOrDrink.strMeal || dishOrDrink.strDrink,
+    image: dishOrDrink.strMealThumb || dishOrDrink.strDrinkThumb,
+  };
+  return doneRecipe;
+};
 
 function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -19,16 +30,6 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
     setIsCopied(true);
   }
 
-  const doneRecipe = {
-    id: dishOrDrink.idMeal || dishOrDrink.idDrink,
-    type: dishOrDrink.idMeal ? 'comida' : 'bebida',
-    area: dishOrDrink.strArea || '',
-    category: dishOrDrink.strCategory,
-    alcoholicOrNot: dishOrDrink.strAlcoholic || '',
-    name: dishOrDrink.strMeal || dishOrDrink.strDrink,
-    image: dishOrDrink.strMealThumb || dishOrDrink.strDrinkThumb,
-  };
-
   const isRecipeInStorage = (storage) => storage
     .find(({ id }) => {
       console.log(dishOrDrink);
@@ -41,7 +42,6 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
       const favoriteRecipesInStorage = JSON.parse(localStorage
         .getItem('favoriteRecipes'));
       setFavoriteRecipesStorage(favoriteRecipesInStorage);
-      console.log(favoriteRecipesInStorage, 'DSAJIODJSA', isRecipeInStorage(favoriteRecipesInStorage));
       if (isRecipeInStorage(favoriteRecipesInStorage)) {
         console.log('c');
         setFavoriteRecipe(true);
@@ -53,8 +53,8 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
 
     if (!isRecipeInStorage(favoriteRecipesStorage)) {
       localStorage.setItem('favoriteRecipes',
-        JSON.stringify([...favoriteRecipesStorage, doneRecipe]));
-      setFavoriteRecipesStorage([...favoriteRecipesStorage, doneRecipe]);
+        JSON.stringify([...favoriteRecipesStorage, getDoneRecipe(dishOrDrink)]));
+      setFavoriteRecipesStorage([...favoriteRecipesStorage, getDoneRecipe(dishOrDrink)]);
       console.log('a');
     } else {
       const newFavoriteRecipes = favoriteRecipesStorage.filter(({ id }) => (
@@ -67,97 +67,32 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
 
   return (
     ingredientsAndMeasures.length > 0 && (
-      <div>
-        <img
-          data-testid="recipe-photo"
-          src={ dishOrDrink.strDrinkThumb || dishOrDrink.strMealThumb }
-          alt={ dishOrDrink.strDrink || dishOrDrink.strMealThumb }
-        />
-        <h1
-          data-testid="recipe-title"
-        >
-          {dishOrDrink.strDrink || dishOrDrink.strMeal}
-        </h1>
-        <button
-          type="button"
-          data-testid="share-btn"
-          onClick={ () => handleShare() }
-        >
-          Compartilhar
-        </button>
-        <button
-          type="button"
-          onClick={ () => onFavoriteButtonClick() }
-        >
-          Favoritar
-          {!favoriteRecipe ? (
-            <img
-              data-testid="favorite-btn"
-              id="white-heart"
-              src={ whiteHeartIcon }
-              alt="heart"
-            />
-          ) : <img
-            data-testid="favorite-btn"
-            id="black-heart"
-            src={ blackHeartIcon }
-            alt="black heart"
-          />}
-        </button>
-        {isCopied && <span>Link copiado!</span>}
-        <p
-          data-testid="recipe-category"
-        >
-          {dishOrDrink.idMeal ? dishOrDrink.strCategory : dishOrDrink.strAlcoholic}
-
-        </p>
-        {!page.includes('in-progress')
-          ? <Ingredients ingredientsAndMeasures={ ingredientsAndMeasures } />
-          : (
-            <IngredientSteps
-              ingredientsAndMeasures={ ingredientsAndMeasures }
-            />)}
-
-        <p data-testid="instructions">{dishOrDrink.strInstructions}</p>
-      </div>
+      <RecipeDetails
+        onFavoriteButtonClick={ onFavoriteButtonClick }
+        favoriteRecipe={ favoriteRecipe }
+        dishOrDrink={ dishOrDrink }
+        ingredientsAndMeasures={ ingredientsAndMeasures }
+        page={ page }
+        isCopied={ isCopied }
+        handleShare={ handleShare }
+      />
     )
   );
 }
 
 DishOrDrinkRecipeDetails.propTypes = {
   dishOrDrink: PropTypes.shape({
-    idMeal: PropTypes.string,
     idDrink: PropTypes.string,
-    strAlcoholic: PropTypes.string,
-    strCategory: PropTypes.string,
-    strDrink: PropTypes.string,
-    strDrinkThumb: PropTypes.string,
-    strInstructions: PropTypes.string,
-    strMeal: PropTypes.string,
-    strMealThumb: PropTypes.string,
+    idMeal: PropTypes.string,
   }),
   ingredientsAndMeasures: PropTypes.arrayOf(PropTypes.object).isRequired,
-  strCategory: PropTypes.string,
-  strDrink: PropTypes.string,
-  strDrinkThumb: PropTypes.string,
-  strInstructions: PropTypes.string,
-  strMealThumb: PropTypes.string,
 };
 
 DishOrDrinkRecipeDetails.defaultProps = {
   dishOrDrink: PropTypes.shape({
-    strCategory: '',
-    strDrink: '',
-    strDrinkThumb: '',
-    strInstructions: '',
-    strMealThumb: '',
+    idDrink: '',
+    idMeal: '',
   }),
-
-  strCategory: '',
-  strDrink: '',
-  strDrinkThumb: '',
-  strInstructions: '',
-  strMealThumb: '',
 };
 
 export default DishOrDrinkRecipeDetails;
