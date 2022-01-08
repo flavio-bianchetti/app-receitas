@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -8,7 +8,8 @@ import IngredientSteps from './IngredientSteps';
 
 function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
   const [isCopied, setIsCopied] = useState(false);
-  const [favoriteFood, setFavoriteFood] = useState(true);
+  const [favoriteRecipe, setFavoriteRecipe] = useState(false);
+  const [favoriteRecipesStorage, setFavoriteRecipesStorage] = useState([]);
   const history = useHistory();
   const page = history.location.pathname;
 
@@ -18,8 +19,47 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
     setIsCopied(true);
   }
 
+  const doneRecipe = {
+    id: dishOrDrink.idMeal || dishOrDrink.idDrink,
+    type: dishOrDrink.idMeal ? 'comida' : 'bebida',
+    area: dishOrDrink.strArea || '',
+    category: dishOrDrink.strCategory,
+    alcoholicOrNot: dishOrDrink.strAlcoholic || '',
+    name: dishOrDrink.strMeal || dishOrDrink.strDrink,
+    image: dishOrDrink.strMealThumb || dishOrDrink.strDrinkThumb,
+  };
+
+  const isRecipeInStorage = (storage) => storage
+    .find(({ id }) => id === dishOrDrink.idMeal || id === dishOrDrink.idDrink);
+  useEffect(() => {
+    if (!localStorage.getItem('favoriteRecipes')) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    } else {
+      const favoriteRecipesInStorage = JSON.parse(localStorage
+        .getItem('favoriteRecipes'));
+      setFavoriteRecipesStorage(favoriteRecipesInStorage);
+      if (isRecipeInStorage(favoriteRecipesInStorage)) {
+        console.log('c');
+        setFavoriteRecipe(!favoriteRecipe);
+      }
+    }
+  }, []);
   const onFavoriteButtonClick = () => {
-    setFavoriteFood(!favoriteFood);
+    setFavoriteRecipe(!favoriteRecipe);
+
+    if (!isRecipeInStorage(favoriteRecipesStorage)) {
+      localStorage.setItem('favoriteRecipes',
+        JSON.stringify([...favoriteRecipesStorage, doneRecipe]));
+      console.log('a');
+      setFavoriteRecipesStorage([...favoriteRecipesStorage, doneRecipe]);
+    } else {
+      console.log('b');
+      const newFavoriteRecipes = favoriteRecipesStorage.filter(({ id }) => (
+        id !== dishOrDrink.idMeal && id !== dishOrDrink.idDrink));
+      console.log(newFavoriteRecipes);
+      localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipes));
+      setFavoriteRecipesStorage(newFavoriteRecipes);
+    }
   };
 
   return (
@@ -44,13 +84,22 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
         </button>
         <button
           type="button"
-          data-testid="favorite-btn"
           onClick={ () => onFavoriteButtonClick() }
         >
           Favoritar
-          {!favoriteFood ? (
-            <img id="white-heart" src={ whiteHeartIcon } alt="heart" />
-          ) : <img id="black-heart" src={ blackHeartIcon } alt="black heart" />}
+          {!favoriteRecipe ? (
+            <img
+              data-testid="favorite-btn"
+              id="white-heart"
+              src={ whiteHeartIcon }
+              alt="heart"
+            />
+          ) : <img
+            data-testid="favorite-btn"
+            id="black-heart"
+            src={ blackHeartIcon }
+            alt="black heart"
+          />}
         </button>
         {isCopied && <span>Link copiado!</span>}
         <p
