@@ -24,7 +24,16 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
   const page = history.location.pathname;
 
   function handleShare() {
-    const actualUrl = window.location.href;
+    let actualUrl = window.location.href;
+
+    if (actualUrl.includes('in-progress')) {
+      actualUrl = actualUrl.split('/');
+      actualUrl.pop();
+      actualUrl = actualUrl.join('/');
+    }
+    // actualUrl = actualUrl.includes('in-progress')
+    //   ? actualUrl.split('/').pop().join('/') : actualUrl;
+    console.log(actualUrl);
     window.navigator.clipboard.writeText(actualUrl);
     setIsCopied(true);
   }
