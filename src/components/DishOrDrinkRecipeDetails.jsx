@@ -30,7 +30,10 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
   };
 
   const isRecipeInStorage = (storage) => storage
-    .find(({ id }) => id === dishOrDrink.idMeal || id === dishOrDrink.idDrink);
+    .find(({ id }) => {
+      console.log(dishOrDrink);
+      return id === dishOrDrink.idMeal || id === dishOrDrink.idDrink;
+    });
   useEffect(() => {
     if (!localStorage.getItem('favoriteRecipes')) {
       localStorage.setItem('favoriteRecipes', JSON.stringify([]));
@@ -38,6 +41,7 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
       const favoriteRecipesInStorage = JSON.parse(localStorage
         .getItem('favoriteRecipes'));
       setFavoriteRecipesStorage(favoriteRecipesInStorage);
+      console.log(favoriteRecipesInStorage, 'DSAJIODJSA', isRecipeInStorage(favoriteRecipesInStorage));
       if (isRecipeInStorage(favoriteRecipesInStorage)) {
         console.log('c');
         setFavoriteRecipe(true);
@@ -51,12 +55,13 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
       localStorage.setItem('favoriteRecipes',
         JSON.stringify([...favoriteRecipesStorage, doneRecipe]));
       setFavoriteRecipesStorage([...favoriteRecipesStorage, doneRecipe]);
+      console.log('a');
     } else {
       const newFavoriteRecipes = favoriteRecipesStorage.filter(({ id }) => (
         id !== dishOrDrink.idMeal && id !== dishOrDrink.idDrink));
-      console.log(newFavoriteRecipes);
       localStorage.setItem('favoriteRecipes', JSON.stringify(newFavoriteRecipes));
       setFavoriteRecipesStorage(newFavoriteRecipes);
+      console.log('b');
     }
   };
 
