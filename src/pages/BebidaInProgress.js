@@ -20,13 +20,15 @@ function BebidaInProgress() {
   }, []);
 
   return (
-    <div>
-      <DishOrDrinkRecipeDetails
-        dishOrDrink={ currentDrink }
-        ingredientsAndMeasures={ ingredientsAndMeasures }
-      />
-      <FinishRecipeButton />
-    </div>
+    Object.keys(currentDrink).length > 0 && (
+      <div>
+        <DishOrDrinkRecipeDetails
+          dishOrDrink={ currentDrink }
+          ingredientsAndMeasures={ ingredientsAndMeasures }
+        />
+        <FinishRecipeButton />
+      </div>
+    )
   );
 }
 

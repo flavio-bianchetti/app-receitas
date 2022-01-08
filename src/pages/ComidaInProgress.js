@@ -21,13 +21,15 @@ function ComidaInProgress() {
   }, []);
 
   return (
-    <div>
-      <DishOrDrinkRecipeDetails
-        dishOrDrink={ currentMeal }
-        ingredientsAndMeasures={ ingredientsAndMeasures }
-      />
-      <FinishRecipeButton />
-    </div>
+    Object.keys(currentMeal).length > 0 && (
+      <div>
+        <DishOrDrinkRecipeDetails
+          dishOrDrink={ currentMeal }
+          ingredientsAndMeasures={ ingredientsAndMeasures }
+        />
+        <FinishRecipeButton />
+      </div>
+    )
   );
 }
 
