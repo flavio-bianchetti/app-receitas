@@ -16,6 +16,7 @@ function AppDeReceitasProvider({ children }) {
   const [progressRecipes, setProgressRecipes] = useState({});
   const [currentIdAndType, setCurrentIdAndType] = useState({ id: '', type: '' });
   const [ingredientsAndMeasures, setIngredientAndMeasures] = useState([]);
+  const [isRecipeButtonEnable, setIsRecipeButtonEnable] = useState(true);
   const [storageRecipesProgress, setStorageRecipesProgress] = useState(
     { cocktails: {}, meals: {} },
   );
@@ -137,6 +138,8 @@ function AppDeReceitasProvider({ children }) {
     ingredientsAndMeasures,
     setCurrentIdAndType,
     storageRecipesProgress,
+    isRecipeButtonEnable,
+    setIsRecipeButtonEnable,
   };
 
   return (

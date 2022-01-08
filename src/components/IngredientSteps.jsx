@@ -6,7 +6,7 @@ import AppDeReceitasContext from '../context/AppDeReceitasContext';
 function IngredientSteps({ ingredientsAndMeasures }) {
   const { onChangeProgressRecipe, setProgressRecipes,
     progressRecipes, currentDishOrDrink,
-    setCurrentIdAndType } = useContext(AppDeReceitasContext);
+    setCurrentIdAndType, setIsRecipeButtonEnable } = useContext(AppDeReceitasContext);
 
   // const { setCurrentDishOrDrink } = useContext(AppDeReceitasContext);
 
@@ -36,6 +36,12 @@ function IngredientSteps({ ingredientsAndMeasures }) {
       setProgressRecipes(realActualRecipe);
     }
   }, []);
+
+  useEffect(() => {
+    const isActiveButton = Object.values(progressRecipes)
+      .every((element) => element === true);
+    setIsRecipeButtonEnable(!isActiveButton);
+  }, [progressRecipes]);
 
   return (
     <div>
