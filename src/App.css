@@ -79,3 +79,15 @@
 		transform: rotate(-10deg);
 	}
 }
+
+img {
+	width: 300px
+}
+
+footer img {
+	width: 50px
+}
+
+#white-heart, #black-heart {
+	width: 25px
+}

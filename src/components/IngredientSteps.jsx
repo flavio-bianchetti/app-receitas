@@ -1,20 +1,60 @@
+import React, { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import React from 'react';
+import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function IngredientSteps({ ingredientsAndMeasures }) {
-  console.log(ingredientsAndMeasures);
+  const { onChangeProgressRecipe, setProgressRecipes,
+    progressRecipes, currentDishOrDrink,
+    setCurrentIdAndType } = useContext(AppDeReceitasContext);
+
+  // const { setCurrentDishOrDrink } = useContext(AppDeReceitasContext);
+
+  const { id } = useParams();
+
+  const progressRecipesCheckBoxes = ingredientsAndMeasures
+    .reduce((acc, { ingredient }) => {
+      acc[ingredient] = false;
+      return acc;
+    }, {});
+  useEffect(() => {
+    const isDishOrDrink = currentDishOrDrink.idMeal ? 'meals' : 'cocktails';
+    setCurrentIdAndType({ id, type: isDishOrDrink });
+    const savedRecipeProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
+
+    console.log(savedRecipeProgress, id, isDishOrDrink);
+
+    const actualRecipe = Object.keys(savedRecipeProgress[isDishOrDrink])
+      .filter((recipeId) => recipeId === id);
+
+    console.log(id, actualRecipe);
+    console.log(actualRecipe);
+    if (actualRecipe.length === 0) {
+      setProgressRecipes(progressRecipesCheckBoxes);
+    } else {
+      const realActualRecipe = savedRecipeProgress[isDishOrDrink][id];
+      setProgressRecipes(realActualRecipe);
+    }
+  }, []);
+
   return (
     <div>
       {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
         <label
           key={ ingredient }
           htmlFor={ `${ingredient}-${index}` }
+          data-testid={ `${index}-ingredient-step` }
+          style={
+            { textDecoration: progressRecipes[ingredient] ? 'line-through' : 'none' }
+          }
         >
           {`${ingredient}: ${measure}`}
           <input
             type="checkbox"
             id={ `${ingredient}-${index}` }
-            data-testid={ `${index}-ingredient-step` }
+            name={ ingredient }
+            checked={ progressRecipes[ingredient] }
+            onChange={ (e) => onChangeProgressRecipe(e) }
           />
         </label>))}
     </div>

@@ -8,7 +8,7 @@ export const getMeasures = (dishOrDrink) => Object.keys(dishOrDrink)
   .map((key) => dishOrDrink[key])
   .filter((measure) => measure !== '' && measure !== null);
 
-export const getingredientsAndMeasures = (ingredients, measures) => (
+export const getIngredientsAndMeasures = (ingredients, measures) => (
   ingredients.map((ingredient, index) => (
     {
       ingredient,

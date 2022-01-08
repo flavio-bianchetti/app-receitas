@@ -117,6 +117,7 @@ const fetch = (url) => Promise.resolve({
       return Promise.resolve(drinks);
 
     return Promise.resolve(meals);
+
   },
 });
 
