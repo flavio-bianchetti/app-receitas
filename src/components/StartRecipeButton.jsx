@@ -5,27 +5,45 @@ import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function StartRecipeButton({ dishOrDrink, page, dishOrDrinkId }) {
   const { storageRecipesProgress } = useContext(AppDeReceitasContext);
+  const storageDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
 
   const mealsOrCocktails = dishOrDrink.idMeal ? 'meals' : 'cocktails';
 
-  const isRecipeInStorage = Object.keys(storageRecipesProgress[mealsOrCocktails])
-    .find((id) => {
-      console.log(id, dishOrDrinkId);
-      return id === dishOrDrinkId;
-    });
+  const isRecipeInProgressInStorage = Object
+    .keys(storageRecipesProgress[mealsOrCocktails])
+    .find((id) => id === dishOrDrinkId);
+
+  const isRecipeDoneInStorage = storageDoneRecipes
+    .find((doneRecipe) => doneRecipe.id === dishOrDrink.idDrink
+    || doneRecipe.id === dishOrDrink.idMeal);
+
   const history = useHistory();
 
-  return (
-    <div>
+  const startOrContinueBtn = () => (
+    !isRecipeInProgressInStorage ? (
       <button
         className="start-recipe-btn"
         type="button"
         data-testid="start-recipe-btn"
         onClick={ () => history.push(`/${page}/${dishOrDrinkId}/in-progress`) }
       >
-        {isRecipeInStorage ? 'Continuar Receita' : 'Iniciar Receita'}
+        Iniciar Receita
       </button>
-    </div>
+    ) : (
+      <button
+        className="start-recipe-btn"
+        type="button"
+        data-testid="start-recipe-btn"
+        onClick={ () => history.push(`/${page}/${dishOrDrinkId}/in-progress`) }
+      >
+        Continuar Receita
+      </button>
+    )
+  );
+
+  return (
+
+    isRecipeDoneInStorage ? '' : startOrContinueBtn()
   );
 }
 
