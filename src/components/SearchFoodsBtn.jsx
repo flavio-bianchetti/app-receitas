@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 function SearchFoodsBtn({ title, testid, searchFoodsBtnOnClick, page }) {
@@ -14,5 +15,12 @@ function SearchFoodsBtn({ title, testid, searchFoodsBtnOnClick, page }) {
     </div>
   );
 }
+
+SearchFoodsBtn.propTypes = {
+  page: PropTypes.string.isRequired,
+  searchFoodsBtnOnClick: PropTypes.func.isRequired,
+  testid: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
 
 export default SearchFoodsBtn;
