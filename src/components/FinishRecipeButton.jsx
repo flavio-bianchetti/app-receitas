@@ -23,7 +23,7 @@ function FinishRecipeButton({ dishOrDrink }) {
   const [doneRecipesInStorage, setDoneRecipesInStorage] = useState([]);
   const { isRecipeButtonEnable } = useContext(AppDeReceitasContext);
   const history = useHistory();
-
+  console.log(isRecipeButtonEnable);
   const isRecipeInStorage = (storage) => storage
     .find(({ id }) => id === dishOrDrink.idMeal || id === dishOrDrink.idDrink);
 

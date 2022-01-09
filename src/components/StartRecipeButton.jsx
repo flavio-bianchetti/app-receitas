@@ -13,7 +13,7 @@ function StartRecipeButton({ dishOrDrink, page, dishOrDrinkId }) {
     .keys(storageRecipesProgress[mealsOrCocktails])
     .find((id) => id === dishOrDrinkId);
 
-  const isRecipeDoneInStorage = storageDoneRecipes
+  const isRecipeDoneInStorage = (storageDoneRecipes || [])
     .find((doneRecipe) => doneRecipe.id === dishOrDrink.idDrink
     || doneRecipe.id === dishOrDrink.idMeal);
 

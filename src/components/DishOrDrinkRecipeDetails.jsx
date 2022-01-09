@@ -38,9 +38,13 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
     .find(({ id }) => id === dishOrDrink.idMeal || id === dishOrDrink.idDrink);
 
   useEffect(() => {
-    const favoriteRecipesInStorage = JSON.parse(localStorage
-      .getItem('favoriteRecipes'));
-    setFavoriteRecipesStorage(favoriteRecipesInStorage);
+    if (!localStorage.getItem('favoriteRecipes')) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    } else {
+      const favoriteRecipesInStorage = JSON.parse(localStorage
+        .getItem('favoriteRecipes'));
+      setFavoriteRecipesStorage(favoriteRecipesInStorage);
+    }
   }, []);
 
   const onFavoriteButtonClick = () => {

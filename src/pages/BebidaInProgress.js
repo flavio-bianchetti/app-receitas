@@ -19,6 +19,14 @@ function BebidaInProgress() {
         .find((drink) => drink.idDrink === id)));
   }, []);
 
+  useEffect(() => {
+    if (!localStorage.getItem('inProgressRecipes')) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(
+        { cocktails: {}, meals: {} },
+      ));
+    }
+  }, []);
+
   return (
     Object.keys(currentDrink).length > 0 && (
       <div>

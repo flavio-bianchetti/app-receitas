@@ -24,11 +24,10 @@ function IngredientSteps({ ingredientsAndMeasures }) {
 
     console.log(savedRecipeProgress, id, isDishOrDrink);
 
-    const actualRecipe = Object.keys(savedRecipeProgress[isDishOrDrink])
+    const actualRecipe = Object.keys(
+      savedRecipeProgress ? savedRecipeProgress[isDishOrDrink] : [],
+    )
       .filter((recipeId) => recipeId === id);
-
-    console.log(id, actualRecipe);
-    console.log(actualRecipe);
     if (actualRecipe.length === 0) {
       setProgressRecipes(progressRecipesCheckBoxes);
     } else {
