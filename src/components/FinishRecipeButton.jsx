@@ -28,18 +28,13 @@ function FinishRecipeButton({ dishOrDrink }) {
     .find(({ id }) => id === dishOrDrink.idMeal || id === dishOrDrink.idDrink);
 
   useEffect(() => {
-    if (!localStorage.getItem('doneRecipes')) {
-      localStorage.setItem('doneRecipes', JSON.stringify([]));
-    } else {
-      const doneRecipesInStore = JSON.parse(localStorage
-        .getItem('doneRecipes'));
-      setDoneRecipesInStorage(doneRecipesInStore);
-      console.log(doneRecipesInStorage);
-    }
+    const doneRecipesInStore = JSON.parse(localStorage
+      .getItem('doneRecipes'));
+    setDoneRecipesInStorage(doneRecipesInStore);
+    console.log(doneRecipesInStorage);
   }, []);
 
   const onFinishRecipe = () => {
-    // setDoneRecipeSwitch(!doneRecipeSwitch);
     if (!isRecipeInStorage(doneRecipesInStorage)) {
       localStorage.setItem('doneRecipes',
         JSON.stringify([...doneRecipesInStorage, getDoneRecipe(dishOrDrink)]));

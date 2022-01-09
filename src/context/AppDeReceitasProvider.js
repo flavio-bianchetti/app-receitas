@@ -50,6 +50,14 @@ function AppDeReceitasProvider({ children }) {
       console.log(recipes);
       setStorageRecipesProgress(recipes);
     }
+
+    if (!localStorage.getItem('doneRecipes')) {
+      localStorage.setItem('doneRecipes', JSON.stringify([]));
+    }
+
+    if (!localStorage.getItem('favoriteRecipes')) {
+      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+    }
   }, []);
 
   useEffect(() => {
