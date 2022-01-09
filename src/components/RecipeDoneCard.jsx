@@ -21,7 +21,6 @@ function RecipeDoneCard({ recipe, index }) {
           data-testid={ `${index}-horizontal-image` }
           src={ recipe.image }
           alt={ `${recipe.name}` }
-
         />
       </Link>
       <h1
