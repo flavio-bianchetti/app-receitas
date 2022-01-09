@@ -54,20 +54,13 @@ function AppDeReceitasProvider({ children }) {
     if (!localStorage.getItem('doneRecipes')) {
       localStorage.setItem('doneRecipes', JSON.stringify([]));
     }
-
-    if (!localStorage.getItem('favoriteRecipes')) {
-      localStorage.setItem('favoriteRecipes', JSON.stringify([]));
-    }
   }, []);
 
   useEffect(() => {
     if (currentIdAndType.id !== '') {
       const isRecipeInStorage = Object.keys(
         storageRecipesProgress[currentIdAndType.type],
-      ).find((id) => {
-        console.log(id, currentIdAndType.id, 'jdsioasad');
-        return id === currentIdAndType.id;
-      });
+      ).find((id) => id === currentIdAndType.id);
 
       const newRecipe = storageRecipesProgress;
       newRecipe[currentIdAndType.type][currentIdAndType.id] = progressRecipes;

@@ -20,6 +20,14 @@ function ComidaInProgress() {
         .find((meal) => meal.idMeal === id)));
   }, []);
 
+  useEffect(() => {
+    if (!localStorage.getItem('inProgressRecipes')) {
+      localStorage.setItem('inProgressRecipes', JSON.stringify(
+        { cocktails: {}, meals: {} },
+      ));
+    }
+  }, []);
+
   return (
     Object.keys(currentMeal).length > 0 && (
       <div>
