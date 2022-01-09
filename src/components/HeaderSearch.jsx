@@ -12,7 +12,8 @@ function Header({ title, handleSearch }) {
   const { dishesOrDrinks, categorieRequest,
     setCategorieRequest } = useContext(AppDeReceitasContext);
   const history = useHistory();
-  // const [radioSearchDisabled, setRadioSearchDisabled] = useState(true);
+
+  console.log(handleSearch, 'jdioajdsa');
 
   const handleSearchType = (e) => {
     const { value } = e.target;
@@ -26,13 +27,6 @@ function Header({ title, handleSearch }) {
     }
     setCategorieRequest(false);
   }, [dishesOrDrinks, history]);
-
-  // useEffect(() => {
-  //   if (searchInput !== '') {
-  //     return setRadioSearchDisabled(false);
-  //   }
-  //   setRadioSearchDisabled(true);
-  // }, [searchInput]);
 
   const searchForm = () => (
     <div>
@@ -55,7 +49,6 @@ function Header({ title, handleSearch }) {
                 value="search-ingredient"
                 checked={ searchType === 'search-ingredient' }
                 onChange={ (e) => handleSearchType(e) }
-                // disabled={ title === 'Bebidas' ? radioSearchDisabled : false }
               />
             </label>
           </div>
@@ -84,7 +77,6 @@ function Header({ title, handleSearch }) {
                 value="search-first-letter"
                 checked={ searchType === 'search-first-letter' }
                 onChange={ (e) => handleSearchType(e) }
-                // disabled={ radioSearchDisabled }
               />
             </label>
           </div>

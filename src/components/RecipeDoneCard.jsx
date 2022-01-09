@@ -60,7 +60,7 @@ function RecipeDoneCard({ recipe, index }) {
         isCopied && <span>Link copiado!</span>
       }
       {
-        (recipe.tags).map((tagName) => (
+        recipe.tags.map((tagName) => (
           <button
             key={ tagName }
             data-testid={ `${index}-${tagName}-horizontal-tag` }

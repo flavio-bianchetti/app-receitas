@@ -1,26 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import RecipeDoneCard from './RecipeDoneCard';
 
-function RecipesDone() {
-  const [doneRecipes, setDoneRecipes] = useState([]);
-  const [filterDoneRecipes, setFilterDoneRecipes] = useState([]);
-
-  function handleClick(event) {
-    const { name } = event.target;
-    const getFilterDoneRecipes = doneRecipes.filter((recipe) => (
-      recipe.type.includes(name)
-    ));
-    setFilterDoneRecipes(getFilterDoneRecipes);
-  }
-
-  useEffect(() => {
-    const doneRecipeLocalStorage = JSON.parse(localStorage
-      .getItem('doneRecipes'));
-    console.log(doneRecipeLocalStorage);
-    setDoneRecipes(doneRecipeLocalStorage);
-    setFilterDoneRecipes(doneRecipeLocalStorage);
-  }, []);
-
+function RecipesDone({ handleClick, filteredDoneRecipes }) {
   return (
     <div>
       <div>
@@ -50,7 +32,7 @@ function RecipesDone() {
         </button>
       </div>
       {
-        filterDoneRecipes.map((recipe, index) => (
+        filteredDoneRecipes.map((recipe, index) => (
           <RecipeDoneCard
             key={ recipe.id }
             recipe={ recipe }
@@ -61,5 +43,10 @@ function RecipesDone() {
     </div>
   );
 }
+
+RecipesDone.propTypes = {
+  filteredDoneRecipes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
 
 export default RecipesDone;
