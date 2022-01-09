@@ -26,7 +26,7 @@ function BebidaInProgress() {
           dishOrDrink={ currentDrink }
           ingredientsAndMeasures={ ingredientsAndMeasures }
         />
-        <FinishRecipeButton />
+        <FinishRecipeButton dishOrDrink={ currentDrink } />
       </div>
     )
   );

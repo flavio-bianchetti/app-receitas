@@ -5,9 +5,17 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Ingredients from './Ingredients';
 import IngredientSteps from './IngredientSteps';
 
-function RecipeDetails({ dishOrDrink, favoriteRecipe,
+function RecipeDetails({ dishOrDrink,
   ingredientsAndMeasures, onFavoriteButtonClick, page, isCopied,
   handleShare }) {
+  const isRecipeFavorite = () => {
+    const storageFavoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const isFavorite = storageFavoriteRecipes
+      .find((favoriteRecipe) => favoriteRecipe.id === dishOrDrink.idMeal
+      || favoriteRecipe.id === dishOrDrink.idDrink);
+    return isFavorite;
+  };
+
   return (
     <div>
       <img
@@ -32,7 +40,7 @@ function RecipeDetails({ dishOrDrink, favoriteRecipe,
         onClick={ () => onFavoriteButtonClick() }
       >
         Favoritar
-        {!favoriteRecipe ? (
+        {!isRecipeFavorite() ? (
           <img
             data-testid="favorite-btn"
             id="white-heart"
@@ -68,6 +76,7 @@ function RecipeDetails({ dishOrDrink, favoriteRecipe,
 RecipeDetails.propTypes = {
   dishOrDrink: PropTypes.shape({
     idMeal: PropTypes.string.isRequired,
+    idDrink: PropTypes.string.isRequired,
     strAlcoholic: PropTypes.string.isRequired,
     strCategory: PropTypes.string.isRequired,
     strDrink: PropTypes.string.isRequired,
@@ -76,7 +85,6 @@ RecipeDetails.propTypes = {
     strMeal: PropTypes.string.isRequired,
     strMealThumb: PropTypes.string.isRequired,
   }).isRequired,
-  favoriteRecipe: PropTypes.bool.isRequired,
   handleShare: PropTypes.func.isRequired,
   ingredientsAndMeasures: PropTypes.arrayOf(PropTypes.object).isRequired,
   isCopied: PropTypes.bool.isRequired,

@@ -27,7 +27,7 @@ function ComidaInProgress() {
           dishOrDrink={ currentMeal }
           ingredientsAndMeasures={ ingredientsAndMeasures }
         />
-        <FinishRecipeButton />
+        <FinishRecipeButton dishOrDrink={ currentMeal } />
       </div>
     )
   );
