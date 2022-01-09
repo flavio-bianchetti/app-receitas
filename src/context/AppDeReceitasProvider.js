@@ -50,16 +50,17 @@ function AppDeReceitasProvider({ children }) {
       console.log(recipes);
       setStorageRecipesProgress(recipes);
     }
+
+    if (!localStorage.getItem('doneRecipes')) {
+      localStorage.setItem('doneRecipes', JSON.stringify([]));
+    }
   }, []);
 
   useEffect(() => {
     if (currentIdAndType.id !== '') {
       const isRecipeInStorage = Object.keys(
         storageRecipesProgress[currentIdAndType.type],
-      ).find((id) => {
-        console.log(id, currentIdAndType.id, 'jdsioasad');
-        return id === currentIdAndType.id;
-      });
+      ).find((id) => id === currentIdAndType.id);
 
       const newRecipe = storageRecipesProgress;
       newRecipe[currentIdAndType.type][currentIdAndType.id] = progressRecipes;

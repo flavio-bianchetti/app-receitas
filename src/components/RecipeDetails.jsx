@@ -10,7 +10,7 @@ function RecipeDetails({ dishOrDrink,
   handleShare }) {
   const isRecipeFavorite = () => {
     const storageFavoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-    const isFavorite = storageFavoriteRecipes
+    const isFavorite = (storageFavoriteRecipes || [])
       .find((favoriteRecipe) => favoriteRecipe.id === dishOrDrink.idMeal
       || favoriteRecipe.id === dishOrDrink.idDrink);
     return isFavorite;
@@ -75,23 +75,33 @@ function RecipeDetails({ dishOrDrink,
 
 RecipeDetails.propTypes = {
   dishOrDrink: PropTypes.shape({
-    idMeal: PropTypes.string.isRequired,
-    idDrink: PropTypes.string.isRequired,
-    strAlcoholic: PropTypes.string.isRequired,
-    strCategory: PropTypes.string.isRequired,
-    strDrink: PropTypes.string.isRequired,
-    strDrinkThumb: PropTypes.string.isRequired,
+    idMeal: PropTypes.string,
+    idDrink: PropTypes.string,
+    strAlcoholic: PropTypes.string,
+    strCategory: PropTypes.string,
+    strDrink: PropTypes.string,
+    strDrinkThumb: PropTypes.string,
     strInstructions: PropTypes.string.isRequired,
-    strMeal: PropTypes.string.isRequired,
-    strMealThumb: PropTypes.string.isRequired,
-  }).isRequired,
+    strMeal: PropTypes.string,
+    strMealThumb: PropTypes.string,
+  }),
   handleShare: PropTypes.func.isRequired,
   ingredientsAndMeasures: PropTypes.arrayOf(PropTypes.object).isRequired,
   isCopied: PropTypes.bool.isRequired,
   onFavoriteButtonClick: PropTypes.func.isRequired,
-  page: PropTypes.shape({
-    includes: PropTypes.func.isRequired,
-  }).isRequired,
+  page: PropTypes.string.isRequired,
+};
+
+RecipeDetails.defaultProps = {
+  dishOrDrink: PropTypes.shape({
+    idMeal: '',
+    idDrink: '',
+    strAlcoholic: '',
+    strMeal: '',
+    strDrink: '',
+    strDrinkThumb: '',
+    strMealThumb: '',
+  }),
 };
 
 export default RecipeDetails;

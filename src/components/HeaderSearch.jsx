@@ -5,15 +5,13 @@ import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
-function Header({ title, handleSearch }) {
+function HeaderSearch({ title, handleSearch }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
   const { dishesOrDrinks, categorieRequest,
     setCategorieRequest } = useContext(AppDeReceitasContext);
   const history = useHistory();
-
-  console.log(handleSearch, 'jdioajdsa');
 
   const handleSearchType = (e) => {
     const { value } = e.target;
@@ -93,7 +91,7 @@ function Header({ title, handleSearch }) {
     </div>
   );
   return (
-    <>
+    <section>
       <header>
         <Link to="/perfil">
           <div>
@@ -116,13 +114,13 @@ function Header({ title, handleSearch }) {
         </div>
       </header>
       {searchForm()}
-    </>
+    </section>
   );
 }
 
-Header.propTypes = {
+HeaderSearch.propTypes = {
   handleSearch: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-export default Header;
+export default HeaderSearch;

@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Cards from '../components/Cards';
-import Header from '../components/HeaderSearch';
+import HeaderSearch from '../components/HeaderSearch';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import { getDishCategories } from '../services/categories';
 import FoodCategorieBtn from '../components/FoodCategorieBtn';
 import dishesRequest, { dishesByName } from '../services/apiComidas';
 
-const categorieBtnQuantity = 4;
+const categorieBtnQuantity = 5;
 
 function Comidas() {
   const { handleSearchFoods, setDishesOrDrinks,
@@ -25,7 +25,7 @@ function Comidas() {
     getDishes();
 
     getDishCategories()
-      .then(({ meals }) => setDishCategories(meals));
+      .then(({ meals }) => setDishCategories([{ strCategory: 'All' }, ...meals]));
   }, []);
 
   const onCategorieButtonClick = async (dish) => {
@@ -45,30 +45,23 @@ function Comidas() {
     }
   };
   return (
-    <div>
-      <Header title="Comidas" handleSearch={ handleSearchFoods } />
-      <section>
-        <button
-          type="button"
-          value="All"
-          onClick={ (e) => onCategorieButtonClick(e.target.value) }
-          data-testid="All-category-filter"
-        >
-          All
-
-        </button>
-        {dishCategories.map(({ strCategory }, i) => {
-          if (i > categorieBtnQuantity) return false;
-          return (<FoodCategorieBtn
-            key={ strCategory }
-            categoryName={ strCategory }
-            onCategorieButtonClick={ onCategorieButtonClick }
-          />);
-        })}
-      </section>
-      <Cards />
-      <Footer />
-    </div>
+    handleSearchFoods && (
+      <div>
+        <HeaderSearch title="Comidas" handleSearch={ handleSearchFoods } />
+        <section>
+          {dishCategories.map(({ strCategory }, i) => {
+            if (i > categorieBtnQuantity) return false;
+            return (<FoodCategorieBtn
+              key={ strCategory }
+              categoryName={ strCategory }
+              onCategorieButtonClick={ onCategorieButtonClick }
+            />);
+          })}
+        </section>
+        <Cards />
+        <Footer />
+      </div>
+    )
   );
 }
 

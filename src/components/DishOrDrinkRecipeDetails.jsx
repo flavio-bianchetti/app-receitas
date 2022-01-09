@@ -18,7 +18,6 @@ const getFavoriteRecipe = (dishOrDrink) => {
 
 function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
   const [isCopied, setIsCopied] = useState(false);
-  // const [favoriteRecipe, setFavoriteRecipe] = useState(false);
   const [favoriteRecipesStorage, setFavoriteRecipesStorage] = useState([]);
   const history = useHistory();
   const page = history.location.pathname;
@@ -31,9 +30,6 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
       actualUrl.pop();
       actualUrl = actualUrl.join('/');
     }
-    // actualUrl = actualUrl.includes('in-progress')
-    //   ? actualUrl.split('/').pop().join('/') : actualUrl;
-    console.log(actualUrl);
     window.navigator.clipboard.writeText(actualUrl);
     setIsCopied(true);
   }
@@ -52,7 +48,6 @@ function DishOrDrinkRecipeDetails({ dishOrDrink, ingredientsAndMeasures }) {
   }, []);
 
   const onFavoriteButtonClick = () => {
-    // setFavoriteRecipe(!favoriteRecipe);
     if (!isRecipeInStorage(favoriteRecipesStorage)) {
       localStorage.setItem('favoriteRecipes',
         JSON.stringify([...favoriteRecipesStorage, getFavoriteRecipe(dishOrDrink)]));
