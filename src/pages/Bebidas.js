@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Cards from '../components/Cards';
-import Header from '../components/HeaderSearch';
+import HeaderSearch from '../components/HeaderSearch';
 import drinksRequest, { drinksByName } from '../services/apiDrinks';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import { getDrinksCategories } from '../services/categories';
 import FoodCategorieBtn from '../components/FoodCategorieBtn';
 
-const categorieBtnQuantity = 4;
+const categorieBtnQuantity = 5;
 function Bebidas() {
   const { handleSearchDrinks, setDishesOrDrinks,
     setCategorieRequest } = useContext(AppDeReceitasContext);
@@ -23,7 +23,7 @@ function Bebidas() {
     getDrinks();
 
     getDrinksCategories()
-      .then(({ drinks }) => setDrinkCategories(drinks));
+      .then(({ drinks }) => setDrinkCategories([{ strCategory: 'All' }, ...drinks]));
   }, []);
 
   const onCategorieButtonClick = async (drink) => {
@@ -46,17 +46,8 @@ function Bebidas() {
 
   return (
     <div>
-      <Header title="Bebidas" handleSearch={ handleSearchDrinks } />
+      <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinks } />
       <section>
-        <button
-          type="button"
-          value="All"
-          onClick={ (e) => onCategorieButtonClick(e.target.value) }
-          data-testid="All-category-filter"
-        >
-          All
-
-        </button>
         {drinkCategories.map(({ strCategory }, i) => {
           if (i > categorieBtnQuantity) return false;
           return (<FoodCategorieBtn
