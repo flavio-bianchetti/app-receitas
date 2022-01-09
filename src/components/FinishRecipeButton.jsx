@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 const getDoneRecipe = (dishOrDrink) => {
-  // console.log(dishOrDrink);
   const today = new Date().toLocaleDateString();
   const doneRecipe = {
     id: dishOrDrink.idMeal || dishOrDrink.idDrink,
@@ -15,14 +14,13 @@ const getDoneRecipe = (dishOrDrink) => {
     name: dishOrDrink.idMeal || dishOrDrink.idDrink,
     image: dishOrDrink.strMealThumb || dishOrDrink.strDrinkThumb,
     doneDate: today,
-    tags: dishOrDrink.strTags ? dishOrDrink.strTags.split(',') : '',
+    tags: dishOrDrink.strTags ? dishOrDrink.strTags.split(',') : [],
   };
   return doneRecipe;
 };
 
 function FinishRecipeButton({ dishOrDrink }) {
   const [doneRecipesInStorage, setDoneRecipesInStorage] = useState([]);
-  // const [doneRecipeSwitch, setDoneRecipeSwitch] = useState(false);
   const { isRecipeButtonEnable } = useContext(AppDeReceitasContext);
   const history = useHistory();
 

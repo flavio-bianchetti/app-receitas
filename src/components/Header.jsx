@@ -23,9 +23,6 @@ function Header({ title }) {
 }
 
 Header.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func.isRequired,
-  }).isRequired,
   title: PropTypes.string.isRequired,
 };
 

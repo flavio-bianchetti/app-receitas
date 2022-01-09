@@ -43,13 +43,13 @@ function RecipeDetails({ dishOrDrink,
         {!isRecipeFavorite() ? (
           <img
             data-testid="favorite-btn"
-            id="white-heart"
+            className="white-heart"
             src={ whiteHeartIcon }
             alt="heart"
           />
         ) : <img
           data-testid="favorite-btn"
-          id="black-heart"
+          className="black-heart"
           src={ blackHeartIcon }
           alt="black heart"
         />}
