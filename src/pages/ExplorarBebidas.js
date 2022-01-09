@@ -25,7 +25,7 @@ function ExplorarBebidas() {
 
   return (
     <div>
-      <Header title="Explorar Comidas" />
+      <Header title="Explorar Bebidas" />
       {buttons.map(({ title, testid, page }) => (
         <SearchFoodsBtn
           key={ title }
