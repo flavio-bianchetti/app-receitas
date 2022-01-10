@@ -1,29 +1,51 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
-function IngredientsExplorer({ ingredientsList }) {
+function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
+  const { handleSearchFoods, setIsClickedIngredientImage,
+    handleSearchDrinks } = useContext(AppDeReceitasContext);
   const numMaxIngredients = 12;
+
+  function handleClickLink(ingredient) {
+    if (path === '/comidas') {
+      handleSearchFoods('search-ingredient', ingredient.strIngredient);
+    } else {
+      handleSearchDrinks('search-ingredient', ingredient.strIngredient1);
+    }
+    setIsClickedIngredientImage(true);
+  }
+
   return (
     <div>
       {
         ingredientsList.map((ingredient, index) => (
           index < numMaxIngredients
             && (
-              <div
-                key={ ingredient.name }
-                data-testid={ `${index}-ingredient-card` }
+              <Link
+                to={ path }
+                onClick={ () => handleClickLink(ingredient) }
               >
-                <img
-                  data-testid={ `${index}-card-img` }
-                  src={ ingredient.image }
-                  alt={ ingredient.name }
-                />
-                <span
-                  data-testid={ `${index}-card-name` }
+                <div
+                  key={ ingredient.strIngredient || ingredient.strIngredient1 }
+                  data-testid={ `${index}-ingredient-card` }
                 >
-                  { ingredient.name }
-                </span>
-              </div>
+                  <img
+                    data-testid={ `${index}-card-img` }
+                    src={
+                      `${imageUrl}${ingredient.strIngredient
+                      || ingredient.strIngredient1}-Small.png`
+                    }
+                    alt={ ingredient.strIngredient || ingredient.strIngredient1 }
+                  />
+                  <span
+                    data-testid={ `${index}-card-name` }
+                  >
+                    { ingredient.strIngredient || ingredient.strIngredient1 }
+                  </span>
+                </div>
+              </Link>
             )
         ))
       }
@@ -32,7 +54,13 @@ function IngredientsExplorer({ ingredientsList }) {
 }
 
 IngredientsExplorer.propTypes = {
-  ingredientsList: PropTypes.arrayOf(PropTypes.string).isRequired,
+  ingredientsList: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.string,
+    ),
+  ).isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default IngredientsExplorer;
