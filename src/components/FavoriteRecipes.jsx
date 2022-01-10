@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import FavoriteRecipesCard from './FavoriteRecipesCard';
 
-export default function FavoriteRecipes({ handleClick, filteredFavoriteRecipes }) {
+function FavoriteRecipes({ handleClick, filteredFavoriteRecipes, unFavorite }) {
   return (
     <div>
       <div>
@@ -43,6 +43,7 @@ export default function FavoriteRecipes({ handleClick, filteredFavoriteRecipes }
             key={ recipe.id }
             recipe={ recipe }
             index={ index }
+            unFavorite={ unFavorite }
           />
         ))
       }
@@ -55,4 +56,7 @@ FavoriteRecipes.propTypes = {
     map: PropTypes.func.isRequired,
   }).isRequired,
   handleClick: PropTypes.func.isRequired,
+  unFavorite: PropTypes.func.isRequired,
 };
+
+export default FavoriteRecipes;

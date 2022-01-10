@@ -4,16 +4,21 @@ import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
 import blackHeart from '../images/blackHeartIcon.svg';
 
-export default function FavoriteRecipesCard({ recipe, index }) {
+export default function FavoriteRecipesCard({ recipe, index, unFavorite }) {
   const [isCopied, setIsCopied] = useState(false);
 
   function handleShare() {
-    const actualUrl = window.location.href; // Pega a URL atual
-    const url = `${actualUrl.replace('receitas-favoritas', '')}`
-    + `${recipe.type}s/${recipe.id}`; // O replace() vai substituir a parte que contem 'receitas-favoritas' por uma string vazia. Ai vc concatena o tipo da receita passada como paremetro, que foi favoritada, mais seu id.
+    const currentURL = window.location.href; // Pega a URL atual
+    const url = `${currentURL.replace('receitas-favoritas', '')}`
+    + `${recipe.type}s/${recipe.id}`; // O replace() vai substituir a parte que contem 'receitas-favoritas' por uma string vazia. Dps será concatenado o tipo da receita passada como paremetro, que foi favoritada, mais seu id.
     window.navigator.clipboard.writeText(url);
     setIsCopied(true);
   }
+
+  // function unFavorite(event) {
+  //   const { name } = event.target;
+  //   console.log(name);
+  // }
 
   return (
     <div>
@@ -57,14 +62,14 @@ export default function FavoriteRecipesCard({ recipe, index }) {
       }
       <button
         type="button"
-        name={ recipe.image }
-        onClick={ () => {} }
+        onClick={ (event) => unFavorite(event) }
       >
         <img
           data-testid={ `${index}-horizontal-favorite-btn` }
           className="favorite-button"
           src={ blackHeart }
           alt="Desfavoritar"
+          name={ recipe.name }
           style={ { width: '25px' } }
         />
       </button>
@@ -93,4 +98,5 @@ FavoriteRecipesCard.propTypes = {
     }),
     type: PropTypes.string.isRequired,
   }).isRequired,
+  unFavorite: PropTypes.func.isRequired,
 };
