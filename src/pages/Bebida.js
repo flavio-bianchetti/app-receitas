@@ -24,7 +24,7 @@ function Bebida() {
 
   return (
     Object.keys(currentDrink).length > 0 && (
-      <div className="pages-background ">
+      <div className="pages-background-drink-food">
         <HeaderHeader title="Bebidas" />
         <section className="food-details-container">
           <section className="food-details">

@@ -52,8 +52,8 @@
   text-align: center
 }
 
-.start-recipe-btn {
-  bottom: 0;
+.start-recipe-btn, .continue-recipe-btn {
+  bottom: 10px;
   position: fixed;
 }
 

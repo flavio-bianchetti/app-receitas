@@ -31,7 +31,7 @@ function StartRecipeButton({ dishOrDrink, page, dishOrDrinkId }) {
       </button>
     ) : (
       <button
-        className="start-recipe-btn"
+        className="continue-recipe-btn"
         type="button"
         data-testid="start-recipe-btn"
         onClick={ () => history.push(`/${page}/${dishOrDrinkId}/in-progress`) }

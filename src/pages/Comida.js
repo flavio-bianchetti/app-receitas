@@ -12,7 +12,7 @@ function Comida() {
     currentDishOrDrink: currentMeal,
     setCurrentDishOrDrink: setCurrentMeal,
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
-  console.log(currentMeal);
+  console.log(currentMeal.strYoutube);
 
   const { id } = useParams();
 
@@ -27,7 +27,7 @@ function Comida() {
   // Comando velha guarda =)
 
     Object.keys(currentMeal).length > 0 && (
-      <div className="pages-background ">
+      <div className="pages-background-drink-food">
         <HeaderHeader title="Comidas" />
         <section className="food-details-container">
           <section className="food-details">

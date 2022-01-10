@@ -15,6 +15,12 @@ body {
   margin-top: 2rem;
   margin-bottom: 2.6rem;
 }
+
+.pages-background-drink-food {
+  background-image: url(./images/background.png);
+  margin-top: 2rem;
+}
+
 /* ----- Pagina de login --------*/
 
 /* 
@@ -178,10 +184,7 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 .searchForm-container label {
   font-size: 1.2rem;
-}
-
-.searchForm-container label input {
-  margin-left: 0.5rem;
+  margin-top: 0.2rem;
 }
 
 .searchForm-container button {
@@ -256,7 +259,8 @@ input[type='radio']:checked:after {
 
 .foodsAndDrinks-container {
   margin: 0 0.5rem;
-  padding: 2rem 0;
+  padding: 1rem 0;
+  height: 100vh;
 }
 
 .cards {
@@ -376,7 +380,8 @@ footer {
 
 .food-details-container {
   /* margin-top: 3rem; */
-  padding: 2rem 0;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
 }
 
 .food-details {
@@ -459,5 +464,53 @@ footer {
   font-size: 1.2rem;
 }
 
+.start-recipe-btn, .continue-recipe-btn {
+  padding: 1rem 2rem;
+  border: none;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.2rem
+}
+
+.start-recipe-btn {
+  background-color: rgba(43, 192, 43, 0.864);
+}
+
+.start-recipe-btn:hover {
+  background-color: rgba(37, 160, 37, 0.864);
+
+}
+
+.continue-recipe-btn {
+  background-color: #ff8340;
+}
+
+.continue-recipe-btn:hover {
+  background-color: #ce6a34;
+}
+
+/* ----- Fodd progress page ---- */
+
+.finish-recipe-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 3px;
+}
+
+.finish-recipe-btn:enabled {
+  background-color: #FF4141;
+  color: #fff;
+}
+
+.ingredient-steps {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.ingredient-step input {
+  margin-right: 0.4rem;
+}
 
 
