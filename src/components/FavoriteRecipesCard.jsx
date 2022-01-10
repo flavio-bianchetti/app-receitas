@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
+import blackHeart from '../images/blackHeartIcon.svg';
 
 export default function FavoriteRecipesCard({ recipe, index }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -58,10 +59,14 @@ export default function FavoriteRecipesCard({ recipe, index }) {
         type="button"
         name={ recipe.image }
         onClick={ () => handleShare() }
-        data-testid={ `${index}-horizontal-favorite-btn` }
-        className="favorite-button"
       >
-        Favoritar
+        <img
+          data-testid={ `${index}-horizontal-favorite-btn` }
+          className="favorite-button"
+          src={ blackHeart }
+          alt="Desfavoritar"
+          style={ { width: '25px' } }
+        />
       </button>
     </div>
   );
