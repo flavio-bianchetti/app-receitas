@@ -50,19 +50,21 @@ function Bebidas() {
   };
 
   return (
-    <div>
+    <div className="pages-background">
       <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinks } />
-      <section>
-        {drinkCategories.map(({ strCategory }, i) => {
-          if (i > categorieBtnQuantity) return false;
-          return (<FoodCategorieBtn
-            onCategorieButtonClick={ onCategorieButtonClick }
-            key={ strCategory }
-            categoryName={ strCategory }
-          />);
-        })}
+      <section className="foodsAndDrinks-container">
+        <section>
+          {drinkCategories.map(({ strCategory }, i) => {
+            if (i > categorieBtnQuantity) return false;
+            return (<FoodCategorieBtn
+              onCategorieButtonClick={ onCategorieButtonClick }
+              key={ strCategory }
+              categoryName={ strCategory }
+            />);
+          })}
+        </section>
+        <Cards />
       </section>
-      <Cards />
       <Footer />
     </div>
   );

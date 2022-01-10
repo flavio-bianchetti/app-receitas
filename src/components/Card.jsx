@@ -5,17 +5,22 @@ import PropTypes from 'prop-types';
 function Card({ index, nameItem, image, item }) {
   return (
     <Link
+      className="card"
       to={ `/${item.idDrink ? 'bebidas' : 'comidas'}/${item.idDrink || item.idMeal}` }
     >
       <div data-testid={ `${index}-recipe-card` }>
-        <img
-          data-testid={ `${index}-card-img` }
-          src={ image }
-          alt={ nameItem }
-        />
-        <h2 data-testid={ `${index}-card-name` }>
-          {nameItem}
-        </h2>
+        <div className="card-image-container">
+          <img
+            data-testid={ `${index}-card-img` }
+            src={ image }
+            alt={ nameItem }
+          />
+        </div>
+        <div className="cardTitle-container">
+          <h2 data-testid={ `${index}-card-name` }>
+            {nameItem}
+          </h2>
+        </div>
       </div>
     </Link>
   );

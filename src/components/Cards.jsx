@@ -7,7 +7,7 @@ function Cards() {
   const maxCards = 11;
 
   return (
-    <div className="foodAndDrinks-cards-container">
+    <div className="cards">
       {dishesOrDrinks
         .filter((_, index) => {
           if (index > maxCards) {
