@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300;700&family=Source+Sans+3:wght@400;600&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgba(244, 245, 225, 0.659);
+}
+
+.pages-background {
+  background-image: url(./images/background.png);
+  margin-top: 2rem;
+  margin-bottom: 2.6rem;
+}
+/* ----- Pagina de login --------*/
+
+/* 
+https://files.wallpaperpass.com/2019/10/food%20wallpaper%20011%20-%201920x1080.jpg
+https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.jpg
+*/
+.appReceitas {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+
+  padding: 1rem
+}
+
+.login-form {
+  background-color: rgba(255,255,255,0.5);
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  
+}
+
+.login-form h1, .login-form p {
+  text-align: center;
+  
+}
+
+.login-form h1 {
+  font-size: 2.5rem;
+  color:rgb(242, 91, 21);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.65);
+}
+
+.login-form p {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+}
+
+.login-form input {
+  width: 100%;
+  height: 2.9rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+  padding: 1rem;
+}
+
+.login-form label {
+  font-size: 1.4rem;
+}
+
+.login-form button {
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  border: none;
+}
+
+.login-form button:enabled {
+  background-color: rgba(255, 33, 8, 0.522);
+  color: black;
+  cursor: pointer;
+}
+
+.login-from button:hover:enabled{
+  background-color: rgba(0, 0, 0, 0.522);
+}
+
+/* ----- Header Search ------ */
+
+/* Fixas o Header! */
+
+.headerheader {
+  background-color:#FF4141;
+  color: #fff;
+  top: 0;
+  padding: 0rem 1.5rem;
+  height: 2.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+}
+
+.headerheader h2 {
+  font-family: 'Arima Madurai', sans-serif;
+  font-weight: 700;
+}
+
+.headerSearch {
+  background-color:#FF4141;
+  color: #fff;
+  display: flex;
+  top: 0;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1.5rem;
+  height: 2.5rem;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+}
+
+.headerSearch img, .headerSearch input {
+  width: 20px;
+}
+
+.headerSearch h2 {
+  font-size: 1.5rem;
+  font-family: 'Arima Madurai', sans-serif;
+  font-weight: 700;
+}
+
+.searchForm {
+  display: fixed;
+  margin: 1rem;
+  background-color: #0000;
+  padding: 1rem 0;
+}
+
+.searchForm-container {
+  background-color: #0000;
+}
+
+.search-input {
+  height: 2.4rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.7rem;
+  outline: none;
+  width: 100%;
+  border: 2px solid black;
+}
+
+.search-input:focus {
+  border: 2px solid #FF4141 !important;
+}
+
+/* Position inputs properly*/
+
+.search-types-container {
+  margin: 1rem;
+}
+
+.search-type-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.searchForm-container label {
+  font-size: 1.2rem;
+}
+
+.searchForm-container label input {
+  margin-left: 0.5rem;
+}
+
+.searchForm-container button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: rgb(255, 154, 4);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 3px;
+}
+input[type='radio']:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #d1d3d1;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type='radio']:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: #FF4141;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+.searchForm-container button:hover {
+  background-color: #FF4141;
+}
+
+@media screen and (min-width: 500px) {
+  .search-types-container {
+    display: flex;
+  }
+  .searchForm-container button {
+    width: 480px;
+    margin: 0 auto;
+  }
+
+  .search-form-button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+}
+
+@media screen and (min-width: 768px) {
+  .headerSearch {
+    padding: 0rem 3rem
+  }
+
+  .searchForm {
+    margin: 0 3rem;
+  }
+}
+
+/*----- Foods And Drinks cards section */
+
+.foodsAndDrinks-container {
+  margin: 0 0.5rem;
+  padding: 2rem 0;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+}
+
+.card {
+  margin: 0.4rem;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  border-radius: 3px;
+  background-color:rgba(253, 253, 253, 0.624);
+  border-radius: 1rem;
+}
+
+.card:hover {
+  color: rgb(25, 32, 223);
+}
+
+.cardTitle-container {
+  padding: 0.5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image-container {
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: -webkit-transform .5s ease;
+  transition: transform .5s ease;
+  border-radius: 1rem
+}
+
+.card:hover img {
+  -webkit-transform: scale(1.1);
+   transform: scale(1.1);
+}
+
+@media screen and (min-width: 330px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr
+  }
+}
+
+@media screen and (min-width: 512px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr
+  }
+}
+
+@media screen and (min-width: 790px) {
+
+  .foodsAndDrinks-container {
+    margin: 0 3rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr
+  }
+
+  .card {
+    margin: 0.5rem;
+    background-color:rgba(253, 253, 253, 0.624);
+    border-radius: 1rem;
+  }
+}
+
+@media screen and (min-width: 925px) {
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
+  }
+}
+
+
+/*---- Foooter ----- */
+
+footer {
+  width: 100%;
+ position: fixed;
+  padding: 0.3rem 1rem;
+  height: 2.6rem;
+  background-color: #FF4141;
+  bottom: 0;
+  z-index: 99;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.footer-container img {
+  width: 30px;
+}
+
+@media screen and (min-width: 400px) {
+  .footer-container {
+    justify-content: space-around;
+  }
+}
+
+
+/* --- Detalhes de comida de bebida ----- */
+
+.food-details-container {
+  /* margin-top: 3rem; */
+  padding: 2rem 0;
+}
+
+.food-details {
+ 
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: rgba(247, 157, 157, 0.535);
+  padding: 1rem;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.recipe {
+  
+}
+
+.recipe h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+}
+
+.recipe-photo {
+  width: 100%;
+}
+
+.foodButtons-n-foodType {
+  display: flex;  
+  justify-content: space-between;
+  align-items: center;
+}
+
+.foodButtons-n-foodType p {
+ font-size: 1.7rem;
+ color: #FF4140;
+}
+
+.foodButtons {
+  display: flex;
+  align-items: center;
+}
+
+.foodButtons button {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  background-color: #FF4141;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+
+}
+
+.foodButtons button + button {
+  margin-left: 0.3rem;
+}
+
+.foodButtons button img {
+  margin-left: 0.2rem;
+}
+
+.white-heart, .black-heart, .share-icon {
+  width: 25px;
+}
+
+.ingredients {
+  list-style-type: none;
+  padding: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.instructions {
+  padding: 1rem 0;
+  font-size: 1.2rem;
+}
+
+
+

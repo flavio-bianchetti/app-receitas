@@ -3,7 +3,7 @@ import React from 'react';
 
 function Ingredients({ ingredientsAndMeasures }) {
   return (
-    <ul>
+    <ul className="ingredients">
       {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
         <li
           key={ ingredient }

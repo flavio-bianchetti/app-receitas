@@ -17,50 +17,56 @@ function RecipeDetails({ dishOrDrink,
   };
 
   return (
-    <div>
+    <div className="recipe">
       <img
         data-testid="recipe-photo"
         src={ dishOrDrink.strDrinkThumb || dishOrDrink.strMealThumb }
         alt={ dishOrDrink.strDrink || dishOrDrink.strMealThumb }
+        className="recipe-photo"
       />
       <h1
         data-testid="recipe-title"
       >
         {dishOrDrink.strDrink || dishOrDrink.strMeal}
       </h1>
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ () => handleShare() }
-      >
-        Compartilhar
-      </button>
-      <button
-        type="button"
-        onClick={ () => onFavoriteButtonClick() }
-      >
-        Favoritar
-        {!isRecipeFavorite() ? (
-          <img
-            data-testid="favorite-btn"
-            className="white-heart"
-            src={ whiteHeartIcon }
-            alt="heart"
-          />
-        ) : <img
-          data-testid="favorite-btn"
-          className="black-heart"
-          src={ blackHeartIcon }
-          alt="black heart"
-        />}
-      </button>
-      {isCopied && <span>Link copiado!</span>}
-      <p
-        data-testid="recipe-category"
-      >
-        {dishOrDrink.idMeal ? dishOrDrink.strCategory : dishOrDrink.strAlcoholic}
+      <div className="foodButtons-n-foodType">
+        <p
+          className="foodType"
+          data-testid="recipe-category"
+        >
+          {dishOrDrink.idMeal ? dishOrDrink.strCategory : dishOrDrink.strAlcoholic}
+        </p>
+        <div className="foodButtons ">
+          <button
+            type="button"
+            data-testid="share-btn"
+            onClick={ () => handleShare() }
+          >
+            Compartilhar
+          </button>
+          <button
+            type="button"
+            onClick={ () => onFavoriteButtonClick() }
+          >
+            Favoritar
+            {!isRecipeFavorite() ? (
+              <img
+                data-testid="favorite-btn"
+                className="white-heart"
+                src={ whiteHeartIcon }
+                alt="heart"
+              />
+            ) : <img
+              data-testid="favorite-btn"
+              className="black-heart"
+              src={ blackHeartIcon }
+              alt="black heart"
+            />}
+          </button>
+        </div>
+        {isCopied && <span>Link copiado!</span>}
 
-      </p>
+      </div>
       {!page.includes('in-progress')
         ? <Ingredients ingredientsAndMeasures={ ingredientsAndMeasures } />
         : (
@@ -68,7 +74,13 @@ function RecipeDetails({ dishOrDrink,
             ingredientsAndMeasures={ ingredientsAndMeasures }
           />)}
 
-      <p data-testid="instructions">{dishOrDrink.strInstructions}</p>
+      <p
+        className="instructions"
+        data-testid="instructions"
+      >
+        {dishOrDrink.strInstructions}
+
+      </p>
     </div>
   );
 }

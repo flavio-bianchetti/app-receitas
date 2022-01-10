@@ -7,7 +7,7 @@ function Header({ title }) {
   return (
     <header>
       <Link to="/perfil">
-        <div>
+        <div className="header">
           <img
             src={ profile }
             alt="ProfileIcon"

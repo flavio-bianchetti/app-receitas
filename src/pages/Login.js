@@ -29,12 +29,13 @@ function Login({ history }) {
   }
 
   return (
-    <section>
-      Login
-      <form onSubmit={ handleSubmit }>
+    <section className="appReceitas">
+      <form onSubmit={ handleSubmit } className="login-form">
+        <h1>Receitas da Vovó </h1>
+        <p>Faça seu login</p>
         <div>
           <label htmlFor="email">
-            Email
+            Email:
             <input
               id="email"
               value={ email }
@@ -46,7 +47,7 @@ function Login({ history }) {
         </div>
         <div>
           <label htmlFor="password">
-            Senha
+            Senha:
             <input
               id="password"
               type="password"
