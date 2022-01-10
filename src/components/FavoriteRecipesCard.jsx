@@ -8,9 +8,9 @@ export default function FavoriteRecipesCard({ recipe, index }) {
   const [isCopied, setIsCopied] = useState(false);
 
   function handleShare() {
-    const actualUrl = window.location.href;
-    const url = `${actualUrl.replace('receitas-feitas', '')}`
-    + `${recipe.type}s/${recipe.id}`;
+    const actualUrl = window.location.href; // Pega a URL atual
+    const url = `${actualUrl.replace('receitas-favoritas', '')}`
+    + `${recipe.type}s/${recipe.id}`; // O replace() vai substituir a parte que contem 'receitas-favoritas' por uma string vazia. Ai vc concatena o tipo da receita passada como paremetro, que foi favoritada, mais seu id.
     window.navigator.clipboard.writeText(url);
     setIsCopied(true);
   }
@@ -58,7 +58,7 @@ export default function FavoriteRecipesCard({ recipe, index }) {
       <button
         type="button"
         name={ recipe.image }
-        onClick={ () => handleShare() }
+        onClick={ () => {} }
       >
         <img
           data-testid={ `${index}-horizontal-favorite-btn` }
@@ -67,6 +67,12 @@ export default function FavoriteRecipesCard({ recipe, index }) {
           alt="Desfavoritar"
           style={ { width: '25px' } }
         />
+      </button>
+      <button
+        type="button"
+        onClick={ () => console.log(window.location.href) }
+      >
+        Vai
       </button>
     </div>
   );
