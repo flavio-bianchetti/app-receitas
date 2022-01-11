@@ -294,7 +294,7 @@ input[type='radio']:checked:after {
 }
 
 .card h2 {
-  height: 60px;
+  max-height: 60px;
   text-overflow: ellipsis;
   overflow: hidden;
 }
