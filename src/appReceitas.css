@@ -19,7 +19,8 @@ body {
 
 .pages-background-drink-food {
   background-image: url(./images/pattern-1.jpeg);
-  margin-top: 2.8rem;
+  margin-top: 2.6rem;
+  min-height: 90vh;
 }
 
 .header {
@@ -603,13 +604,19 @@ footer {
   background-color: rgb(243, 243, 243);
   box-shadow: 7px 7px 6px 0px rgba(0,0,0,0.47);
   margin-bottom: 1rem;
-  border-radius: 1rem
+  border-radius: 1rem;
+  width: 100%;
+  padding: 0.5rem 0;
 }
 
 .recipe-info {
   padding-left: 2rem;
   padding-right: 1rem;
   width: 100%;
+}
+
+.recipe-info button {
+  margin-left: 0.3rem;
 }
 
 .recipeDone-buttons {
@@ -671,6 +678,7 @@ footer {
   height: 130px;
   background-size: contain;
   background-repeat: no-repeat;
+  border-radius: 1rem;
 }
 
 
@@ -759,4 +767,33 @@ footer {
   background-color: #fff;
   border-radius: 3px;
   font-size: 1.1rem
+}
+
+/* ------- Favorite recipes page --------- */
+
+.favorite-recipes-container {
+  padding: 1.5rem 0
+}
+
+.favorite-recipes-card-container {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.favorite-recipe-share-name-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.favorite-recipe-share-name-container input + input {
+  margin-left: 0.5rem;
+}
+
+.favorite-recipes-card {
+  
 }

@@ -14,6 +14,8 @@ function RecipeDoneCard({ recipe, index }) {
     setIsCopied(true);
   }
 
+  console.log(recipe);
+
   return (
     <div className="recipeDone-card">
       <div className="recipe-info">
@@ -26,13 +28,13 @@ function RecipeDoneCard({ recipe, index }) {
               : `${recipe.alcoholicOrNot}`
           }
         </h1>
-        {/* <Link to={ `/${recipe.type}s/${recipe.id}` }>
+        <Link to={ `/${recipe.type}s/${recipe.id}` }>
           <p
             data-testid={ `${index}-horizontal-name` }
           >
             { recipe.name }
           </p>
-        </Link> */}
+        </Link>
         <div className="recipeDone-date-share-container">
           <p
             data-testid={ `${index}-horizontal-done-date` }

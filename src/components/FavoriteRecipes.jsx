@@ -4,8 +4,8 @@ import FavoriteRecipesCard from './FavoriteRecipesCard';
 
 function FavoriteRecipes({ handleClick, filteredFavoriteRecipes, unFavorite }) {
   return (
-    <div>
-      <div>
+    <div className="favorite-recipes-container">
+      <div className="recipeDone-buttons">
         <button
           data-testid="filter-by-all-btn"
           name="da"
@@ -30,23 +30,19 @@ function FavoriteRecipes({ handleClick, filteredFavoriteRecipes, unFavorite }) {
         >
           Drinks
         </button>
-        <button
-          type="button"
-          onClick={ () => console.log(filteredFavoriteRecipes) }
-        >
-          Console.Log()
-        </button>
       </div>
-      {
-        filteredFavoriteRecipes.map((recipe, index) => (
-          <FavoriteRecipesCard
-            key={ recipe.id }
-            recipe={ recipe }
-            index={ index }
-            unFavorite={ unFavorite }
-          />
-        ))
-      }
+      <div className="favorite-recipes-card-container">
+        {
+          filteredFavoriteRecipes.map((recipe, index) => (
+            <FavoriteRecipesCard
+              key={ recipe.id }
+              recipe={ recipe }
+              index={ index }
+              unFavorite={ unFavorite }
+            />
+          ))
+        }
+      </div>
     </div>
   );
 }

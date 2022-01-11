@@ -45,11 +45,13 @@ function ReceitasFavoritas() {
   return (
     <div>
       <Header title="Receitas Favoritas" />
-      <FavoriteRecipes
-        handleClick={ handleClick }
-        filteredFavoriteRecipes={ filteredFavoriteRecipes }
-        unFavorite={ unFavorite }
-      />
+      <div className="pages-background-drink-food">
+        <FavoriteRecipes
+          handleClick={ handleClick }
+          filteredFavoriteRecipes={ filteredFavoriteRecipes }
+          unFavorite={ unFavorite }
+        />
+      </div>
     </div>
   );
 }
