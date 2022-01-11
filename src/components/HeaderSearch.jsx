@@ -98,7 +98,7 @@ function HeaderSearch({ title, handleSearch }) {
 
   return (
     <>
-      <header className="headerSearch">
+      <header className="headerSearch header">
         <Link to="/perfil">
           <img src={ profile } alt="ProfileIcon" data-testid="profile-top-btn" />
         </Link>

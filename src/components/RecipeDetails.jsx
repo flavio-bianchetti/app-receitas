@@ -48,7 +48,7 @@ function RecipeDetails({ dishOrDrink,
             type="button"
             onClick={ () => onFavoriteButtonClick() }
           >
-            Favoritar
+            {/* Favoritar */}
             {!isRecipeFavorite() ? (
               <img
                 data-testid="favorite-btn"

@@ -48,17 +48,17 @@ function Comidas() {
     handleSearchFoods && (
       <div className="pages-background">
         <HeaderSearch title="Comidas" handleSearch={ handleSearchFoods } />
+        <section className="foodsAndDrinks-category-container">
+          {dishCategories.map(({ strCategory }, i) => {
+            if (i > categorieBtnQuantity) return false;
+            return (<FoodCategorieBtn
+              key={ strCategory }
+              categoryName={ strCategory }
+              onCategorieButtonClick={ onCategorieButtonClick }
+            />);
+          })}
+        </section>
         <section className="foodsAndDrinks-container">
-          <section>
-            {dishCategories.map(({ strCategory }, i) => {
-              if (i > categorieBtnQuantity) return false;
-              return (<FoodCategorieBtn
-                key={ strCategory }
-                categoryName={ strCategory }
-                onCategorieButtonClick={ onCategorieButtonClick }
-              />);
-            })}
-          </section>
           <Cards />
         </section>
         <Footer />

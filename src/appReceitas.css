@@ -11,15 +11,43 @@ body {
 }
 
 .pages-background {
-  background-image: url(./images/background.png);
-  margin-top: 2rem;
+  background-image: url(./images/pattern-1.jpeg);
+  margin-top: 2.8rem;
   margin-bottom: 2.6rem;
+  min-height: 90vh;
 }
 
 .pages-background-drink-food {
-  background-image: url(./images/background.png);
-  margin-top: 2rem;
+  background-image: url(./images/pattern-1.jpeg);
+  margin-top: 2.8rem;
 }
+
+.header {
+  background-color:#FF4141;
+  color: #fff;
+  top: 0;
+  padding: 0rem 1.5rem;
+  height: 2.8rem;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  border-radius: 0 0 15px 15px;
+  text-align: center;
+  font-family: 'Arima Madurai', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.header img, .header input {
+  width: 22px;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 0rem 3rem;
+  }
+}
+
 
 /* ----- Pagina de login --------*/
 
@@ -84,64 +112,42 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   border-radius: 0.5rem;
   font-size: 1rem;
   border: none;
+  color: #fff;
 }
 
 .login-form button:enabled {
-  background-color: rgba(255, 33, 8, 0.522);
-  color: black;
+  background-color: rgba(255, 28, 3, 0.522);
   cursor: pointer;
 }
 
-.login-from button:hover:enabled{
-  background-color: rgba(0, 0, 0, 0.522);
+.login-form button:disabled{
+  background-color: rgba(252, 75, 75, 0.522);
 }
+
+.login-form button:hover:enabled{
+  background-color: rgba(46, 30, 146, 0.522);
+}
+
+
 
 /* ----- Header Search ------ */
 
 /* Fixas o Header! */
 
-.headerheader {
-  background-color:#FF4141;
-  color: #fff;
-  top: 0;
-  padding: 0rem 1.5rem;
-  height: 2.5rem;
-  position: fixed;
-  width: 100%;
-  z-index: 99;
-  border-radius: 0 0 15px 15px;
-  text-align: center;
-}
-
-.headerheader h2 {
-  font-family: 'Arima Madurai', sans-serif;
-  font-weight: 700;
-}
-
 .headerSearch {
-  background-color:#FF4141;
-  color: #fff;
+  /* background-color:#FF4141; */
+  /* color: #fff; */
   display: flex;
-  top: 0;
+  /* top: 0; */
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 1.5rem;
-  height: 2.5rem;
-  position: fixed;
-  width: 100%;
-  z-index: 99;
-  border-radius: 0 0 15px 15px;
-  text-align: center;
-}
-
-.headerSearch img, .headerSearch input {
-  width: 20px;
-}
-
-.headerSearch h2 {
-  font-size: 1.5rem;
-  font-family: 'Arima Madurai', sans-serif;
-  font-weight: 700;
+  /* padding: 0rem 1.5rem; */
+  /* height: 2.5rem; */
+  /* position: fixed; */
+  /* width: 100%; */
+  /* z-index: 99; */
+  /* border-radius: 0 0 15px 15px; */
+  /* text-align: center; */
 }
 
 .searchForm {
@@ -156,16 +162,16 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 }
 
 .search-input {
-  height: 2.4rem;
+  height: 3rem;
   padding: 0.9rem 1rem;
   border-radius: 0.7rem;
   outline: none;
   width: 100%;
-  border: 2px solid black;
+  border: 3px solid black;
 }
 
 .search-input:focus {
-  border: 2px solid #FF4141 !important;
+  border: 3px solid #FF4141 !important;
 }
 
 /* Position inputs properly*/
@@ -185,12 +191,17 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 .searchForm-container label {
   font-size: 1.2rem;
   margin-top: 0.2rem;
+  cursor: pointer;
+}
+
+.searchForm-container input {
+  cursor: pointer;
 }
 
 .searchForm-container button {
   padding: 0.5rem 1rem;
   font-size: 1rem;
-  background-color: rgb(255, 154, 4);
+  background-color: #30abe4;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -204,7 +215,7 @@ input[type='radio']:after {
   top: -2px;
   left: -1px;
   position: relative;
-  background-color: #d1d3d1;
+  background-color: #aaacaa;
   content: '';
   display: inline-block;
   visibility: visible;
@@ -246,9 +257,6 @@ input[type='radio']:checked:after {
 }
 
 @media screen and (min-width: 768px) {
-  .headerSearch {
-    padding: 0rem 3rem
-  }
 
   .searchForm {
     margin: 0 3rem;
@@ -259,13 +267,14 @@ input[type='radio']:checked:after {
 
 .foodsAndDrinks-container {
   margin: 0 0.5rem;
-  padding: 1rem 0;
-  height: 100vh;
+  padding: 2rem 0;
+  min-height: 60vh;
 }
 
 .cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
@@ -276,6 +285,7 @@ input[type='radio']:checked:after {
   border-radius: 3px;
   background-color:rgba(253, 253, 253, 0.624);
   border-radius: 1rem;
+  width: 135px;
 }
 
 .card:hover {
@@ -308,7 +318,31 @@ input[type='radio']:checked:after {
    transform: scale(1.1);
 }
 
-@media screen and (min-width: 330px) {
+.foodsAndDrinks-category-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 0 0.5rem;
+  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
+}
+
+.foodsAndDrinks-category-container button {
+  padding: 0.5rem 0.5rem;
+  margin: 5px;
+  border: none;
+  background-color: #ff8340;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.foodsAndDrinks-category-container button:hover {
+  background-color: #cc6934;
+}
+
+/* @media screen and (min-width: 330px) {
   .cards {
     grid-template-columns: 1fr 1fr 1fr
   }
@@ -318,7 +352,7 @@ input[type='radio']:checked:after {
   .cards {
     grid-template-columns: 1fr 1fr 1fr 1fr
   }
-}
+} */
 
 @media screen and (min-width: 790px) {
 
@@ -326,10 +360,10 @@ input[type='radio']:checked:after {
     margin: 0 3rem;
   }
 
-  .cards {
+  /* .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr
-  }
+  } */
 
   .card {
     margin: 0.5rem;
@@ -338,12 +372,12 @@ input[type='radio']:checked:after {
   }
 }
 
-@media screen and (min-width: 925px) {
+/* @media screen and (min-width: 925px) {
   .cards {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
   }
-}
+} */
 
 
 /*---- Foooter ----- */
@@ -378,6 +412,13 @@ footer {
 
 /* --- Detalhes de comida de bebida ----- */
 
+.headerheader {
+  /* vertical-align: middle; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .food-details-container {
   /* margin-top: 3rem; */
   padding-top: 2rem;
@@ -388,7 +429,7 @@ footer {
  
   max-width: 400px;
   margin: 0 auto;
-  background-color: rgba(247, 157, 157, 0.535);
+  background-color: rgba(253, 253, 253, 0.624);
   padding: 1rem;
   border-radius: 1rem;
   display: flex;
@@ -396,6 +437,11 @@ footer {
   flex-direction: column;
   justify-content: center;
 }
+
+/* ::-webkit-scrollbar {
+  width:  1rem; 
+  border: 1px solid #d5d5d5;
+} */
 
 .recipe {
   
@@ -438,6 +484,7 @@ footer {
   border: none;
   border-radius: 3px;
   color: #fff;
+  cursor: pointer;
 
 }
 
@@ -519,20 +566,10 @@ footer {
 
 /* ----- Receitas feitas ----- */
 
-.header {
-  background-color:#FF4141;
-  color: #fff;
+.header-done {
   display: flex;
-  top: 0;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 1.5rem;
-  height: 2.5rem;
-  position: fixed;
-  width: 100%;
-  z-index: 99;
-  border-radius: 0 0 15px 15px;
-  text-align: center;
 }
 
 .profileIcon {
@@ -542,12 +579,13 @@ footer {
 .recipesDone-container {
   min-height: 100vh;
   padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+
 }
 
 .recipeDone {
-  max-width: 400px;
-  margin: 0 auto;
-  /* background-color: rgba(247, 157, 157, 0.535); */
+  max-width: 400px; 
   margin-top: 0rem;
   padding: 0 1rem;
 }
@@ -564,7 +602,8 @@ footer {
 
 .recipe-info {
   padding-left: 2rem;
-  padding-right: 0.5rem
+  padding-right: 1rem;
+  width: 100%;
 }
 
 .recipeDone-buttons {
@@ -614,6 +653,7 @@ footer {
   border-radius: 0.5rem;
   cursor: pointer;
   color: #fff;
+  margin: 0.2rem;
 }
 
 .recipeDone-tagButton:hover {
@@ -626,10 +666,66 @@ footer {
   background-size: contain;
   background-repeat: no-repeat;
 }
-@media screen and (min-width: 768px ){
-  .header {
-    padding: 0rem 3rem;
-  }
+
+
+/* ---- Profile page ---- */
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 1rem;
 }
 
+.profile-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
 
+.profile-content button {
+  border: none;
+  padding: 2rem 0;
+  width: 100%;
+  background-color: #f77f3f;
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.profile-content button + button {
+  margin-top: 0.5rem;
+}
+
+.profile-content button:hover {
+  background-color: #ce6b36;
+}
+
+/* ----- Explore foods ----- */
+
+/* .explore-food-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem 1rem;
+}
+
+.explore-food-container button {
+  border: none;
+  padding: 2rem 0;
+  width: 100%;
+  background-color: #f77f3f;
+  color: #fff;
+  font-size: 1.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.explore-food-container button:hover {
+  background-color: #ce6b36;
+}
+
+.explore-food-container button + button {
+  margin-top: 0.5rem;
+}
+ */

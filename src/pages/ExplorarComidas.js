@@ -25,15 +25,19 @@ function ExplorarComidas() {
   return (
     <div>
       <Header title="Explorar Comidas" />
-      {buttons.map(({ title, testid, page }) => (
-        <SearchFoodsBtn
-          key={ title }
-          title={ title }
-          testid={ testid }
-          page={ page }
-          searchFoodsBtnOnClick={ searchFoodsBtnOnClick }
-        />
-      ))}
+      <div className="pages-background">
+        <div className="profile-content">
+          {buttons.map(({ title, testid, page }) => (
+            <SearchFoodsBtn
+              key={ title }
+              title={ title }
+              testid={ testid }
+              page={ page }
+              searchFoodsBtnOnClick={ searchFoodsBtnOnClick }
+            />
+          ))}
+        </div>
+      </div>
       <Footer />
     </div>
   );

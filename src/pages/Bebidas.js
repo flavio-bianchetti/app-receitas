@@ -45,23 +45,26 @@ function Bebidas() {
   };
 
   return (
-    <div className="pages-background">
-      <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinks } />
-      <section className="foodsAndDrinks-container">
-        <section>
+    handleSearchDrinks && (
+      <div className="pages-background">
+        <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinks } />
+        <section className="foodsAndDrinks-category-container">
           {drinkCategories.map(({ strCategory }, i) => {
             if (i > categorieBtnQuantity) return false;
             return (<FoodCategorieBtn
               onCategorieButtonClick={ onCategorieButtonClick }
               key={ strCategory }
-              categoryName={ strCategory }
+              categoryName={ strCategory === 'Other/Unknown'
+                ? 'Other / Unknown' : strCategory }
             />);
           })}
         </section>
-        <Cards />
-      </section>
-      <Footer />
-    </div>
+        <section className="foodsAndDrinks-container">
+          <Cards />
+        </section>
+        <Footer />
+      </div>
+    )
   );
 }
 

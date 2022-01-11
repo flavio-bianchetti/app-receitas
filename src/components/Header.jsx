@@ -5,7 +5,7 @@ import profile from '../images/profileIcon.svg';
 
 function Header({ title }) {
   return (
-    <header className="header">
+    <header className="header header-done">
       <Link to="/perfil">
         <div>
           <img
