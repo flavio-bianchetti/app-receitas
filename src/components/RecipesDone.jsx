@@ -4,8 +4,8 @@ import RecipeDoneCard from './RecipeDoneCard';
 
 function RecipesDone({ handleClick, filteredDoneRecipes }) {
   return (
-    <div>
-      <div>
+    <div className="recipeDone">
+      <div className="recipeDone-buttons">
         <button
           data-testid="filter-by-all-btn"
           name="da"

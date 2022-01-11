@@ -5,10 +5,11 @@ import profile from '../images/profileIcon.svg';
 
 function Header({ title }) {
   return (
-    <header>
+    <header className="header">
       <Link to="/perfil">
-        <div className="header">
+        <div>
           <img
+            className="profileIcon"
             src={ profile }
             alt="ProfileIcon"
             data-testid="profile-top-btn"
@@ -18,6 +19,7 @@ function Header({ title }) {
       <h2 data-testid="page-title">
         {title}
       </h2>
+      <div />
     </header>
   );
 }

@@ -15,61 +15,71 @@ function RecipeDoneCard({ recipe, index }) {
   }
 
   return (
-    <div>
+    <div className="recipeDone-card">
+      <div className="recipe-info">
+        <h1
+          data-testid={ `${index}-horizontal-top-text` }
+        >
+          {
+            recipe.alcoholicOrNot === ''
+              ? `${recipe.area} - ${recipe.category}`
+              : `${recipe.alcoholicOrNot}`
+          }
+        </h1>
+        {/* <Link to={ `/${recipe.type}s/${recipe.id}` }>
+          <p
+            data-testid={ `${index}-horizontal-name` }
+          >
+            { recipe.name }
+          </p>
+        </Link> */}
+        <div className="recipeDone-date-share-container">
+          <p
+            data-testid={ `${index}-horizontal-done-date` }
+          >
+            { recipe.doneDate }
+          </p>
+          <button
+            type="button"
+            name={ recipe.image }
+            onClick={ () => handleShare() }
+          >
+            <img
+              data-testid={ `${index}-horizontal-share-btn` }
+              className="share-icon"
+              src={ shareIcon }
+              alt="shareIcon"
+            />
+          </button>
+        </div>
+        {
+          isCopied && <span>Link copiado!</span>
+        }
+        {
+          recipe.tags.map((tagName) => (
+            <button
+              className="recipeDone-tagButton"
+              key={ tagName }
+              data-testid={ `${index}-${tagName}-horizontal-tag` }
+              type="button"
+            >
+              { tagName }
+            </button>
+          ))
+        }
+      </div>
       <Link to={ `/${recipe.type}s/${recipe.id}` }>
-        <img
+        <div
+          className="recipeDoneCard-img"
+          style={ { backgroundImage: `url(${recipe.image})` } }
+        />
+        {/* <img
+          className="recipeDoneCard-img"
           data-testid={ `${index}-horizontal-image` }
           src={ recipe.image }
           alt={ `${recipe.name}` }
-        />
+        /> */}
       </Link>
-      <h1
-        data-testid={ `${index}-horizontal-top-text` }
-      >
-        {
-          recipe.alcoholicOrNot === ''
-            ? `${recipe.area} - ${recipe.category}`
-            : `${recipe.alcoholicOrNot}`
-        }
-      </h1>
-      <Link to={ `/${recipe.type}s/${recipe.id}` }>
-        <p
-          data-testid={ `${index}-horizontal-name` }
-        >
-          { recipe.name }
-        </p>
-      </Link>
-      <p
-        data-testid={ `${index}-horizontal-done-date` }
-      >
-        { recipe.doneDate }
-      </p>
-      <button
-        type="button"
-        name={ recipe.image }
-        onClick={ () => handleShare() }
-      >
-        <img
-          data-testid={ `${index}-horizontal-share-btn` }
-          className="share-icon"
-          src={ shareIcon }
-          alt="shareIcon"
-        />
-      </button>
-      {
-        isCopied && <span>Link copiado!</span>
-      }
-      {
-        recipe.tags.map((tagName) => (
-          <button
-            key={ tagName }
-            data-testid={ `${index}-${tagName}-horizontal-tag` }
-            type="button"
-          >
-            { tagName }
-          </button>
-        ))
-      }
     </div>
   );
 }
