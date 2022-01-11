@@ -20,7 +20,7 @@ body {
 .pages-background-drink-food {
   background-image: url(./images/pattern-1.jpeg);
   margin-top: 2.6rem;
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .header {
