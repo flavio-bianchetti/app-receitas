@@ -285,11 +285,17 @@ input[type='radio']:checked:after {
   border-radius: 3px;
   background-color:rgba(253, 253, 253, 0.624);
   border-radius: 1rem;
-  width: 135px;
+  width: 145px;
 }
 
 .card:hover {
   color: rgb(25, 32, 223);
+}
+
+.card h2 {
+  height: 60px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .cardTitle-container {
