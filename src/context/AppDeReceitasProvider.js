@@ -2,9 +2,11 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import AppDeReceitasContext from './AppDeReceitasContext';
 import dishesRequest, { dishesByIngredient,
-  dishesByName, dishesByLastLetter } from '../services/apiComidas';
+  dishesByName, dishesByLastLetter,
+  dishesIngredientsList } from '../services/apiComidas';
 import drinksRequest, { drinksByIngredient,
-  drinksByName, drinksByLastLetter } from '../services/apiDrinks';
+  drinksByName, drinksByLastLetter,
+  drinksIngredientsList } from '../services/apiDrinks';
 import { getIngredients, getMeasures,
   getIngredientsAndMeasures } from '../services/ingredientsAndMeasures';
 
@@ -21,6 +23,19 @@ function AppDeReceitasProvider({ children }) {
     { cocktails: {}, meals: {} },
   );
   const [storageDoneRecipes, setStorageDoneRecipes] = useState([]);
+  const [listMealsIngredients, setListMealsIngredients] = useState([]);
+  const [listDrinksIngredients, setListDrinksIngredients] = useState([]);
+  const [isClickedIngredientImage, setIsClickedIngredientImage] = useState(false);
+
+  useEffect(() => {
+    dishesRequest(dishesIngredientsList())
+      .then(({ meals }) => setListMealsIngredients(meals))
+      .catch(() => setListMealsIngredients([]));
+
+    drinksRequest(drinksIngredientsList())
+      .then(({ drinks }) => setListDrinksIngredients(drinks))
+      .catch(() => setListDrinksIngredients([]));
+  }, []);
 
   useEffect(() => {
     if (!localStorage.getItem('doneRecipes')) {
@@ -151,6 +166,10 @@ function AppDeReceitasProvider({ children }) {
     storageRecipesProgress,
     isRecipeButtonEnable,
     setIsRecipeButtonEnable,
+    listMealsIngredients,
+    listDrinksIngredients,
+    isClickedIngredientImage,
+    setIsClickedIngredientImage,
   };
 
   return (

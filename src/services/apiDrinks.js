@@ -2,6 +2,10 @@ const drinksRequest = (drinksUrl) => fetch(drinksUrl)
   .then((response) => response.json()
     .then((data) => (data.drinks ? Promise.resolve(data) : Promise.reject(data))));
 
+export const drinksIngredientsList = () => (
+  'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
+);
+
 export const drinksByIngredient = (ingredient) => (
   `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingredient}`
 );

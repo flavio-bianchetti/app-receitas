@@ -2,6 +2,10 @@ const dishesRequest = (dishesUrl) => fetch(dishesUrl)
   .then((response) => response.json()
     .then((data) => (data.meals ? Promise.resolve(data) : Promise.reject(data))));
 
+export const dishesIngredientsList = () => (
+  'https://www.themealdb.com/api/json/v1/1/list.php?i=list'
+);
+
 export const dishesByIngredient = (ingredient) => (
   `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
 
