@@ -33,23 +33,26 @@ function ExplorarOrigem() {
 
   return (
     <div>
-      <Header title="Explorar Origem" />
-      <select
-        data-testid="explore-by-area-dropdown"
-        onChange={ (e) => onChangeArea(e) }
-      >
-        {areas.map(({ strArea }) => (
-          <option
-            key={ strArea }
-            value={ strArea }
-            data-testid={ `${strArea}-option` }
+      <div className="pages-background">
+        <Header title="Explorar Origem" />
+        <div className="explore-area-select-container">
+          <select
+            data-testid="explore-by-area-dropdown"
+            onChange={ (e) => onChangeArea(e) }
           >
-            {strArea}
-
-          </option>
-        ))}
-      </select>
-      <Cards />
+            {areas.map(({ strArea }) => (
+              <option
+                key={ strArea }
+                value={ strArea }
+                data-testid={ `${strArea}-option` }
+              >
+                {strArea}
+              </option>
+            ))}
+          </select>
+        </div>
+        <Cards />
+      </div>
       <Footer />
     </div>
   );

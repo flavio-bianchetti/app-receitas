@@ -18,34 +18,37 @@ function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
   }
 
   return (
-    <div>
+    <div className="explore-food-cards-container">
       {
         ingredientsList.map((ingredient, index) => (
           index < numMaxIngredients
             && (
-              <Link
-                to={ path }
-                onClick={ () => handleClickLink(ingredient) }
-              >
-                <div
-                  key={ ingredient.strIngredient || ingredient.strIngredient1 }
-                  data-testid={ `${index}-ingredient-card` }
+              <div className="explore-food-card-container">
+                <Link
+                  to={ path }
+                  onClick={ () => handleClickLink(ingredient) }
                 >
-                  <img
-                    data-testid={ `${index}-card-img` }
-                    src={
-                      `${imageUrl}${ingredient.strIngredient
-                      || ingredient.strIngredient1}-Small.png`
-                    }
-                    alt={ ingredient.strIngredient || ingredient.strIngredient1 }
-                  />
-                  <span
-                    data-testid={ `${index}-card-name` }
+                  <div
+                    className="explore-food-card"
+                    key={ ingredient.strIngredient || ingredient.strIngredient1 }
+                    data-testid={ `${index}-ingredient-card` }
                   >
-                    { ingredient.strIngredient || ingredient.strIngredient1 }
-                  </span>
-                </div>
-              </Link>
+                    <img
+                      data-testid={ `${index}-card-img` }
+                      src={
+                        `${imageUrl}${ingredient.strIngredient
+                        || ingredient.strIngredient1}-Small.png`
+                      }
+                      alt={ ingredient.strIngredient || ingredient.strIngredient1 }
+                    />
+                    <h2
+                      data-testid={ `${index}-card-name` }
+                    >
+                      { ingredient.strIngredient || ingredient.strIngredient1 }
+                    </h2>
+                  </div>
+                </Link>
+              </div>
             )
         ))
       }

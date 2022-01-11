@@ -9,7 +9,7 @@ function Explorar() {
     <div>
       <Header title="Explorar" />
       <div className="pages-background">
-        <section className="explore-food-container">
+        <section className="profile-content">
           <button
             data-testid="explore-food"
             type="button"
