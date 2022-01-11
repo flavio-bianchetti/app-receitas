@@ -38,7 +38,9 @@ function Perfil() {
         <Header title="Perfil" />
         <div className="pages-background">
           <section className="profile-content">
-            <h3 data-testid="profile-email">{user.email}</h3>
+            <div className="wordBreak">
+              <h3 data-testid="profile-email">{user.email}</h3>
+            </div>
             <button
               type="button"
               name="/receitas-feitas"

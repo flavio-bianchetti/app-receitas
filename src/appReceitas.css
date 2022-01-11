@@ -673,13 +673,16 @@ footer {
 .profile-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;  
   padding: 5rem 1rem;
 }
 
 .profile-content h3 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  width: 320px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .profile-content button {
@@ -701,6 +704,12 @@ footer {
   background-color: #ce6b36;
 }
 
+@media screen and (min-width: 400px){
+  .profile-content h3 {
+    width: auto;
+    text-overflow: initial;
+  }
+}
 /* ----- Explore foods drinks and food ----- */
 
 
