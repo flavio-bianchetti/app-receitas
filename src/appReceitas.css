@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300;700&family=Source+Sans+3:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300;700&family=Source+Sans+3:wght@400;600&display=swap') ;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,97 +11,98 @@ body {
 }
 
 .pages-background {
-  background-image: url(./images/pattern-1.jpeg);
-  margin-top: 2.8rem;
+  background-image: url('./images/pattern-1.jpeg');
   margin-bottom: 2.6rem;
+  margin-top: 2.8rem;
   min-height: 90vh;
 }
 
 .pages-background-drink-food {
-  background-image: url(./images/pattern-1.jpeg);
+  background-image: url('./images/pattern-1.jpeg');
   margin-top: 2.6rem;
   min-height: 100vh;
 }
 
 .header {
-  background-color:#FF4141;
-  color: #fff;
-  top: 0;
-  padding: 0rem 1.5rem;
+  background-color: #ff4141;
+  border-radius: 0 0 15px 15px;
+  color: white;
+  font-family: Arima Madurai , sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
   height: 2.8rem;
+  padding: 0 1.5rem;
   position: fixed;
+  text-align: center;
+  top: 0;
   width: 100%;
   z-index: 99;
-  border-radius: 0 0 15px 15px;
-  text-align: center;
-  font-family: 'Arima Madurai', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
 }
 
 .header img, .header input {
   width: 22px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and ( min-width : 768px ) {
+
   .header {
-    padding: 0rem 3rem;
+    padding: 0 3rem;
   }
 }
 
 
-/* ----- Pagina de login --------*/
+/* ----- Pagina de login -------- */
 
-/* 
+/*
 https://files.wallpaperpass.com/2019/10/food%20wallpaper%20011%20-%201920x1080.jpg
 https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.jpg
 */
-.appReceitas {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-image: url('https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
 
-  padding: 1rem
+.appReceitas {
+  align-items: center;
+  background-attachment: fixed;
+  background-image: url('https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  padding: 1rem;
 }
 
 .login-form {
-  background-color: rgba(255,255,255,0.5);
-  padding: 2rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 1rem;
-  
+  padding: 2rem 1.5rem;
+
 }
 
 .login-form h1, .login-form p {
   text-align: center;
-  
+
 }
 
 .login-form h1 {
+  color: rgb(242, 91, 21);
   font-size: 2.5rem;
-  color:rgb(242, 91, 21);
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.65);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
 }
 
 .login-form p {
-  margin-bottom: 2rem;
   font-size: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .login-form input {
-  width: 100%;
-  height: 2.9rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: 0.5rem;
   border: none;
+  border-radius: 0.5rem;
+  height: 2.9rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
   outline: none;
   padding: 1rem;
+  width: 100%;
 }
 
 .login-form label {
@@ -109,11 +110,11 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 }
 
 .login-form button {
-  padding: 1rem 2rem;
-  border-radius: 0.5rem;
-  font-size: 1rem;
   border: none;
-  color: #fff;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem 2rem;
 }
 
 .login-form button:enabled {
@@ -121,40 +122,27 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   cursor: pointer;
 }
 
-.login-form button:disabled{
+.login-form button:disabled {
   background-color: rgba(252, 75, 75, 0.522);
 }
 
-.login-form button:hover:enabled{
+.login-form button:hover:enabled {
   background-color: rgba(46, 30, 146, 0.522);
 }
-
-
 
 /* ----- Header Search ------ */
 
 /* Fixas o Header! */
-
 .headerSearch {
-  /* background-color:#FF4141; */
-  /* color: #fff; */
-  display: flex;
-  /* top: 0; */
-  justify-content: space-between;
   align-items: center;
-  /* padding: 0rem 1.5rem; */
-  /* height: 2.5rem; */
-  /* position: fixed; */
-  /* width: 100%; */
-  /* z-index: 99; */
-  /* border-radius: 0 0 15px 15px; */
-  /* text-align: center; */
+  display: flex;
+  justify-content: space-between;
 }
 
 .searchForm {
+  background-color: #0000;
   display: fixed;
   margin: 1rem;
-  background-color: #0000;
   padding: 1rem 0;
 }
 
@@ -163,91 +151,96 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 }
 
 .search-input {
-  height: 3rem;
-  padding: 0.9rem 1rem;
-  border-radius: 0.7rem;
-  outline: none;
-  width: 100%;
   border: 3px solid black;
+  border-radius: 0.7rem;
+  height: 3rem;
+  outline: none;
+  padding: 0.9rem 1rem;
+  width: 100%;
 }
 
 .search-input:focus {
-  border: 3px solid #FF4141 !important;
+  border: 3px solid #ff4141;
 }
 
-/* Position inputs properly*/
-
+/* Position inputs properly */
 .search-types-container {
   margin: 1rem;
 }
 
 .search-type-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 .searchForm-container label {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
   font-size: 1.2rem;
   margin-top: 0.2rem;
-  cursor: pointer;
 }
 
 .searchForm-container input {
   cursor: pointer;
 }
 
-.searchForm-container button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
+.search-forom-button {
   background-color: #30abe4;
-  color: #fff;
   border: none;
-  cursor: pointer;
-  width: 100%;
   border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
 }
-input[type='radio']:after {
-  width: 15px;
-  height: 15px;
-  border-radius: 15px;
-  top: -2px;
-  left: -1px;
-  position: relative;
+
+.search-forom-button:hover {
+  background-color: #ff4141;
+}
+
+.search-radio:after {
   background-color: #aaacaa;
+  border: 2px solid white;
+  border-radius: 15px;
   content: '';
   display: inline-block;
-  visibility: visible;
-  border: 2px solid white;
-}
-
-input[type='radio']:checked:after {
-  width: 15px;
   height: 15px;
-  border-radius: 15px;
-  top: -2px;
   left: -1px;
   position: relative;
-  background-color: #FF4141;
+  top: -2px;
+  visibility: visible;
+  width: 15px;
+}
+
+.search-radio:checked:after {
+  background-color: #ff4141;
+  border: 2px solid white;
+  border-radius: 15px;
   content: '';
   display: inline-block;
+  height: 15px;
+  left: -1px;
+  position: relative;
+  top: -2px;
   visibility: visible;
-  border: 2px solid white;
+  width: 15px;
 }
 
-.searchForm-container button:hover {
-  background-color: #FF4141;
-}
+@media screen and ( min-width : 500px ) {
 
-@media screen and (min-width: 500px) {
   .search-types-container {
     display: flex;
   }
+
   .searchForm-container button {
-    width: 480px;
     margin: 0 auto;
+    width: 480px;
   }
 
   .search-form-button-container {
@@ -257,19 +250,18 @@ input[type='radio']:checked:after {
 
 }
 
-@media screen and (min-width: 768px) {
+@media screen and ( min-width : 768px ) {
 
   .searchForm {
     margin: 0 3rem;
   }
 }
 
-/*----- Foods And Drinks cards section */
-
+/* ----- Foods And Drinks cards section */
 .foodsAndDrinks-container {
   margin: 0 0.5rem;
-  padding: 2rem 0;
   min-height: 60vh;
+  padding: 2rem 0;
 }
 
 .cards {
@@ -279,13 +271,12 @@ input[type='radio']:checked:after {
 }
 
 .card {
+  background-color: rgba(253, 253, 253, 0.624);
+  border-radius: 1rem;
+  color: black;
   margin: 0.4rem;
   text-align: center;
   text-decoration: none;
-  color: #000;
-  border-radius: 3px;
-  background-color:rgba(253, 253, 253, 0.624);
-  border-radius: 1rem;
   width: 145px;
 }
 
@@ -295,122 +286,94 @@ input[type='radio']:checked:after {
 
 .card h2 {
   max-height: 57px;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cardTitle-container {
-  padding: 0.5rem;
-  height: 100%;
-  display: flex;
   align-items: center;
+  display: flex;
+  height: 100%;
   justify-content: center;
+  padding: 0.5rem;
 }
 
 .card-image-container {
-  overflow: hidden;
   border-radius: 1rem;
+  overflow: hidden;
 }
 
 .card img {
-  width: 100%;
+  border-radius: 1rem;
   height: 100%;
-  -webkit-transition: -webkit-transform .5s ease;
-  transition: transform .5s ease;
-  border-radius: 1rem
+  transition: transform 0.5s ease;
+  width: 100%;
 }
 
 .card:hover img {
-  -webkit-transform: scale(1.1);
-   transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .foodsAndDrinks-category-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
-  /* align-items: center; */
   padding: 0 0.5rem;
-  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
 }
 
-.foodsAndDrinks-category-container button {
-  padding: 0.5rem 0.5rem;
-  margin: 5px;
-  border: none;
+.foodCategoryBtn {
   background-color: #ff8340;
-  color: #fff;
-  font-size: 1.1rem;
+  border: none;
   border-radius: 3px;
+  color: white;
   cursor: pointer;
+  font-size: 1.1rem;
+  margin: 5px;
+  padding: 0.5rem;
 }
 
-.foodsAndDrinks-category-container button:hover {
+.foodCategoryBtn:hover {
   background-color: #cc6934;
 }
 
-/* @media screen and (min-width: 330px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr
-  }
-}
-
-@media screen and (min-width: 512px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr 1fr
-  }
-} */
-
-@media screen and (min-width: 790px) {
+@media screen and ( min-width : 790px ) {
 
   .foodsAndDrinks-container {
     margin: 0 3rem;
   }
 
-  /* .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr
-  } */
-
   .card {
-    margin: 0.5rem;
-    background-color:rgba(253, 253, 253, 0.624);
+    background-color: rgba(253, 253, 253, 0.624);
     border-radius: 1rem;
+    margin: 0.5rem;
   }
 }
 
-/* @media screen and (min-width: 925px) {
-  .cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr
-  }
-} */
 
-
-/*---- Foooter ----- */
-
+/* ---- Foooter ----- */
 footer {
-  width: 100%;
- position: fixed;
-  padding: 0.3rem 1rem;
-  height: 2.6rem;
-  background-color: #FF4141;
+  background-color: #ff4141;
   bottom: 0;
+  height: 2.6rem;
+  padding: 0.3rem 1rem;
+  position: fixed;
+  width: 100%;
   z-index: 99;
 }
 
 .footer-container {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  
+
 }
 
-.footer-container img {
+.footerIcon {
   width: 30px;
 }
 
-@media screen and (min-width: 400px) {
+@media screen and ( min-width : 400px ) {
+
   .footer-container {
     justify-content: space-around;
   }
@@ -418,48 +381,39 @@ footer {
 
 
 /* --- Detalhes de comida de bebida ----- */
-
 .headerheader {
-  /* vertical-align: middle; */
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: center;
 }
 
 .food-details-container {
-  /* margin-top: 3rem; */
-  padding-top: 2rem;
   padding-bottom: 5rem;
+  padding-top: 2rem;
 }
 
 .food-details {
- 
-  max-width: 400px;
-  margin: 0 auto;
+  align-items: center;
   background-color: rgba(253, 253, 253, 0.624);
-  padding: 1rem;
   border-radius: 1rem;
   display: flex;
-  align-items: center;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
+  max-width: 400px;
+  padding: 1rem;
 }
 
-/* ::-webkit-scrollbar {
-  width:  1rem; 
-  border: 1px solid #d5d5d5;
-} */
-
-.recipe {
-  
+.recipe-info h1 {
+  font-size: 1.4rem;
 }
 
 .recipe h1 {
-  text-align: center;
+  font-family: 'Source Sans 3' , sans-serif;
   font-size: 2rem;
-  margin: 1rem 0;
-  font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
+  margin: 1rem 0;
+  text-align: center;
 }
 
 .recipe-photo {
@@ -467,40 +421,37 @@ footer {
 }
 
 .foodButtons-n-foodType {
-  display: flex;  
-  justify-content: space-between;
   align-items: center;
+  display: flex;
+  justify-content: space-between;
 }
 
 .foodButtons-n-foodType p {
- font-size: 1.7rem;
- color: #FF4140;
+  color: #ff4140;
+  font-size: 1.7rem;
 }
 
 .foodButtons {
-  display: flex;
   align-items: center;
+  display: flex;
 }
 
-.foodButtons button {
-  height: 50px;
-  display: flex;
+.foodButton {
   align-items: center;
-  padding: 0 0.5rem;
-  background-color: #FF4141;
+  background-color: #ff4141;
   border: none;
   border-radius: 3px;
-  color: #fff;
+  color: white;
   cursor: pointer;
-
-}
-
-.foodButtons button + button {
-  margin-left: 0.3rem;
-}
-
-.foodButtons button img {
+  display: flex;
+  height: 50px;
   margin-left: 0.2rem;
+  padding: 0.4rem;
+
+}
+
+.foodButton + .foodButton {
+  margin-left: 0.3rem;
 }
 
 .white-heart, .black-heart, .share-icon {
@@ -508,23 +459,23 @@ footer {
 }
 
 .ingredients {
+  font-size: 1.2rem;
   list-style-type: none;
   padding: 1rem 0;
-  font-size: 1.2rem;
 }
 
 .instructions {
-  padding: 1rem 0;
   font-size: 1.2rem;
+  padding: 1rem 0;
 }
 
 .start-recipe-btn, .continue-recipe-btn {
-  padding: 1rem 2rem;
   border: none;
-  color: #fff;
   border-radius: 3px;
+  color: white;
   cursor: pointer;
-  font-size: 1.2rem
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
 }
 
 .start-recipe-btn {
@@ -545,16 +496,15 @@ footer {
 }
 
 /* ----- Fodd progress page ---- */
-
 .finish-recipe-btn {
-  padding: 1rem 2rem;
   border: none;
   border-radius: 3px;
+  padding: 1rem 2rem;
 }
 
 .finish-recipe-btn:enabled {
-  background-color: #FF4141;
-  color: #fff;
+  background-color: #ff4141;
+  color: white;
 }
 
 .ingredient-steps {
@@ -572,41 +522,40 @@ footer {
 }
 
 /* ----- Receitas feitas ----- */
-
 .header-done {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .profileIcon {
-  width: 25px
+  width: 25px;
 }
 
 .recipesDone-container {
-  min-height: 100vh;
-  padding: 2rem 0;
   display: flex;
   justify-content: center;
+  min-height: 100vh;
+  padding: 2rem 0;
 
 }
 
 .recipeDone {
-  max-width: 400px; 
-  margin-top: 0rem;
+  margin-top: 0;
+  max-width: 400px;
   padding: 0 1rem;
 }
 
 .recipeDone-card {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: rgb(243, 243, 243);
-  box-shadow: 7px 7px 6px 0px rgba(0,0,0,0.47);
-  margin-bottom: 1rem;
   border-radius: 1rem;
-  width: 100%;
+  box-shadow: 7px 7px 6px 0 rgba(0, 0, 0, 0.47);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
   padding: 0.5rem 0;
+  width: 100%;
 }
 
 .recipe-info {
@@ -615,7 +564,7 @@ footer {
   width: 100%;
 }
 
-.recipe-info button {
+.recipe-info-button {
   margin-left: 0.3rem;
 }
 
@@ -625,48 +574,39 @@ footer {
   margin-bottom: 1rem;
 }
 
-.recipeDone-buttons button {
-  width: 80px;
-  padding: 1rem 0.5rem;
-  border: none;
+.recipeDone-button {
   background-color: #30abe4;
-  cursor: pointer;
+  border: none;
   border-radius: 3px;
-  color: #fff;
+  color: white;
+  cursor: pointer;
   font-size: 1.1rem;
+  padding: 1rem 0.5rem;
+  width: 80px;
 }
 
-.recipeDone-buttons button:hover {
+.recipeDone-button:hover {
   background-color: #dd9a34;
 }
 
-.recipeDone-buttons button + button {
+.recipeDone-button + .recipeDone-button {
   margin-left: 0.3rem;
 }
 
 .recipeDone-date-share-container {
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: space-between;
 }
 
-.recipeDone-date-share-container button {
-  border: none;
-  cursor: pointer;
-}
-
-.recipeDone-date-share-container button:hover {
-  transform: scale(1.1);
-}
-
 .recipeDone-tagButton {
+  background-color: #ff4141;
   border: none;
-  background-color: #FF4141;
-  padding: 0.2rem;
   border-radius: 0.5rem;
+  color: white;
   cursor: pointer;
-  color: #fff;
   margin: 0.2rem;
+  padding: 0.2rem;
 }
 
 .recipeDone-tagButton:hover {
@@ -674,114 +614,107 @@ footer {
 }
 
 .recipeDoneCard-img {
-  width: 130px;
-  height: 130px;
-  background-size: contain;
   background-repeat: no-repeat;
+  background-size: contain;
   border-radius: 1rem;
+  height: 130px;
+  width: 130px;
 }
 
 
 /* ---- Profile page ---- */
-
 .profile-content {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;  
   padding: 5rem 1rem;
 }
 
 .profile-content h3 {
   font-size: 1.4rem;
   margin-bottom: 1rem;
-  width: 320px;
-  text-overflow: ellipsis;
   overflow: hidden;
+  text-overflow: ellipsis;
+  width: 320px;
 }
 
-.profile-content button {
+.profileBtn {
+  background-color: #f77f3f;
   border: none;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.5rem;
   padding: 2rem 0;
   width: 100%;
-  background-color: #f77f3f;
-  color: #fff;
-  font-size: 1.5rem;
-  border-radius: 3px;
-  cursor: pointer;
 }
 
-.profile-content button + button {
+.profileBtn + .profileBtn {
   margin-top: 0.5rem;
 }
 
-.profile-content button:hover {
+.profileBtn:hover {
   background-color: #ce6b36;
 }
 
-@media screen and (min-width: 400px){
+@media screen and ( min-width : 400px ) {
+
   .profile-content h3 {
-    width: auto;
     text-overflow: initial;
+    width: auto;
   }
 }
+
 /* ----- Explore foods drinks and food ----- */
-
-
 .explore-food-cards-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 1rem
+  padding: 1rem;
 }
 
 .explore-food-card {
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100px; */
   text-align: center;
 }
 
-.explore-food-card-container{
+.explore-food-card-container {
   background-color: rgba(233, 232, 232, 0.645);
-  margin: 0.4rem;
   border-radius: 3px;
-  padding: 0.5rem
+  margin: 0.4rem;
+  padding: 0.5rem;
 }
 
 .explore-food-card-container a {
+  color: black;
   text-decoration: none;
-  color:  #000
 }
 
 /* ---- Explore area ----- */
-
 .explore-area-select-container {
   display: flex;
   justify-content: center;
 }
 
 .explore-area-select-container select {
-  padding: 0.8rem 1.5rem;
+  background-color: white;
   border: 2px solid black;
-  background-color: #fff;
   border-radius: 3px;
-  font-size: 1.1rem
+  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
 }
 
 /* ------- Favorite recipes page --------- */
-
 .favorite-recipes-container {
-  padding: 1.5rem 0
+  padding: 1.5rem 0;
 }
 
 .favorite-recipes-card-container {
-  display: flex;
+
   /* justify-content: center; */
   align-items: center;
+  display: flex;
   flex-direction: column;
-  max-width: 400px;
   margin: 0 auto;
+  max-width: 400px;
   padding: 1rem;
 }
 
@@ -792,8 +725,4 @@ footer {
 
 .favorite-recipe-share-name-container input + input {
   margin-left: 0.5rem;
-}
-
-.favorite-recipes-card {
-  
 }

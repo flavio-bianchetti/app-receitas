@@ -46,13 +46,6 @@ function IngredientSteps({ ingredientsAndMeasures }) {
     <div className="ingredient-steps">
       {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
         <div className="ingredient-step" key={ ingredient }>
-          <input
-            type="checkbox"
-            id={ `${ingredient}-${index}` }
-            name={ ingredient }
-            checked={ progressRecipes[ingredient] }
-            onChange={ (e) => onChangeProgressRecipe(e) }
-          />
           <label
             htmlFor={ `${ingredient}-${index}` }
             data-testid={ `${index}-ingredient-step` }
@@ -60,6 +53,13 @@ function IngredientSteps({ ingredientsAndMeasures }) {
               { textDecoration: progressRecipes[ingredient] ? 'line-through' : 'none' }
             }
           >
+            <input
+              type="checkbox"
+              id={ `${ingredient}-${index}` }
+              name={ ingredient }
+              checked={ progressRecipes[ingredient] }
+              onChange={ (e) => onChangeProgressRecipe(e) }
+            />
             {`${ingredient}: ${measure}`}
           </label>
 

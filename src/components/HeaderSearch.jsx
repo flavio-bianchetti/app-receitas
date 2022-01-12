@@ -40,44 +40,47 @@ function HeaderSearch({ title, handleSearch }) {
           />
           <div className="search-types-container">
             <div className="search-type-container">
-              <input
-                type="radio"
-                data-testid="ingredient-search-radio"
-                id="search-type-ingredient"
-                name="search-type"
-                value="search-ingredient"
-                checked={ searchType === 'search-ingredient' }
-                onChange={ (e) => handleSearchType(e) }
-              />
               <label htmlFor="search-type-ingredient">
+                <input
+                  type="radio"
+                  data-testid="ingredient-search-radio"
+                  id="search-type-ingredient"
+                  name="search-type"
+                  value="search-ingredient"
+                  checked={ searchType === 'search-ingredient' }
+                  onChange={ (e) => handleSearchType(e) }
+                  className="search-radio"
+                />
                 Ingrediente
               </label>
             </div>
             <div className="search-type-container">
-              <input
-                type="radio"
-                data-testid="name-search-radio"
-                id="search-type-name"
-                name="search-type"
-                value="search-name"
-                checked={ searchType === 'search-name' }
-                onChange={ (e) => handleSearchType(e) }
-              />
               <label htmlFor="search-type-name">
+                <input
+                  type="radio"
+                  data-testid="name-search-radio"
+                  id="search-type-name"
+                  name="search-type"
+                  value="search-name"
+                  checked={ searchType === 'search-name' }
+                  onChange={ (e) => handleSearchType(e) }
+                  className="search-radio"
+                />
                 Nome
               </label>
             </div>
             <div className="search-type-container">
-              <input
-                type="radio"
-                data-testid="first-letter-search-radio"
-                id="search-type-first-letter"
-                name="search-type"
-                value="search-first-letter"
-                checked={ searchType === 'search-first-letter' }
-                onChange={ (e) => handleSearchType(e) }
-              />
               <label htmlFor="search-type-first-letter">
+                <input
+                  type="radio"
+                  data-testid="first-letter-search-radio"
+                  id="search-type-first-letter"
+                  name="search-type"
+                  value="search-first-letter"
+                  checked={ searchType === 'search-first-letter' }
+                  onChange={ (e) => handleSearchType(e) }
+                  className="search-radio"
+                />
                 Primeira letra
               </label>
             </div>
@@ -87,6 +90,7 @@ function HeaderSearch({ title, handleSearch }) {
               type="button"
               data-testid="exec-search-btn"
               onClick={ () => handleSearch(searchType, searchInput) }
+              className="search-forom-button"
             >
               Buscar
             </button>

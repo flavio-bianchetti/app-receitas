@@ -38,31 +38,20 @@ function RecipeDetails({ dishOrDrink,
         </p>
         <div className="foodButtons ">
           <button
+            className="foodButton"
             type="button"
             data-testid="share-btn"
             onClick={ () => handleShare() }
           >
             Compartilhar
           </button>
-          <button
-            type="button"
+          <input
+            type="image"
+            className="foodButton"
             onClick={ () => onFavoriteButtonClick() }
-          >
-            {/* Favoritar */}
-            {!isRecipeFavorite() ? (
-              <img
-                data-testid="favorite-btn"
-                className="white-heart"
-                src={ whiteHeartIcon }
-                alt="heart"
-              />
-            ) : <img
-              data-testid="favorite-btn"
-              className="black-heart"
-              src={ blackHeartIcon }
-              alt="black heart"
-            />}
-          </button>
+            src={ !isRecipeFavorite() ? whiteHeartIcon : blackHeartIcon }
+            alt={ !isRecipeFavorite() ? 'white heart' : 'black heart' }
+          />
         </div>
         {isCopied && <span>Link copiado!</span>}
 

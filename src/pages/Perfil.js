@@ -42,6 +42,7 @@ function Perfil() {
               <h3 data-testid="profile-email">{user.email}</h3>
             </div>
             <button
+              className="profileBtn"
               type="button"
               name="/receitas-feitas"
               data-testid="profile-done-btn"
@@ -50,6 +51,7 @@ function Perfil() {
               Receitas Feitas
             </button>
             <button
+              className="profileBtn"
               type="button"
               name="/receitas-favoritas"
               data-testid="profile-favorite-btn"
@@ -58,6 +60,7 @@ function Perfil() {
               Receitas Favoritas
             </button>
             <button
+              className="profileBtn"
               type="button"
               data-testid="profile-logout-btn"
               onClick={ exitButton }

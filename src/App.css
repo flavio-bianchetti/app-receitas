@@ -39,21 +39,21 @@
 
 .rec-cards-container {
   display: flex;
+  margin-top: 1rem;
   overflow: scroll;
   width: 320px;
-  margin-top: 1rem;
 }
 
 .recomendation-img {
-  width: 250px
+  width: 250px;
 }
 
 .rec-cards-container h1 {
-  text-align: center
+  text-align: center;
 }
 
 .start-recipe-btn, .continue-recipe-btn {
-  bottom: 10px;
+  bottom: 0;
   position: fixed;
 }
 

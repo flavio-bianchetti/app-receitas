@@ -59,8 +59,7 @@ function Bebidas() {
             return (<FoodCategorieBtn
               onCategorieButtonClick={ onCategorieButtonClick }
               key={ strCategory }
-              categoryName={ strCategory === 'Other/Unknown'
-                ? 'Other / Unknown' : strCategory }
+              categoryName={ strCategory }
             />);
           })}
         </section>

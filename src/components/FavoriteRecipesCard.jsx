@@ -65,10 +65,12 @@ export default function FavoriteRecipesCard({ recipe, index, unFavorite }) {
         </div>
       </div>
       <Link to={ `/${recipe.type}s/${recipe.id}` }>
-        <div
+        <input
+          type="image"
           className="recipeDoneCard-img"
           data-testid={ `${index}-horizontal-image` }
-          style={ { backgroundImage: `url(${recipe.image})`, borderRadius: '1rem' } }
+          src={ recipe.image }
+          alt={ recipe.name }
         />
       </Link>
     </div>

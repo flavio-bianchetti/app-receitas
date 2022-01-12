@@ -41,18 +41,15 @@ function RecipeDoneCard({ recipe, index }) {
           >
             { recipe.doneDate }
           </p>
-          <button
-            type="button"
+          <input
+            type="image"
+            className="share-icon"
             name={ recipe.image }
             onClick={ () => handleShare() }
-          >
-            <img
-              data-testid={ `${index}-horizontal-share-btn` }
-              className="share-icon"
-              src={ shareIcon }
-              alt="shareIcon"
-            />
-          </button>
+            data-testid={ `${index}-horizontal-share-btn` }
+            src={ shareIcon }
+            alt="shareIcon"
+          />
         </div>
         {
           isCopied && <span>Link copiado!</span>
@@ -71,23 +68,20 @@ function RecipeDoneCard({ recipe, index }) {
         }
       </div>
       <Link to={ `/${recipe.type}s/${recipe.id}` }>
-        <div
-          className="recipeDoneCard-img"
-          style={ { backgroundImage: `url(${recipe.image})` } }
-        />
-        {/* <img
+        <input
+          type="image"
           className="recipeDoneCard-img"
           data-testid={ `${index}-horizontal-image` }
           src={ recipe.image }
-          alt={ `${recipe.name}` }
-        /> */}
+          alt={ recipe.name }
+        />
       </Link>
     </div>
   );
 }
 
 RecipeDoneCard.propTypes = {
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   recipe: PropTypes.shape({
     type: PropTypes.string,
     id: PropTypes.string,
@@ -97,9 +91,7 @@ RecipeDoneCard.propTypes = {
     doneDate: PropTypes.string,
     image: PropTypes.string,
     name: PropTypes.string,
-    tags: PropTypes.shape({
-      map: PropTypes.arrayOf(PropTypes.string),
-    }),
+    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   }),
 };
 
