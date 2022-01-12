@@ -56,6 +56,7 @@ function FinishRecipeButton({ dishOrDrink }) {
       data-testid="finish-recipe-btn"
       disabled={ isRecipeButtonEnable }
       onClick={ () => onFinishRecipe() }
+      className="finish-recipe-btn"
     >
       Finalizar receita
     </button>

@@ -50,10 +50,10 @@ function Bebidas() {
   };
 
   return (
-    <div className="pages-background">
-      <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinks } />
-      <section className="foodsAndDrinks-container">
-        <section>
+    handleSearchDrinks && (
+      <div className="pages-background">
+        <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinks } />
+        <section className="foodsAndDrinks-category-container">
           {drinkCategories.map(({ strCategory }, i) => {
             if (i > categorieBtnQuantity) return false;
             return (<FoodCategorieBtn
@@ -63,10 +63,12 @@ function Bebidas() {
             />);
           })}
         </section>
-        <Cards />
-      </section>
-      <Footer />
-    </div>
+        <section className="foodsAndDrinks-container">
+          <Cards />
+        </section>
+        <Footer />
+      </div>
+    )
   );
 }
 

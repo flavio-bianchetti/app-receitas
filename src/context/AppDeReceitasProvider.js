@@ -49,7 +49,8 @@ function AppDeReceitasProvider({ children }) {
   }, []);
 
   const onChangeProgressRecipe = ({ target }) => {
-    const { name: ingredient } = target;
+    const { value: ingredient } = target;
+    console.log({ ...progressRecipes, [ingredient]: !progressRecipes[ingredient] });
     setProgressRecipes(
       { ...progressRecipes, [ingredient]: !progressRecipes[ingredient] },
     );

@@ -4,11 +4,13 @@ import { PropTypes } from 'prop-types';
 function FoodCategorieBtn({ categoryName, onCategorieButtonClick }) {
   return (
     <button
+      className="foodCategoryBtn"
       type="button"
       data-testid={ `${categoryName}-category-filter` }
       onClick={ () => onCategorieButtonClick(categoryName) }
     >
-      {categoryName}
+      {categoryName === 'Other/Unknown'
+        ? 'Other / Unknown' : categoryName}
     </button>
   );
 }

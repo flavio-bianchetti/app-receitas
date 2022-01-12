@@ -8,20 +8,24 @@ function Explorar() {
   return (
     <div>
       <Header title="Explorar" />
-      <button
-        data-testid="explore-food"
-        type="button"
-        onClick={ () => history.push('/explorar/comidas') }
-      >
-        Explorar Comidas
-      </button>
-      <button
-        data-testid="explore-drinks"
-        type="button"
-        onClick={ () => history.push('/explorar/bebidas') }
-      >
-        Explorar Bebidas
-      </button>
+      <div className="pages-background">
+        <section className="profile-content">
+          <button
+            data-testid="explore-food"
+            type="button"
+            onClick={ () => history.push('/explorar/comidas') }
+          >
+            Explorar Comidas
+          </button>
+          <button
+            data-testid="explore-drinks"
+            type="button"
+            onClick={ () => history.push('/explorar/bebidas') }
+          >
+            Explorar Bebidas
+          </button>
+        </section>
+      </div>
       <Footer />
     </div>
   );

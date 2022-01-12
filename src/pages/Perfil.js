@@ -34,38 +34,43 @@ function Perfil() {
 
   return (
     user && (
-      <div>
+      <>
         <Header title="Perfil" />
-        <h3 data-testid="profile-email">{user.email}</h3>
-
-        <button
-          type="button"
-          name="/receitas-feitas"
-          data-testid="profile-done-btn"
-          onClick={ (e) => redirectButton(e) }
-        >
-          Receitas Feitas
-
-        </button>
-        <button
-          type="button"
-          name="/receitas-favoritas"
-          data-testid="profile-favorite-btn"
-          onClick={ (e) => redirectButton(e) }
-        >
-          Receitas Favoritas
-
-        </button>
-        <button
-          type="button"
-          data-testid="profile-logout-btn"
-          onClick={ exitButton }
-        >
-          Sair
-
-        </button>
-        <Footer />
-      </div>
+        <div className="pages-background">
+          <section className="profile-content">
+            <div className="wordBreak">
+              <h3 data-testid="profile-email">{user.email}</h3>
+            </div>
+            <button
+              className="profileBtn"
+              type="button"
+              name="/receitas-feitas"
+              data-testid="profile-done-btn"
+              onClick={ (e) => redirectButton(e) }
+            >
+              Receitas Feitas
+            </button>
+            <button
+              className="profileBtn"
+              type="button"
+              name="/receitas-favoritas"
+              data-testid="profile-favorite-btn"
+              onClick={ (e) => redirectButton(e) }
+            >
+              Receitas Favoritas
+            </button>
+            <button
+              className="profileBtn"
+              type="button"
+              data-testid="profile-logout-btn"
+              onClick={ exitButton }
+            >
+              Sair
+            </button>
+          </section>
+          <Footer />
+        </div>
+      </>
     )
 
   );

@@ -4,9 +4,10 @@ import RecipeDoneCard from './RecipeDoneCard';
 
 function RecipesDone({ handleClick, filteredDoneRecipes }) {
   return (
-    <div>
-      <div>
+    <div className="recipeDone">
+      <div className="recipeDone-buttons">
         <button
+          className="recipeDone-button"
           data-testid="filter-by-all-btn"
           name="da"
           type="button"
@@ -15,6 +16,7 @@ function RecipesDone({ handleClick, filteredDoneRecipes }) {
           All
         </button>
         <button
+          className="recipeDone-button"
           data-testid="filter-by-food-btn"
           name="comida"
           type="button"
@@ -23,6 +25,7 @@ function RecipesDone({ handleClick, filteredDoneRecipes }) {
           Food
         </button>
         <button
+          className="recipeDone-button"
           data-testid="filter-by-drink-btn"
           name="bebida"
           type="button"

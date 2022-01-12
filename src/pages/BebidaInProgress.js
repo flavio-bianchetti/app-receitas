@@ -4,6 +4,7 @@ import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import drinksRequest, { drinksById } from '../services/apiDrinks';
 import FinishRecipeButton from '../components/FinishRecipeButton';
+import HeaderHeader from '../components/HeaderHeader';
 
 function BebidaInProgress() {
   const {
@@ -29,12 +30,17 @@ function BebidaInProgress() {
 
   return (
     Object.keys(currentDrink).length > 0 && (
-      <div>
-        <DishOrDrinkRecipeDetails
-          dishOrDrink={ currentDrink }
-          ingredientsAndMeasures={ ingredientsAndMeasures }
-        />
-        <FinishRecipeButton dishOrDrink={ currentDrink } />
+      <div className="pages-background-drink-food">
+        <HeaderHeader title="Bebidas" />
+        <section className="food-details-container">
+          <section className="food-details">
+            <DishOrDrinkRecipeDetails
+              dishOrDrink={ currentDrink }
+              ingredientsAndMeasures={ ingredientsAndMeasures }
+            />
+            <FinishRecipeButton dishOrDrink={ currentDrink } />
+          </section>
+        </section>
       </div>
     )
   );

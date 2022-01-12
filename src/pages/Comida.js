@@ -12,22 +12,23 @@ function Comida() {
     currentDishOrDrink: currentMeal,
     setCurrentDishOrDrink: setCurrentMeal,
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
-  console.log(currentMeal);
+  console.log(currentMeal.strYoutube);
 
   const { id } = useParams();
 
   useEffect(() => {
+    console.log(id);
     dishesRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals
         .find((meal) => meal.idMeal === id)));
-  }, []);
+  }, [id]);
 
   return (
 
   // Comando velha guarda =)
 
     Object.keys(currentMeal).length > 0 && (
-      <div className="pages-background ">
+      <div className="pages-background-drink-food">
         <HeaderHeader title="Comidas" />
         <section className="food-details-container">
           <section className="food-details">

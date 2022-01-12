@@ -10,11 +10,13 @@ function ExplorarBebidasIngredientes() {
   return (
     <div>
       <Header title="Explorar Ingredientes" />
-      <IngredientsExplorer
-        ingredientsList={ listDrinksIngredients }
-        imageUrl={ imageUrl }
-        path="/bebidas"
-      />
+      <div className="pages-background">
+        <IngredientsExplorer
+          ingredientsList={ listDrinksIngredients }
+          imageUrl={ imageUrl }
+          path="/bebidas"
+        />
+      </div>
       <Footer />
     </div>
   );
