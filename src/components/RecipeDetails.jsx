@@ -49,6 +49,7 @@ function RecipeDetails({ dishOrDrink,
             type="image"
             className="foodButton"
             onClick={ () => onFavoriteButtonClick() }
+            data-testid="favorite-btn"
             src={ !isRecipeFavorite() ? whiteHeartIcon : blackHeartIcon }
             alt={ !isRecipeFavorite() ? 'white heart' : 'black heart' }
           />

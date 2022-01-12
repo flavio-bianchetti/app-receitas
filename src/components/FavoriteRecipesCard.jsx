@@ -15,11 +15,6 @@ export default function FavoriteRecipesCard({ recipe, index, unFavorite }) {
     setIsCopied(true);
   }
 
-  // function unFavorite(event) {
-  //   const { name } = event.target;
-  //   console.log(name);
-  // }
-
   return (
     <div className="recipeDone-card favorite-recipes-card">
       <div className="recipe-info">

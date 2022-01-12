@@ -8,8 +8,6 @@ function IngredientSteps({ ingredientsAndMeasures }) {
     progressRecipes, currentDishOrDrink,
     setCurrentIdAndType, setIsRecipeButtonEnable } = useContext(AppDeReceitasContext);
 
-  // const { setCurrentDishOrDrink } = useContext(AppDeReceitasContext);
-
   const { id } = useParams();
 
   const progressRecipesCheckBoxes = ingredientsAndMeasures
@@ -21,8 +19,6 @@ function IngredientSteps({ ingredientsAndMeasures }) {
     const isDishOrDrink = currentDishOrDrink.idMeal ? 'meals' : 'cocktails';
     setCurrentIdAndType({ id, type: isDishOrDrink });
     const savedRecipeProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
-
-    console.log(savedRecipeProgress, id, isDishOrDrink);
 
     const actualRecipe = Object.keys(
       savedRecipeProgress ? savedRecipeProgress[isDishOrDrink] : [],
@@ -48,16 +44,17 @@ function IngredientSteps({ ingredientsAndMeasures }) {
         <div className="ingredient-step" key={ ingredient }>
           <label
             htmlFor={ `${ingredient}-${index}` }
-            data-testid={ `${index}-ingredient-step` }
             style={
               { textDecoration: progressRecipes[ingredient] ? 'line-through' : 'none' }
             }
+            data-testid={ `${index}-ingredient-step` }
           >
             <input
               type="checkbox"
               id={ `${ingredient}-${index}` }
               name={ ingredient }
-              checked={ progressRecipes[ingredient] }
+              value={ ingredient }
+              defaultChecked={ progressRecipes[ingredient] }
               onChange={ (e) => onChangeProgressRecipe(e) }
             />
             {`${ingredient}: ${measure}`}

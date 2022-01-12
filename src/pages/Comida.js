@@ -17,10 +17,11 @@ function Comida() {
   const { id } = useParams();
 
   useEffect(() => {
+    console.log(id);
     dishesRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals
         .find((meal) => meal.idMeal === id)));
-  }, []);
+  }, [id]);
 
   return (
 
