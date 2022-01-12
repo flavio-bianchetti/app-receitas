@@ -11,6 +11,7 @@ function Explorar() {
       <div className="pages-background">
         <section className="profile-content">
           <button
+            className="profileBtn"
             data-testid="explore-food"
             type="button"
             onClick={ () => history.push('/explorar/comidas') }
@@ -18,6 +19,7 @@ function Explorar() {
             Explorar Comidas
           </button>
           <button
+            className="profileBtn"
             data-testid="explore-drinks"
             type="button"
             onClick={ () => history.push('/explorar/bebidas') }

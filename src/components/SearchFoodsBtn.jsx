@@ -8,6 +8,7 @@ function SearchFoodsBtn({ title, testid, searchFoodsBtnOnClick, page }) {
       data-testid={ testid }
       name={ page }
       onClick={ (e) => searchFoodsBtnOnClick(e) }
+      className="profileBtn"
     >
       {title}
     </button>
