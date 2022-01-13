@@ -5,12 +5,12 @@ import HeaderSearch from '../components/HeaderSearch';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import { getDishCategories } from '../services/categories';
 import FoodCategorieBtn from '../components/FoodCategorieBtn';
-import dishesRequest, { dishesByName } from '../services/apiComidas';
+import dishesOrDrinksRequest, { searchByName } from '../services/apiSearchDrinksNFoods';
 
 const categorieBtnQuantity = 5;
 
 function Comidas() {
-  const { handleSearchFoods, setDishesOrDrinks,
+  const { handleSearchDrinksNFoods, setDishesOrDrinks,
     setCategorieRequest, isClickedIngredientImage,
     setIsClickedIngredientImage } = useContext(AppDeReceitasContext);
 
@@ -18,7 +18,7 @@ function Comidas() {
   const [categorieButtonCick, setCategorieButtonCick] = useState('');
 
   const getDishes = () => {
-    dishesRequest(dishesByName(''))
+    dishesOrDrinksRequest(searchByName('themealdb', ''))
       .then(({ meals }) => setDishesOrDrinks(meals));
   };
 
@@ -50,9 +50,9 @@ function Comidas() {
     }
   };
   return (
-    handleSearchFoods && (
+    handleSearchDrinksNFoods && (
       <div className="pages-background">
-        <HeaderSearch title="Comidas" handleSearch={ handleSearchFoods } />
+        <HeaderSearch title="Comidas" handleSearch={ handleSearchDrinksNFoods } />
         <section className="foodsAndDrinks-category-container">
           {dishCategories.map(({ strCategory }, i) => {
             if (i > categorieBtnQuantity) return false;

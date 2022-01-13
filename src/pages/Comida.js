@@ -1,7 +1,8 @@
 import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import RecomendationCards from '../components/RecomendationCards';
-import dishesRequest, { dishesById } from '../services/apiComidas';
+import { dishesById } from '../services/apiComidas';
+import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import StartRecipeButton from '../components/StartRecipeButton';
@@ -18,7 +19,7 @@ function Comida() {
 
   useEffect(() => {
     console.log(id);
-    dishesRequest(dishesById(id))
+    dishesOrDrinksRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals
         .find((meal) => meal.idMeal === id)));
   }, [id]);
@@ -36,10 +37,12 @@ function Comida() {
               dishOrDrink={ currentMeal }
               ingredientsAndMeasures={ ingredientsAndMeasures }
             />
-            <video data-testid="video" controls>
-              <source src={ currentMeal.strYoutube } />
-              <track src="" kind="captions" srcLang="en" label="English" />
-            </video>
+            <iframe
+              data-testid="video"
+              src={ currentMeal.strYoutube.replace('watch?v=', 'embed/') }
+              title={ currentMeal.strMeal }
+            />
+
             <RecomendationCards page="comidas" />
             <StartRecipeButton
               dishOrDrink={ currentMeal }

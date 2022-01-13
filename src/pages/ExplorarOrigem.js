@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/HeaderSearch';
-import dishesRequest,
-{ dishesAreaCategories, dishesByArea, dishesByName } from '../services/apiComidas';
+import { dishesAreaCategories, dishesByArea } from '../services/apiComidas';
+import dishesOrDrinksRequest, { searchByName } from '../services/apiSearchDrinksNFoods';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import Cards from '../components/Cards';
 
@@ -17,16 +17,16 @@ function ExplorarOrigem() {
     setCurrentArea(value);
   };
   useEffect(() => {
-    dishesRequest(dishesAreaCategories())
+    dishesOrDrinksRequest(dishesAreaCategories())
       .then(({ meals }) => setAreas([{ strArea: 'All' }, ...meals]));
   }, []);
 
   useEffect(() => {
     if (currentArea === 'All') {
-      dishesRequest(dishesByName('All'))
+      dishesOrDrinksRequest(searchByName('themealdb', 'All'))
         .then(({ meals }) => setDishesOrDrinks(meals));
     } else {
-      dishesRequest(dishesByArea(currentArea))
+      dishesOrDrinksRequest(dishesByArea(currentArea))
         .then(({ meals }) => setDishesOrDrinks(meals));
     }
   }, [currentArea]);

@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import drinksRequest, { drinksById } from '../services/apiDrinks';
+import { drinksById } from '../services/apiDrinks';
+import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 import FinishRecipeButton from '../components/FinishRecipeButton';
 import HeaderHeader from '../components/HeaderHeader';
 
@@ -15,7 +16,7 @@ function BebidaInProgress() {
   const { id } = useParams();
 
   useEffect(() => {
-    drinksRequest(drinksById(id))
+    dishesOrDrinksRequest(drinksById(id))
       .then(({ drinks }) => setCurrentDrink(drinks
         .find((drink) => drink.idDrink === id)));
   }, []);

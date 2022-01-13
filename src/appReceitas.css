@@ -11,14 +11,14 @@ body {
 }
 
 .pages-background {
-  background-image: url('./images/pattern-1.jpeg');
+  background-image: url('./images/pattern-5.jpeg');
   margin-bottom: 2.6rem;
   margin-top: 2.8rem;
   min-height: 90vh;
 }
 
 .pages-background-drink-food {
-  background-image: url('./images/pattern-1.jpeg');
+  background-image: url('./images/pattern-5.jpeg');
   margin-top: 2.6rem;
   min-height: 100vh;
 }
@@ -261,7 +261,7 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 .foodsAndDrinks-container {
   margin: 0 0.5rem;
   min-height: 60vh;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 .cards {
@@ -278,6 +278,7 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   text-align: center;
   text-decoration: none;
   width: 145px;
+  box-shadow: 7px 7px 6px 0 rgba(0, 0, 0, 0.47);;
 }
 
 .card:hover {

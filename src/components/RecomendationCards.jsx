@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import RecomendationCard from './RecomendationCard';
-import dishesRequest, { dishesByName } from '../services/apiComidas';
-import drinksRequest, { drinksByName } from '../services/apiDrinks';
+import dishesOrDrinksRequest, { searchByName } from '../services/apiSearchDrinksNFoods';
 
 function RecomendationCards({ page }) {
   const [suggestedDishes, setSuggestedDishes] = useState([]);
@@ -10,12 +9,12 @@ function RecomendationCards({ page }) {
 
   useEffect(() => {
     if (page === 'comidas' && suggestedDishes.length < maxDishes) {
-      drinksRequest(drinksByName(''))
+      dishesOrDrinksRequest(searchByName('thecocktaildb', ''))
         .then(({ drinks }) => setSuggestedDishes(drinks
           .slice(0, maxDishes)));
     }
     if (page === 'bebidas' && suggestedDishes.length < maxDishes) {
-      dishesRequest(dishesByName(''))
+      dishesOrDrinksRequest(searchByName('themealdb', ''))
         .then(({ meals }) => setSuggestedDishes(meals
           .slice(0, maxDishes)));
     }

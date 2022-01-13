@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
-import dishesRequest, { dishesById } from '../services/apiComidas';
+import { dishesById } from '../services/apiComidas';
+import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 import FinishRecipeButton from '../components/FinishRecipeButton';
 import HeaderHeader from '../components/HeaderHeader';
 
@@ -16,7 +17,7 @@ function ComidaInProgress() {
   console.log(currentMeal);
 
   useEffect(() => {
-    dishesRequest(dishesById(id))
+    dishesOrDrinksRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals
         .find((meal) => meal.idMeal === id)));
   }, []);

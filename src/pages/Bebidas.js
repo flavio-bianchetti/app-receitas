@@ -2,21 +2,21 @@ import React, { useContext, useEffect, useState } from 'react';
 import Footer from '../components/Footer';
 import Cards from '../components/Cards';
 import HeaderSearch from '../components/HeaderSearch';
-import drinksRequest, { drinksByName } from '../services/apiDrinks';
+import drinksRequest, { searchByName } from '../services/apiSearchDrinksNFoods';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import { getDrinksCategories } from '../services/categories';
 import FoodCategorieBtn from '../components/FoodCategorieBtn';
 
 const categorieBtnQuantity = 5;
 function Bebidas() {
-  const { handleSearchDrinks, setDishesOrDrinks,
+  const { handleSearchDrinksNFoods, setDishesOrDrinks,
     setCategorieRequest, isClickedIngredientImage,
     setIsClickedIngredientImage } = useContext(AppDeReceitasContext);
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [categorieButtonCick, setCategorieButtonCick] = useState('');
 
   const getDrinks = () => {
-    drinksRequest(drinksByName(''))
+    drinksRequest(searchByName('thecocktaildb', ''))
       .then(({ drinks }) => setDishesOrDrinks(drinks));
   };
 
@@ -50,9 +50,9 @@ function Bebidas() {
   };
 
   return (
-    handleSearchDrinks && (
+    handleSearchDrinksNFoods && (
       <div className="pages-background">
-        <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinks } />
+        <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinksNFoods } />
         <section className="foodsAndDrinks-category-container">
           {drinkCategories.map(({ strCategory }, i) => {
             if (i > categorieBtnQuantity) return false;

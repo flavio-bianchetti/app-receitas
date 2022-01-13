@@ -92,7 +92,7 @@ function HeaderSearch({ title, handleSearch }) {
               onClick={ () => handleSearch(searchType, searchInput) }
               className="search-forom-button"
             >
-              Buscar
+              Filtrar
             </button>
           </div>
         </div>
