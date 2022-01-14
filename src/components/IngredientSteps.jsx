@@ -7,12 +7,32 @@ function IngredientSteps({ ingredientsAndMeasures }) {
   const { onChangeProgressRecipe, setProgressRecipes,
     progressRecipes, currentDishOrDrink,
     setCurrentIdAndType, setIsRecipeButtonEnable } = useContext(AppDeReceitasContext);
+  console.log(ingredientsAndMeasures);
 
   const { id } = useParams();
 
+  const ingredients = {};
+
+  let sameIngredientCheckBoxes = 1;
+  ingredientsAndMeasures = ingredientsAndMeasures.map((ingredientAndMeasure, i) => {
+    const { ingredient } = ingredientAndMeasure;
+    if (!ingredients[ingredient]) {
+      ingredients[ingredient] = i;
+      return ingredientAndMeasure;
+    }
+    ingredientAndMeasure.ingredient = `${ingredient}-${sameIngredientCheckBoxes}`;
+    sameIngredientCheckBoxes += 1;
+
+    return ingredientAndMeasure;
+  });
+
   const progressRecipesCheckBoxes = ingredientsAndMeasures
     .reduce((acc, { ingredient }) => {
-      acc[ingredient] = false;
+      if (acc[ingredient]) {
+        acc[`${ingredient}`] = false;
+      } else {
+        acc[ingredient] = false;
+      }
       return acc;
     }, {});
   useEffect(() => {
