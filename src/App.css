@@ -32,24 +32,8 @@
 .meals > .logo {
   animation: shake 1.5s infinite ease;
   color: aliceblue;
-  font-family: Montserrat , sans-serif;
   font-size: 3em;
   font-weight: 900;
-}
-
-.rec-cards-container {
-  display: flex;
-  margin-top: 1rem;
-  overflow: scroll;
-  width: 320px;
-}
-
-.recomendation-img {
-  width: 250px;
-}
-
-.rec-cards-container h1 {
-  text-align: center;
 }
 
 .start-recipe-btn, .continue-recipe-btn {

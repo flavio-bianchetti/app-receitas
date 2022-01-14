@@ -38,6 +38,7 @@ function Comida() {
               ingredientsAndMeasures={ ingredientsAndMeasures }
             />
             <iframe
+              className="recipe-video"
               data-testid="video"
               src={ currentMeal.strYoutube.replace('watch?v=', 'embed/') }
               title={ currentMeal.strMeal }
