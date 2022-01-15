@@ -3,10 +3,10 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
-import { allFoodCardsTitles, dessertFoodsCardsTitles } from './mocks/allCardsMock';
+import { allDrinksCardsTitles, ordinaryDrinksCardsTitles } from './mocks/allCardsMock';
 
 beforeEach(() => {
-  renderWithRouterAndProvider(<App />, '/comidas');
+  renderWithRouterAndProvider(<App />, '/bebidas');
 });
 
 const categoryButtonsMaxLength = 6;
@@ -14,7 +14,7 @@ const foodCardsMaxLength = 12;
 
 describe('Testa página de comidas', () => {
   it('Testa se renderizou pagina de comidas', () => {
-    const comidas = screen.getByText('Comidas');
+    const comidas = screen.getByText('Bebidas');
     expect(comidas).toBeInTheDocument();
   });
 
@@ -47,11 +47,11 @@ describe('Testa página de comidas', () => {
   // Fazer um forEach de receitas quando clicar no botão, criando um mock
 });
 
-describe('Testa se as 12 cards de comidas são renderizadas', () => {
+describe('Testa se as 12 cards de bebidas são renderizadas', () => {
   it(`Testa se ao clicar no botão de uma 
   categoria renderiza outras 12 cards`, async () => {
-    const dessertFoodsBtn = await screen.findByTestId('Dessert-category-filter');
-    expect(dessertFoodsBtn).toBeInTheDocument();
+    const ordinaryDrinksBtn = await screen.findByTestId('Ordinary Drink-category-filter');
+    expect(ordinaryDrinksBtn).toBeInTheDocument();
 
     const allInitialFoodCards = await screen.findAllByTestId(/card-name/i);
     expect(allInitialFoodCards.length).toBe(foodCardsMaxLength);
@@ -59,18 +59,17 @@ describe('Testa se as 12 cards de comidas são renderizadas', () => {
     console.log();
 
     allInitialFoodCards.forEach((foodCard, i) => {
-      console.log(foodCard, allFoodCardsTitles[i]);
-      expect(foodCard).toHaveTextContent(allFoodCardsTitles[i]);
+      expect(foodCard).toHaveTextContent(allDrinksCardsTitles[i]);
     });
 
-    userEvent.click(dessertFoodsBtn);
+    userEvent.click(ordinaryDrinksBtn);
 
-    await screen.findByText('Apam balik');
+    await screen.findByText('3-Mile Long Island Iced Tea');
 
-    const dessertFoodCards = await screen.findAllByTestId(/card-name/i);
+    const ordinaryDrinksCards = await screen.findAllByTestId(/card-name/i);
 
-    dessertFoodCards.forEach((foodCard, i) => {
-      expect(foodCard).toHaveTextContent(dessertFoodsCardsTitles[i]);
+    ordinaryDrinksCards.forEach((foodCard, i) => {
+      expect(foodCard).toHaveTextContent(ordinaryDrinksCardsTitles[i]);
     });
   });
 });
