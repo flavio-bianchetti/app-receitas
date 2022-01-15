@@ -97,14 +97,14 @@ function AppDeReceitasProvider({ children }) {
 
   const handleSearchDrinksNFoods = (type, value, url) => {
     if (type === 'search-ingredient') {
-      dishesOrDrinksRequest(searchByIngredient(value, url), 'meals')
-        .then(({ meals }) => setDishesOrDrinks(meals))
+      dishesOrDrinksRequest(searchByIngredient(url, value), 'meals')
+        .then(({ meals, drinks }) => setDishesOrDrinks(meals || drinks))
         .catch(() => setDishesOrDrinks([]));
     }
 
     if (type === 'search-name') {
-      dishesOrDrinksRequest(searchByName(value, url))
-        .then(({ meals }) => setDishesOrDrinks(meals))
+      dishesOrDrinksRequest(searchByName(url, value))
+        .then(({ meals, drinks }) => { setDishesOrDrinks(meals || drinks); })
         .catch(() => setDishesOrDrinks([]));
     }
 
@@ -112,8 +112,8 @@ function AppDeReceitasProvider({ children }) {
       if (value.length > 1) {
         return alert('Sua busca deve conter somente 1 (um) caracter');
       }
-      dishesOrDrinksRequest(searchByLastLetter(value, url))
-        .then(({ meals }) => setDishesOrDrinks(meals))
+      dishesOrDrinksRequest(searchByLastLetter(url, value))
+        .then(({ meals, drinks }) => setDishesOrDrinks(meals || drinks))
         .catch(() => setDishesOrDrinks([]));
     }
   };

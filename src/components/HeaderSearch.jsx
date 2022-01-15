@@ -5,7 +5,7 @@ import profile from '../images/profileIcon.svg';
 import search from '../images/searchIcon.svg';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
-function HeaderSearch({ title, handleSearch }) {
+function HeaderSearch({ title, handleSearch, url }) {
   const [showSearch, setShowSearch] = useState(false);
   const [searchInput, setSearchInput] = useState('');
   const [searchType, setSearchType] = useState('');
@@ -89,7 +89,7 @@ function HeaderSearch({ title, handleSearch }) {
             <button
               type="button"
               data-testid="exec-search-btn"
-              onClick={ () => handleSearch(searchType, searchInput) }
+              onClick={ () => handleSearch(searchType, searchInput, url) }
               className="search-forom-button"
             >
               Filtrar
@@ -129,6 +129,7 @@ function HeaderSearch({ title, handleSearch }) {
 HeaderSearch.propTypes = {
   handleSearch: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
 };
 
 export default HeaderSearch;

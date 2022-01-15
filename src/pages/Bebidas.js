@@ -52,7 +52,11 @@ function Bebidas() {
   return (
     handleSearchDrinksNFoods && (
       <div className="pages-background">
-        <HeaderSearch title="Bebidas" handleSearch={ handleSearchDrinksNFoods } />
+        <HeaderSearch
+          title="Bebidas"
+          handleSearch={ handleSearchDrinksNFoods }
+          url="thecocktaildb"
+        />
         <section className="foodsAndDrinks-category-container">
           {drinkCategories.map(({ strCategory }, i) => {
             if (i > categorieBtnQuantity) return false;
