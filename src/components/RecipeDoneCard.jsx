@@ -17,7 +17,7 @@ function RecipeDoneCard({ recipe, index }) {
   console.log(recipe);
 
   return (
-    <div className="recipeDone-card">
+    <div className="recipeDone-card" data-testid={ `${index}-recipeDone-card` }>
       <div className="recipe-info">
         <h1
           data-testid={ `${index}-horizontal-top-text` }

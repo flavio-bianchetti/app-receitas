@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import drinksRequest, { drinksById } from '../services/apiDrinks';
+import { drinksById } from '../services/apiDrinks';
+import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 import RecomendationCards from '../components/RecomendationCards';
 import DishOrDrinkRecipeDetails from '../components/DishOrDrinkRecipeDetails';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
@@ -17,7 +18,7 @@ function Bebida() {
   console.log(id, currentDrink.idDrink);
 
   useEffect(() => {
-    drinksRequest(drinksById(id))
+    dishesOrDrinksRequest(drinksById(id))
       .then(({ drinks }) => setCurrentDrink(drinks
         .find((drink) => drink.idDrink === id)));
   }, []);

@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import SearchFoodsBtn from '../components/SearchFoodsBtn';
-import drinksRequest, { randomDrink } from '../services/apiDrinks';
+import { randomDrink } from '../services/apiDrinks';
+import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 
 function ExplorarBebidas() {
   const buttons = [
@@ -16,7 +17,7 @@ function ExplorarBebidas() {
     const { name } = target;
 
     if (name === 'surprise') {
-      drinksRequest(randomDrink())
+      dishesOrDrinksRequest(randomDrink())
         .then(({ drinks }) => history.push(`/bebidas/${drinks[0].idDrink}`));
     } else {
       history.push(`/explorar/bebidas/${name}`);

@@ -1,12 +1,10 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import AppDeReceitasContext from './AppDeReceitasContext';
-import dishesRequest, { dishesByIngredient,
-  dishesByName, dishesByLastLetter,
-  dishesIngredientsList } from '../services/apiComidas';
-import drinksRequest, { drinksByIngredient,
-  drinksByName, drinksByLastLetter,
-  drinksIngredientsList } from '../services/apiDrinks';
+import { dishesIngredientsList } from '../services/apiComidas';
+import { drinksIngredientsList } from '../services/apiDrinks';
+import dishesOrDrinksRequest, { searchByIngredient,
+  searchByName, searchByLastLetter } from '../services/apiSearchDrinksNFoods';
 import { getIngredients, getMeasures,
   getIngredientsAndMeasures } from '../services/ingredientsAndMeasures';
 
@@ -28,11 +26,11 @@ function AppDeReceitasProvider({ children }) {
   const [isClickedIngredientImage, setIsClickedIngredientImage] = useState(false);
 
   useEffect(() => {
-    dishesRequest(dishesIngredientsList())
+    dishesOrDrinksRequest(dishesIngredientsList())
       .then(({ meals }) => setListMealsIngredients(meals))
       .catch(() => setListMealsIngredients([]));
 
-    drinksRequest(drinksIngredientsList())
+    dishesOrDrinksRequest(drinksIngredientsList())
       .then(({ drinks }) => setListDrinksIngredients(drinks))
       .catch(() => setListDrinksIngredients([]));
   }, []);
@@ -50,7 +48,6 @@ function AppDeReceitasProvider({ children }) {
 
   const onChangeProgressRecipe = ({ target }) => {
     const { value: ingredient } = target;
-    console.log({ ...progressRecipes, [ingredient]: !progressRecipes[ingredient] });
     setProgressRecipes(
       { ...progressRecipes, [ingredient]: !progressRecipes[ingredient] },
     );
@@ -63,7 +60,6 @@ function AppDeReceitasProvider({ children }) {
       ));
     } else {
       const recipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      console.log(recipes);
       setStorageRecipesProgress(recipes);
     }
 
@@ -74,16 +70,9 @@ function AppDeReceitasProvider({ children }) {
 
   useEffect(() => {
     if (currentIdAndType.id !== '') {
-      const isRecipeInStorage = Object.keys(
-        storageRecipesProgress[currentIdAndType.type],
-      ).find((id) => id === currentIdAndType.id);
-
       const newRecipe = storageRecipesProgress;
       newRecipe[currentIdAndType.type][currentIdAndType.id] = progressRecipes;
-      console.log(newRecipe, progressRecipes);
       localStorage.setItem('inProgressRecipes', JSON.stringify(newRecipe));
-
-      console.log(isRecipeInStorage);
     }
   }, [progressRecipes]);
 
@@ -103,16 +92,16 @@ function AppDeReceitasProvider({ children }) {
     setIngredientAndMeasures(ingredientsAndMeasuresList);
   }, [currentDishOrDrink]);
 
-  const handleSearchFoods = (type, value) => {
+  const handleSearchDrinksNFoods = (type, value, url) => {
     if (type === 'search-ingredient') {
-      dishesRequest(dishesByIngredient(value), 'meals')
-        .then(({ meals }) => setDishesOrDrinks(meals))
+      dishesOrDrinksRequest(searchByIngredient(url, value), 'meals')
+        .then(({ meals, drinks }) => setDishesOrDrinks(meals || drinks))
         .catch(() => setDishesOrDrinks([]));
     }
 
     if (type === 'search-name') {
-      dishesRequest(dishesByName(value))
-        .then(({ meals }) => setDishesOrDrinks(meals))
+      dishesOrDrinksRequest(searchByName(url, value))
+        .then(({ meals, drinks }) => { setDishesOrDrinks(meals || drinks); })
         .catch(() => setDishesOrDrinks([]));
     }
 
@@ -120,39 +109,14 @@ function AppDeReceitasProvider({ children }) {
       if (value.length > 1) {
         return alert('Sua busca deve conter somente 1 (um) caracter');
       }
-      dishesRequest(dishesByLastLetter(value))
-        .then(({ meals }) => setDishesOrDrinks(meals))
-        .catch(() => setDishesOrDrinks([]));
-    }
-  };
-  const handleSearchDrinks = async (type, value) => {
-    if (type === 'search-ingredient') {
-      drinksRequest(drinksByIngredient(value))
-        .then(({ drinks }) => setDishesOrDrinks(drinks))
-        .catch(() => setDishesOrDrinks([]));
-    }
-
-    if (type === 'search-name') {
-      drinksRequest(drinksByName(value))
-        .then(({ drinks }) => (
-          setDishesOrDrinks(drinks)))
-        .catch(() => setDishesOrDrinks([]));
-    }
-
-    if (type === 'search-first-letter') {
-      if (value.length > 1) {
-        return alert('Sua busca deve conter somente 1 (um) caracter');
-      }
-      drinksRequest(drinksByLastLetter(value))
-        .then(({ drinks }) => (
-          setDishesOrDrinks(drinks)))
+      dishesOrDrinksRequest(searchByLastLetter(url, value))
+        .then(({ meals, drinks }) => setDishesOrDrinks(meals || drinks))
         .catch(() => setDishesOrDrinks([]));
     }
   };
 
   const appReceitasValue = {
-    handleSearchFoods,
-    handleSearchDrinks,
+    handleSearchDrinksNFoods,
     dishesOrDrinks,
     setDishesOrDrinks,
     categorieRequest,

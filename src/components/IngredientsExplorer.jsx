@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
-  const { handleSearchFoods, setIsClickedIngredientImage,
-    handleSearchDrinks } = useContext(AppDeReceitasContext);
+  const { handleSearchDrinksNFoods,
+    setIsClickedIngredientImage } = useContext(AppDeReceitasContext);
   const numMaxIngredients = 12;
 
   function handleClickLink(ingredient) {
     if (path === '/comidas') {
-      handleSearchFoods('search-ingredient', ingredient.strIngredient);
+      handleSearchDrinksNFoods(
+        'search-ingredient', ingredient.strIngredient, 'themealdb',
+      );
     } else {
-      handleSearchDrinks('search-ingredient', ingredient.strIngredient1);
+      handleSearchDrinksNFoods(
+        'search-ingredient', ingredient.strIngredient1, 'thecocktaildb',
+      );
     }
     setIsClickedIngredientImage(true);
   }

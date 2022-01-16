@@ -7,6 +7,7 @@ function FavoriteRecipes({ handleClick, filteredFavoriteRecipes, unFavorite }) {
     <div className="favorite-recipes-container">
       <div className="recipeDone-buttons">
         <button
+          className="recipeDone-button"
           data-testid="filter-by-all-btn"
           name="da"
           type="button"
@@ -15,6 +16,7 @@ function FavoriteRecipes({ handleClick, filteredFavoriteRecipes, unFavorite }) {
           All
         </button>
         <button
+          className="recipeDone-button"
           data-testid="filter-by-food-btn"
           name="comida"
           type="button"
@@ -23,6 +25,7 @@ function FavoriteRecipes({ handleClick, filteredFavoriteRecipes, unFavorite }) {
           Food
         </button>
         <button
+          className="recipeDone-button"
           data-testid="filter-by-drink-btn"
           name="bebida"
           type="button"
