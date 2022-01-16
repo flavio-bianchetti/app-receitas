@@ -16,6 +16,9 @@ describe('Testa o componente Explorar Comidas', () => {
   });
 
   it('Testa o Botão Por Local de Origem', () => {
-
+    const buttonByOriginLocal = screen.getByTestId('explore-by-area');
+    expect(buttonByOriginLocal).toBeInTheDocument();
+    expect(buttonByOriginLocal).toHaveTextContent('Por Local de Origem');
+    expect(buttonByOriginLocal).not.toBeDisabled();
   });
 });
