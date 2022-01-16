@@ -3,11 +3,14 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
+import { indianRecipe, frenchBeefRecipe } from './mocks/recipeDoneCardMock';
 
 const categorieButtonsQuantity = 3;
 
 beforeEach(() => {
+  localstorage.setItem('doneRecipes', () => {
 
+  });
 });
 
 const renderReceitasFeitas = () => (
@@ -56,5 +59,20 @@ describe('Testa cards de receitas feitas', () => {
 
     const corbaRecipe = await screen.findByTestId(/recipeDone-card/i);
     expect(corbaRecipe).toBeInTheDocument();
+
+    const onlyFoodsBtn = await screen.findByTestId('filter-by-food-btn');
+    const onlyDrinksBtn = await screen.findByTestId('filter-by-drink-btn');
+
+    expect(onlyFoodsBtn).toBeInTheDocument();
+    expect(onlyDrinksBtn).toBeInTheDocument();
+
+    userEvent.click(onlyDrinksBtn);
+
+    expect(corbaRecipe).not.toBeInTheDocument();
+
+    userEvent.click(onlyFoodsBtn);
+
+    const corbaRecipeAfterButtonClick = await screen.findByTestId(/recipeDone-card/i);
+    expect(corbaRecipeAfterButtonClick).toBeInTheDocument();
   });
 });

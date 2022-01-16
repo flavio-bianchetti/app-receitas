@@ -5,17 +5,17 @@ import App from '../App';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
 
 beforeEach(() => {
-  renderWithRouterAndProvider(<App />, '/bebidas/15997/in-progress');
+  renderWithRouterAndProvider(<App />, '/comidas/52978/in-progress');
 });
 
-describe('Testa pagina de bebida in progress', () => {
+describe('Testa pagina de comida in progress', () => {
   it('Testa se o header está na página', async () => {
     const header = await screen.findByTestId('page-title');
     expect(header).toBeInTheDocument();
-    expect(header.textContent).toBe('Bebidas');
+    expect(header.textContent).toBe('Comidas');
   });
 
-  it('testa se a imagem da Bebida está presente na página.', async () => {
+  it('testa se a imagem da Comida está presente na página.', async () => {
     const imgGG = await screen.findByTestId('recipe-photo');
     expect(imgGG).toBeInTheDocument();
   });

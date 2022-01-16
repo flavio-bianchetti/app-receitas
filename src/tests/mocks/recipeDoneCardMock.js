@@ -21,4 +21,3 @@ export const frenchBeefRecipe = {
   tags: [],
   type: 'comida',
 };
-
