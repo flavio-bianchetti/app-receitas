@@ -32,6 +32,15 @@ describe('Testa página de comidas', () => {
   it('Testa se footer foi renderizado', () => {
     const footer = screen.getByTestId('footer');
     expect(footer).toBeInTheDocument();
+
+    const drinksPageBtn = screen.getByTestId('drinks-bottom-btn');
+    expect(drinksPageBtn).toBeInTheDocument();
+
+    const exploreBtn = screen.getByTestId('explore-bottom-btn');
+    expect(exploreBtn).toBeInTheDocument();
+
+    const foodsPageBtn = screen.getByTestId('food-bottom-btn');
+    expect(foodsPageBtn).toBeInTheDocument();
   });
 
   it('Testa se renderizou todos os botões de categoria', async () => {
@@ -55,8 +64,6 @@ describe('Testa se as 12 cards de bebidas são renderizadas', () => {
 
     const allInitialFoodCards = await screen.findAllByTestId(/card-name/i);
     expect(allInitialFoodCards.length).toBe(foodCardsMaxLength);
-
-    console.log();
 
     allInitialFoodCards.forEach((foodCard, i) => {
       expect(foodCard).toHaveTextContent(allDrinksCardsTitles[i]);

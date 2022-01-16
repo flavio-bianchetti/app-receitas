@@ -48,7 +48,6 @@ function AppDeReceitasProvider({ children }) {
 
   const onChangeProgressRecipe = ({ target }) => {
     const { value: ingredient } = target;
-    console.log({ ...progressRecipes, [ingredient]: !progressRecipes[ingredient] });
     setProgressRecipes(
       { ...progressRecipes, [ingredient]: !progressRecipes[ingredient] },
     );
@@ -61,7 +60,6 @@ function AppDeReceitasProvider({ children }) {
       ));
     } else {
       const recipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
-      console.log(recipes);
       setStorageRecipesProgress(recipes);
     }
 
@@ -74,7 +72,6 @@ function AppDeReceitasProvider({ children }) {
     if (currentIdAndType.id !== '') {
       const newRecipe = storageRecipesProgress;
       newRecipe[currentIdAndType.type][currentIdAndType.id] = progressRecipes;
-      console.log(newRecipe, progressRecipes);
       localStorage.setItem('inProgressRecipes', JSON.stringify(newRecipe));
     }
   }, [progressRecipes]);
