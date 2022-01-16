@@ -21,7 +21,7 @@ describe('Verifica os Botões do componente Explorar', () => {
   it('Verifica se tem o Botão Explorar Bebidas', async () => {
     const buttonDrinks = screen.getByTestId('explore-drinks');
     expect(buttonDrinks).toBeInTheDocument();
-    expect(buttonDrinks).toBeInTheDocument('Explorar Bebidas');
+    expect(buttonDrinks).toHaveTextContent('Explorar Bebidas');
     expect(buttonDrinks).not.toBeDisabled();
 
     fireEvent.click(buttonDrinks);
