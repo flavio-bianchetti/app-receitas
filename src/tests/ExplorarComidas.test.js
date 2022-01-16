@@ -27,4 +27,13 @@ describe('Testa o componente Explorar Comidas', () => {
     fireEvent.click(buttonByOriginLocal);
     await screen.findByText('Explorar Origem');
   });
+  it('Testa o Botão Me Surpreenda!', async () => {
+    const buttonSurpriseMe = screen.getByTestId('explore-surprise');
+    expect(buttonSurpriseMe).toBeInTheDocument();
+    expect(buttonSurpriseMe).toHaveTextContent('Me Surpreenda!');
+    expect(buttonSurpriseMe).not.toBeDisabled();
+
+    fireEvent.click(buttonSurpriseMe);
+    await screen.findByText('Me Surpreenda!');
+  });
 });
