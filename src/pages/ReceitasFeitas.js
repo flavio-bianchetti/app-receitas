@@ -11,7 +11,6 @@ function RceitasFeitas() {
     const getDoneRecipes = doneRecipes.filter((recipe) => (
       recipe.type.includes(name)
     ));
-    console.log(getDoneRecipes);
     setFilteredDoneRecipes(getDoneRecipes);
   }
 
@@ -21,7 +20,6 @@ function RceitasFeitas() {
     } else {
       const doneRecipeLocalStorage = JSON.parse(localStorage
         .getItem('doneRecipes'));
-      console.log(doneRecipeLocalStorage);
       setDoneRecipes(doneRecipeLocalStorage);
       setFilteredDoneRecipes(doneRecipeLocalStorage);
     }

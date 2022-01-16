@@ -15,7 +15,6 @@ function Bebida() {
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
 
   const { id } = useParams();
-  console.log(id, currentDrink.idDrink);
 
   useEffect(() => {
     dishesOrDrinksRequest(drinksById(id))

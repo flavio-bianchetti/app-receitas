@@ -68,7 +68,6 @@ describe('Testa se as 12 cards de bebidas são renderizadas', () => {
     allInitialFoodCards.forEach((foodCard, i) => {
       expect(foodCard).toHaveTextContent(allDrinksCardsTitles[i]);
     });
-
     userEvent.click(ordinaryDrinksBtn);
 
     await screen.findByText('3-Mile Long Island Iced Tea');

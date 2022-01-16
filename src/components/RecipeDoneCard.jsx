@@ -14,8 +14,6 @@ function RecipeDoneCard({ recipe, index }) {
     setIsCopied(true);
   }
 
-  console.log(recipe);
-
   return (
     <div className="recipeDone-card" data-testid={ `${index}-recipeDone-card` }>
       <div className="recipe-info">

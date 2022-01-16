@@ -13,12 +13,10 @@ function Comida() {
     currentDishOrDrink: currentMeal,
     setCurrentDishOrDrink: setCurrentMeal,
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
-  console.log(currentMeal.strYoutube);
 
   const { id } = useParams();
 
   useEffect(() => {
-    console.log(id);
     dishesOrDrinksRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals
         .find((meal) => meal.idMeal === id)));

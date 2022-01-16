@@ -38,7 +38,7 @@ function Bebidas() {
     }
     if (categorieButtonCick !== drink) {
       const response = await fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drink}`);
-      const { drinks } = await response.json()
+      const { drinks } = await response.json();
       setCategorieRequest(true);
       setDishesOrDrinks(drinks);
       setCategorieButtonCick(drink);

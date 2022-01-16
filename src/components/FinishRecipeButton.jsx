@@ -23,7 +23,6 @@ function FinishRecipeButton({ dishOrDrink }) {
   const [doneRecipesInStorage, setDoneRecipesInStorage] = useState([]);
   const { isRecipeButtonEnable } = useContext(AppDeReceitasContext);
   const history = useHistory();
-  console.log(isRecipeButtonEnable);
   const isRecipeInStorage = (storage) => storage
     .find(({ id }) => id === dishOrDrink.idMeal || id === dishOrDrink.idDrink);
 
@@ -37,14 +36,12 @@ function FinishRecipeButton({ dishOrDrink }) {
 
   const onFinishRecipe = () => {
     if (!isRecipeInStorage(doneRecipesInStorage)) {
-      console.log('a');
       localStorage.setItem('doneRecipes',
         JSON.stringify([...doneRecipesInStorage, getDoneRecipe(dishOrDrink)]));
       setDoneRecipesInStorage(
         [...doneRecipesInStorage, getDoneRecipe(dishOrDrink)],
       );
     } else {
-      console.log('b');
       const newDoneRecipes = doneRecipesInStorage.filter(({ id }) => (
         id !== dishOrDrink.idMeal && id !== dishOrDrink.idDrink));
       localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipes));

@@ -14,8 +14,6 @@ function ComidaInProgress() {
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
   const { id } = useParams();
 
-  console.log(currentMeal);
-
   useEffect(() => {
     dishesOrDrinksRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals

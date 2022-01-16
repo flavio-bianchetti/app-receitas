@@ -7,7 +7,6 @@ function IngredientSteps({ ingredientsAndMeasures }) {
   const { onChangeProgressRecipe, setProgressRecipes,
     progressRecipes, currentDishOrDrink,
     setCurrentIdAndType, setIsRecipeButtonEnable } = useContext(AppDeReceitasContext);
-  console.log(ingredientsAndMeasures);
 
   const { id } = useParams();
 
