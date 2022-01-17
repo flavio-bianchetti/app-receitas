@@ -10,7 +10,7 @@ beforeEach(() => {
 });
 
 const categoryButtonsMaxLength = 6;
-const foodCardsMaxLength = 12;
+const drinksMaxLength = 12;
 
 describe('Testa página de comidas', () => {
   it('Testa se renderizou pagina de comidas', () => {
@@ -50,7 +50,7 @@ describe('Testa página de comidas', () => {
 
   it('Testa se foi renderizado 12 cards de receita', async () => {
     const foodCards = await screen.findAllByTestId(/recipe-card/i);
-    expect(foodCards.length).toBe(foodCardsMaxLength);
+    expect(foodCards.length).toBe(drinksMaxLength);
   });
 
   // Fazer um forEach de receitas quando clicar no botão, criando um mock
@@ -63,7 +63,7 @@ describe('Testa se as 12 cards de bebidas são renderizadas', () => {
     expect(ordinaryDrinksBtn).toBeInTheDocument();
 
     const allInitialFoodCards = await screen.findAllByTestId(/card-name/i);
-    expect(allInitialFoodCards.length).toBe(foodCardsMaxLength);
+    expect(allInitialFoodCards.length).toBe(drinksMaxLength);
 
     allInitialFoodCards.forEach((foodCard, i) => {
       expect(foodCard).toHaveTextContent(allDrinksCardsTitles[i]);

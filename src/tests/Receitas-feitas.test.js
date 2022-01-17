@@ -3,14 +3,11 @@ import React from 'react';
 import { screen } from '@testing-library/react';
 import App from '../App';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
-import { indianRecipe, frenchBeefRecipe } from './mocks/recipeDoneCardMock';
 
 const categorieButtonsQuantity = 3;
 
 beforeEach(() => {
-  localstorage.setItem('doneRecipes', () => {
 
-  });
 });
 
 const renderReceitasFeitas = () => (
