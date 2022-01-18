@@ -9,7 +9,7 @@ function Ingredients({ ingredientsAndMeasures }) {
           key={ ingredient }
           data-testid={ `${index}-ingredient-name-and-measure` }
         >
-          {`${ingredient}: ${measure}`}
+          {`${ingredient}: ${measure || 'up to you'}`}
         </li>))}
     </ul>
   );

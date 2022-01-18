@@ -47,3 +47,17 @@ describe('Testa pagina de bebida in progress', () => {
     expect(recipesDonePageTitle).toBeInTheDocument();
   });
 });
+
+describe('Testa dishOrDrinkRecipeDetails', () => {
+  it('Testa se botao de favoritar está funcionando', async () => {
+    const whiteHeartFavoriteBtn = await screen.findByTestId(/favorite-btn/i);
+    expect(whiteHeartFavoriteBtn).toBeInTheDocument();
+    expect(whiteHeartFavoriteBtn.src).toContain('whiteHeartIcon.svg');
+
+    userEvent.click(whiteHeartFavoriteBtn);
+
+    const blackHeartFavoriteBtn = await screen.findByAltText('black heart');
+    expect(blackHeartFavoriteBtn).toBeInTheDocument();
+    expect(blackHeartFavoriteBtn.src).toContain('blackHeartIcon.svg');
+  });
+});

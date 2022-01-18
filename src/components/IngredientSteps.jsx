@@ -76,7 +76,7 @@ function IngredientSteps({ ingredientsAndMeasures }) {
               defaultChecked={ progressRecipes[ingredient] }
               onChange={ (e) => onChangeProgressRecipe(e) }
             />
-            {`${ingredient}: ${measure}`}
+            {`${ingredient}: ${measure || 'up to you'}`}
           </label>
 
         </div>

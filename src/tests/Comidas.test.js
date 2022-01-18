@@ -56,7 +56,7 @@ describe('Testa página de comidas', () => {
   // Fazer um forEach de receitas quando clicar no botão, criando um mock
 });
 
-describe('Testa se as 12 cards de comidas são renderizadas', () => {
+describe('Testa se no máximo 12 cards de comidas são renderizadas', () => {
   it(`Testa se ao clicar no botão de uma 
   categoria renderiza outras 12 cards`, async () => {
     const dessertFoodsBtn = await screen.findByTestId('Dessert-category-filter');
@@ -78,5 +78,43 @@ describe('Testa se as 12 cards de comidas são renderizadas', () => {
     dessertFoodCards.forEach((foodCard, i) => {
       expect(foodCard).toHaveTextContent(dessertFoodsCardsTitles[i]);
     });
+
+    const allBtn = await screen.findByTestId('All-category-filter');
+    expect(allBtn).toBeInTheDocument();
+
+    userEvent.click(allBtn);
+
+    const corba = await screen.findByText('Corba');
+    expect(corba).toBeInTheDocument();
+  });
+
+  it('Testa se ao clicar em outras categorias as cards são renderizadas', async () => {
+    const beefBtn = await screen.findByTestId('Beef-category-filter');
+    expect(beefBtn).toBeInTheDocument();
+
+    userEvent.click(beefBtn);
+
+    const beefPie = await screen.findByText(/beef and mustard/i);
+    expect(beefPie).toBeInTheDocument();
+
+    const recipeCards = await screen.findAllByTestId(/recipe-card/i);
+    expect(recipeCards.length).toBe(foodCardsMaxLength);
+
+    userEvent.click(beefBtn);
+
+    const corba = await screen.findByText('Corba');
+    expect(corba).toBeInTheDocument();
+  });
+});
+
+describe('Testa receitas em comidas', () => {
+  it('testa se ao clicar em uma imagem a página de comida renderiza', async () => {
+    const corba = await screen.findByText('Corba');
+    expect(corba).toBeInTheDocument();
+
+    userEvent.click(corba);
+
+    const recipeTitle = await screen.findByTestId('recipe-title');
+    expect(recipeTitle).toBeInTheDocument();
   });
 });

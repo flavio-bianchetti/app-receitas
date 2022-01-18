@@ -9,6 +9,7 @@ beforeEach(() => {
 
 const maxLengthIngredientsList = 3;
 const maxLengthRecomendation = 6;
+const recipeIngredientsAndMeasureLength = 3;
 
 describe('Testa a correta renderização da página de detalhes da bebida (Parte 1)):',
   () => {
@@ -43,6 +44,12 @@ describe('Testa a correta renderização da página de detalhes da bebida (Parte
     it('testa se o botão de favoritar está presente na página.', async () => {
       const favorite = await screen.findByTestId('favorite-btn');
       expect(favorite).toBeInTheDocument();
+    });
+
+    it('testa se recipe name e measure estão presentes na página', async () => {
+      const ingredientNameAndMeasure = await screen
+        .findAllByTestId(/ingredient-name-and-measure/i);
+      expect(ingredientNameAndMeasure.length).toBe(recipeIngredientsAndMeasureLength);
     });
   });
 

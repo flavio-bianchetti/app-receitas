@@ -77,5 +77,30 @@ describe('Testa se as 12 cards de bebidas são renderizadas', () => {
     ordinaryDrinksCards.forEach((foodCard, i) => {
       expect(foodCard).toHaveTextContent(ordinaryDrinksCardsTitles[i]);
     });
+    const allBtn = await screen.findByTestId('All-category-filter');
+    expect(allBtn).toBeInTheDocument();
+
+    userEvent.click(allBtn);
+
+    const corba = await screen.findByText('GG');
+    expect(corba).toBeInTheDocument();
+  });
+
+  it('Testa se ao clicar em outras categorias as cards são renderizadas', async () => {
+    const cockTailBtn = await screen.findByTestId('Cocktail-category-filter');
+    expect(cockTailBtn).toBeInTheDocument();
+
+    userEvent.click(cockTailBtn);
+
+    const belmont = await screen.findByText(/155 belmont/i);
+    expect(belmont).toBeInTheDocument();
+
+    const recipeCards = await screen.findAllByTestId(/recipe-card/i);
+    expect(recipeCards.length).toBe(drinksMaxLength);
+
+    userEvent.click(cockTailBtn);
+
+    const gg = await screen.findByText('GG');
+    expect(gg).toBeInTheDocument();
   });
 });

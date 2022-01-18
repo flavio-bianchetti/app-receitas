@@ -1,5 +1,5 @@
 import React from 'react';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
@@ -43,8 +43,11 @@ describe('Testa explorar por origem', () => {
   });
 
   it('Testa se as cards mudam ao buscar por origem', async () => {
-    userEvent.selectOptions(await screen
-      .findByTestId('explore-by-area-dropdown'), 'American');
+    // const dropdown = await screen.findByTestId('explore-by-area-dropdown');
+    // fireEvent.change(dropdown, { target: { value: 'American' } });
+    // userEvent.selectOptions(await screen
+    //   .findByTestId(), 'American');
+    // dropdown.simulate('change', { target: { value: 'American' } });
 
     // expect(await screen.findByText('American').selected).toBe(true);
 
