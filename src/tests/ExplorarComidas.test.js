@@ -34,6 +34,6 @@ describe('Testa o componente Explorar Comidas', () => {
     expect(buttonSurpriseMe).not.toBeDisabled();
 
     fireEvent.click(buttonSurpriseMe);
-    await screen.findByText('Me Surpreenda!');
+    await screen.findByText('Comidas');
   });
 });
