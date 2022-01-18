@@ -43,7 +43,7 @@ describe('Testa a correta renderização da página "Receitas Favoritas":', () =
 
   it('testa se há três botões renderizados no alto da página', async () => {
     const buttons = await screen.findAllByTestId(/filter-by-/i);
-    expect(buttons.length).toBe(3);
+    expect(buttons.length).toBe(2 + 1);
     expect(buttons[0].textContent).toBe('All');
     expect(buttons[1].textContent).toBe('Food');
     expect(buttons[2].textContent).toBe('Drinks');
