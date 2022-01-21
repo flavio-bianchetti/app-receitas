@@ -4,6 +4,20 @@ import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
 
+const favoriteDrink = {
+  alcoholicOrNot: 'Optional alcohol',
+  area: '',
+  category: 'Ordinary Drink',
+  id: '15997',
+  image: 'https://www.thecocktaildb.com/images/media/drink/vyxwut1468875960.jpg',
+  name: 'GG',
+  type: 'bebida',
+};
+
+beforeEach(() => {
+  localStorage.setItem('favoriteRecipes', JSON.stringify([favoriteDrink]));
+});
+
 beforeEach(() => {
   renderWithRouterAndProvider(<App />, '/bebidas/15997/in-progress');
 });
@@ -23,7 +37,6 @@ describe('Testa pagina de bebida in progress', () => {
   it('testa se o botão "Compartilhar" está presente na página.', async () => {
     const share = await screen.findByTestId('share-btn');
     expect(share).toBeInTheDocument();
-    expect(share.textContent).toBe('Compartilhar');
   });
 
   it('testa se o botão de favoritar está presente na página.', async () => {
@@ -50,14 +63,14 @@ describe('Testa pagina de bebida in progress', () => {
 
 describe('Testa dishOrDrinkRecipeDetails', () => {
   it('Testa se botao de favoritar está funcionando', async () => {
-    const whiteHeartFavoriteBtn = await screen.findByTestId(/favorite-btn/i);
-    expect(whiteHeartFavoriteBtn).toBeInTheDocument();
-    expect(whiteHeartFavoriteBtn.src).toContain('whiteHeartIcon.svg');
-
-    userEvent.click(whiteHeartFavoriteBtn);
-
     const blackHeartFavoriteBtn = await screen.findByAltText('black heart');
     expect(blackHeartFavoriteBtn).toBeInTheDocument();
     expect(blackHeartFavoriteBtn.src).toContain('blackHeartIcon.svg');
+
+    userEvent.click(blackHeartFavoriteBtn);
+
+    const whiteHeartFavoriteBtn = await screen.findByAltText(/white heart/i);
+    expect(whiteHeartFavoriteBtn).toBeInTheDocument();
+    expect(whiteHeartFavoriteBtn.src).toContain('whiteHeartIcon.svg');
   });
 });

@@ -31,17 +31,19 @@ function BebidaInProgress() {
 
   return (
     Object.keys(currentDrink).length > 0 && (
-      <div className="pages-background-drink-food">
-        <HeaderHeader title="Bebidas" />
-        <section className="food-details-container">
-          <section className="food-details">
-            <DishOrDrinkRecipeDetails
-              dishOrDrink={ currentDrink }
-              ingredientsAndMeasures={ ingredientsAndMeasures }
-            />
-            <FinishRecipeButton dishOrDrink={ currentDrink } />
+      <div className="pages-background">
+        <div className="container">
+          <HeaderHeader title="Bebidas" />
+          <section className="food-details-container">
+            <section className="food-details">
+              <DishOrDrinkRecipeDetails
+                dishOrDrink={ currentDrink }
+                ingredientsAndMeasures={ ingredientsAndMeasures }
+              />
+              <FinishRecipeButton dishOrDrink={ currentDrink } />
+            </section>
           </section>
-        </section>
+        </div>
       </div>
     )
   );

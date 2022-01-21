@@ -31,16 +31,18 @@ function ComidaInProgress() {
   return (
     Object.keys(currentMeal).length > 0 && (
       <div className="pages-background-drink-food">
-        <HeaderHeader title="Comidas" />
-        <section className="food-details-container">
-          <section className="food-details">
-            <DishOrDrinkRecipeDetails
-              dishOrDrink={ currentMeal }
-              ingredientsAndMeasures={ ingredientsAndMeasures }
-            />
-            <FinishRecipeButton dishOrDrink={ currentMeal } />
+        <div className="container">
+          <HeaderHeader title="Comidas" />
+          <section className="food-details-container">
+            <section className="food-details">
+              <DishOrDrinkRecipeDetails
+                dishOrDrink={ currentMeal }
+                ingredientsAndMeasures={ ingredientsAndMeasures }
+              />
+              <FinishRecipeButton dishOrDrink={ currentMeal } />
+            </section>
           </section>
-        </section>
+        </div>
       </div>
     )
   );

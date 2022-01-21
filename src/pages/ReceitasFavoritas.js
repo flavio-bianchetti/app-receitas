@@ -43,9 +43,9 @@ function ReceitasFavoritas() {
   }, []);
 
   return (
-    <div>
-      <Header title="Receitas Favoritas" />
-      <div className="pages-background-drink-food">
+    <div className="pages-background">
+      <div className="container">
+        <Header title="Receitas Favoritas" />
         <FavoriteRecipes
           handleClick={ handleClick }
           filteredFavoriteRecipes={ filteredFavoriteRecipes }

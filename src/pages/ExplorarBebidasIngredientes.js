@@ -8,16 +8,16 @@ function ExplorarBebidasIngredientes() {
   const { listDrinksIngredients } = useContext(AppDeReceitasContext);
   const imageUrl = 'https://www.thecocktaildb.com/images/ingredients/';
   return (
-    <div>
-      <Header title="Explorar Ingredientes" />
-      <div className="pages-background">
+    <div className="pages-background">
+      <div className="container">
+        <Header title="Explorar Ingredientes" />
         <IngredientsExplorer
           ingredientsList={ listDrinksIngredients }
           imageUrl={ imageUrl }
           path="/bebidas"
         />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

@@ -8,7 +8,10 @@ function Card({ index, nameItem, image, item }) {
       className="card"
       to={ `/${item.idDrink ? 'bebidas' : 'comidas'}/${item.idDrink || item.idMeal}` }
     >
-      <div data-testid={ `${index}-recipe-card` }>
+      <div
+        data-testid={ `${index}-recipe-card` }
+        className="recipe-card"
+      >
         <div className="card-image-container">
           <img
             data-testid={ `${index}-card-img` }

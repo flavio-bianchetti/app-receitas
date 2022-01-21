@@ -38,7 +38,6 @@ describe('Testa a correta renderização da página de detalhes da comida (Parte
     it('testa se o botão "Compartilhar" está presente na página.', async () => {
       const share = await screen.findByTestId('share-btn');
       expect(share).toBeInTheDocument();
-      expect(share.textContent).toBe('Compartilhar');
     });
 
     it('testa se o botão de favoritar está presente na página.', async () => {

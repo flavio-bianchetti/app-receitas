@@ -5,9 +5,9 @@ import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
 
 describe('Testa página de login', () => {
   it('verifica se inputs estão na tela', () => {
-    const { getByLabelText } = renderWithRouterAndProvider(<App />);
-    const emailInput = getByLabelText(/Email/i);
-    const passwordInput = getByLabelText(/Senha/i);
+    const { getByTestId } = renderWithRouterAndProvider(<App />);
+    const emailInput = getByTestId('email-input');
+    const passwordInput = getByTestId('password-input');
 
     expect(emailInput).toBeInTheDocument();
     expect(passwordInput).toBeInTheDocument();
@@ -15,12 +15,12 @@ describe('Testa página de login', () => {
 
   it(`Verifica se botao começa desativado e é habilitado
    quando os inputs são preenchidos corretamente`, async () => {
-    const { getByLabelText,
+    const { getByTestId,
       getByRole, getByText } = renderWithRouterAndProvider(<App />);
 
     const button = getByRole('button', { name: /Entrar/i });
-    const emailInput = getByLabelText(/Email/i);
-    const passwordInput = getByLabelText(/Senha/i);
+    const emailInput = getByTestId('email-input');
+    const passwordInput = getByTestId('password-input');
 
     expect(button).toBeDisabled();
 

@@ -35,8 +35,8 @@ function Login({ history }) {
         <p>Faça seu login</p>
         <div>
           <label htmlFor="email">
-            Email:
             <input
+              placeholder="Email"
               id="email"
               value={ email }
               type="text"
@@ -47,8 +47,8 @@ function Login({ history }) {
         </div>
         <div>
           <label htmlFor="password">
-            Senha:
             <input
+              placeholder="Senha"
               id="password"
               type="password"
               data-testid="password-input"

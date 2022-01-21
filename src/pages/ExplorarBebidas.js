@@ -25,9 +25,9 @@ function ExplorarBebidas() {
   };
 
   return (
-    <div>
-      <Header title="Explorar Bebidas" />
-      <div className="pages-background">
+    <div className="pages-background">
+      <div className="container">
+        <Header title="Explorar Bebidas" />
         <div className="profile-content">
           {buttons.map(({ title, testid, page }) => (
             <SearchFoodsBtn
@@ -39,8 +39,8 @@ function ExplorarBebidas() {
             />
           ))}
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

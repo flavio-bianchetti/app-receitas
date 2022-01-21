@@ -32,8 +32,8 @@ function ExplorarOrigem() {
   }, [currentArea]);
 
   return (
-    <div>
-      <div className="pages-background">
+    <div className="pages-background">
+      <div className="container">
         <Header title="Explorar Origem" />
         <div className="explore-area-select-container">
           <select
@@ -52,8 +52,8 @@ function ExplorarOrigem() {
           </select>
         </div>
         <Cards />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

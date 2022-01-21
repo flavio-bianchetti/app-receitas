@@ -52,25 +52,27 @@ function Comidas() {
   return (
     handleSearchDrinksNFoods && (
       <div className="pages-background">
-        <HeaderSearch
-          title="Comidas"
-          handleSearch={ handleSearchDrinksNFoods }
-          url="themealdb"
-        />
-        <section className="foodsAndDrinks-category-container">
-          {dishCategories.map(({ strCategory }, i) => {
-            if (i > categorieBtnQuantity) return false;
-            return (<FoodCategorieBtn
-              key={ strCategory }
-              categoryName={ strCategory }
-              onCategorieButtonClick={ onCategorieButtonClick }
-            />);
-          })}
-        </section>
-        <section className="foodsAndDrinks-container">
-          <Cards />
-        </section>
-        <Footer />
+        <div className="container">
+          <HeaderSearch
+            title="Comidas"
+            handleSearch={ handleSearchDrinksNFoods }
+            url="themealdb"
+          />
+          <section className="foodsAndDrinks-category-container">
+            {dishCategories.map(({ strCategory }, i) => {
+              if (i > categorieBtnQuantity) return false;
+              return (<FoodCategorieBtn
+                key={ strCategory }
+                categoryName={ strCategory }
+                onCategorieButtonClick={ onCategorieButtonClick }
+              />);
+            })}
+          </section>
+          <section className="foodsAndDrinks-container">
+            <Cards />
+          </section>
+          <Footer />
+        </div>
       </div>
     )
   );

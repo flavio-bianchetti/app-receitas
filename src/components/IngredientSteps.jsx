@@ -43,6 +43,7 @@ function IngredientSteps({ ingredientsAndMeasures }) {
       savedRecipeProgress ? savedRecipeProgress[isDishOrDrink] : [],
     )
       .filter((recipeId) => recipeId === id);
+
     if (actualRecipe.length === 0) {
       setProgressRecipes(progressRecipesCheckBoxes);
     } else {
@@ -73,7 +74,7 @@ function IngredientSteps({ ingredientsAndMeasures }) {
               id={ `${ingredient}-${index}` }
               name={ ingredient }
               value={ ingredient }
-              defaultChecked={ progressRecipes[ingredient] }
+              checked={ progressRecipes[ingredient] }
               onChange={ (e) => onChangeProgressRecipe(e) }
             />
             {`${ingredient}: ${measure || 'up to you'}`}

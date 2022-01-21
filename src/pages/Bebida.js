@@ -24,22 +24,24 @@ function Bebida() {
 
   return (
     Object.keys(currentDrink).length > 0 && (
-      <div className="pages-background-drink-food">
-        <HeaderHeader title="Bebidas" />
-        <section className="food-details-container">
-          <section className="food-details">
-            <DishOrDrinkRecipeDetails
-              dishOrDrink={ currentDrink }
-              ingredientsAndMeasures={ ingredientsAndMeasures }
-            />
-            <RecomendationCards page="bebidas" />
-            <StartRecipeButton
-              dishOrDrink={ currentDrink }
-              page="bebidas"
-              dishOrDrinkId={ currentDrink.idDrink }
-            />
+      <div className="pages-background">
+        <div className="container">
+          <HeaderHeader title="Bebidas" />
+          <section className="food-details-container">
+            <section className="food-details">
+              <DishOrDrinkRecipeDetails
+                dishOrDrink={ currentDrink }
+                ingredientsAndMeasures={ ingredientsAndMeasures }
+              />
+              <RecomendationCards page="bebidas" />
+              <StartRecipeButton
+                dishOrDrink={ currentDrink }
+                page="bebidas"
+                dishOrDrinkId={ currentDrink.idDrink }
+              />
+            </section>
           </section>
-        </section>
+        </div>
       </div>
     )
   );

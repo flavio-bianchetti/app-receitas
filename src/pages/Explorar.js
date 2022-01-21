@@ -6,9 +6,9 @@ import Header from '../components/Header';
 function Explorar() {
   const history = useHistory();
   return (
-    <div>
-      <Header title="Explorar" />
-      <div className="pages-background">
+    <div className="pages-background">
+      <div className="container">
+        <Header title="Explorar" />
         <section className="profile-content">
           <button
             className="profileBtn"
@@ -27,8 +27,8 @@ function Explorar() {
             Explorar Bebidas
           </button>
         </section>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

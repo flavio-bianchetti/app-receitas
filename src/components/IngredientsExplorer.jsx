@@ -27,32 +27,30 @@ function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
         ingredientsList.map((ingredient, index) => (
           index < numMaxIngredients
             && (
-              <div className="explore-food-card-container">
-                <Link
-                  to={ path }
-                  onClick={ () => handleClickLink(ingredient) }
+              <Link
+                to={ path }
+                onClick={ () => handleClickLink(ingredient) }
+                className="explore-food-card"
+              >
+                <div
+                  key={ ingredient.strIngredient || ingredient.strIngredient1 }
+                  data-testid={ `${index}-ingredient-card` }
                 >
-                  <div
-                    className="explore-food-card"
-                    key={ ingredient.strIngredient || ingredient.strIngredient1 }
-                    data-testid={ `${index}-ingredient-card` }
-                  >
-                    <img
-                      data-testid={ `${index}-card-img` }
-                      src={
-                        `${imageUrl}${ingredient.strIngredient
+                  <img
+                    data-testid={ `${index}-card-img` }
+                    src={
+                      `${imageUrl}${ingredient.strIngredient
                         || ingredient.strIngredient1}-Small.png`
-                      }
-                      alt={ ingredient.strIngredient || ingredient.strIngredient1 }
-                    />
-                    <h2
-                      data-testid={ `${index}-card-name` }
-                    >
-                      { ingredient.strIngredient || ingredient.strIngredient1 }
-                    </h2>
-                  </div>
-                </Link>
-              </div>
+                    }
+                    alt={ ingredient.strIngredient || ingredient.strIngredient1 }
+                  />
+                  <h2
+                    data-testid={ `${index}-card-name` }
+                  >
+                    { ingredient.strIngredient || ingredient.strIngredient1 }
+                  </h2>
+                </div>
+              </Link>
             )
         ))
       }

@@ -26,14 +26,16 @@ function RceitasFeitas() {
   }, []);
 
   return (
-    <div className="pages-background-drink-food">
-      <Header title="Receitas Feitas" />
-      <section className="recipesDone-container">
-        <RecipesDone
-          handleClick={ handleClick }
-          filteredDoneRecipes={ filteredDoneRecipes }
-        />
-      </section>
+    <div className="pages-background">
+      <div className="container">
+        <Header title="Receitas Feitas" />
+        <section className="recipesDone-container">
+          <RecipesDone
+            handleClick={ handleClick }
+            filteredDoneRecipes={ filteredDoneRecipes }
+          />
+        </section>
+      </div>
     </div>
   );
 }

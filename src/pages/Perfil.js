@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import profile from '../images/profile.png';
 
 function Perfil() {
   const [user, setUser] = useState({});
@@ -34,10 +35,11 @@ function Perfil() {
 
   return (
     user && (
-      <>
-        <Header title="Perfil" />
-        <div className="pages-background">
+      <div className="pages-background">
+        <div className="container">
+          <Header title="Perfil" />
           <section className="profile-content">
+            <img src={ profile } alt="Prfile" className="profileImg" />
             <div className="wordBreak">
               <h3 data-testid="profile-email">{user.email}</h3>
             </div>
@@ -70,7 +72,7 @@ function Perfil() {
           </section>
           <Footer />
         </div>
-      </>
+      </div>
     )
 
   );

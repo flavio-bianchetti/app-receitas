@@ -8,16 +8,16 @@ function ExplorarComidasIngredientes() {
   const { listMealsIngredients } = useContext(AppDeReceitasContext);
   const imageUrl = 'https://www.themealdb.com/images/ingredients/';
   return (
-    <div>
-      <Header title="Explorar Ingredientes" />
-      <div className="pages-background">
+    <div className="pages-background">
+      <div className="container">
+        <Header title="Explorar Ingredientes" />
         <IngredientsExplorer
           ingredientsList={ listMealsIngredients }
           imageUrl={ imageUrl }
           path="/comidas"
         />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

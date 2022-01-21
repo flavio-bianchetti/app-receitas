@@ -5,12 +5,17 @@ function Ingredients({ ingredientsAndMeasures }) {
   return (
     <ul className="ingredients">
       {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
-        <li
-          key={ ingredient }
-          data-testid={ `${index}-ingredient-name-and-measure` }
-        >
-          {`${ingredient}: ${measure || 'up to you'}`}
-        </li>))}
+        <>
+          <li
+            key={ ingredient }
+            data-testid={ `${index}-ingredient-name-and-measure` }
+          >
+            {`${ingredient} - ${measure || 'up to you'}`}
+
+          </li>
+          <hr />
+        </>))}
+
     </ul>
   );
 }

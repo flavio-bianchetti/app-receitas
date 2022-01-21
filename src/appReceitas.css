@@ -10,17 +10,26 @@ body {
   background-color: rgba(244, 245, 225, 0.659);
 }
 
-.pages-background {
-  background-image: url('./images/pattern-5.jpeg');
-  margin-bottom: 2.6rem;
-  margin-top: 2.8rem;
-  min-height: 90vh;
+::-webkit-scrollbar {
+  height: 15px;
 }
 
-.pages-background-drink-food {
+::-webkit-scrollbar-track {
+  background-color: rgb(214, 210, 210);
+  border-radius: 1rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ff4140;
+  border-radius: 1rem;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.pages-background {
   background-image: url('./images/pattern-5.jpeg');
-  margin-top: 2.6rem;
-  min-height: 100vh;
+  /* margin-bottom: 2.6rem; */
+  /* margin-top: 2.8rem; */
+  min-height: 90vh;
 }
 
 .header {
@@ -30,17 +39,24 @@ body {
   font-family: Arima Madurai , sans-serif;
   font-size: 1rem;
   font-weight: 700;
-  height: 2.8rem;
+  height: 3em;
   padding: 0 1.5rem;
-  position: fixed;
+  /* position: fixed; */
   text-align: center;
-  top: 0;
   width: 100%;
-  z-index: 99;
+  top: 0;
+  z-index: 99
 }
 
-.header img, .header input {
-  width: 22px;
+footer {
+  background-color: #ff4141;
+  bottom: 0;
+  border-radius: 15px 15px 0 0;
+  height: 2.6rem;
+  padding: 0.3rem 1rem;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
 }
 
 @media screen and ( min-width : 768px ) {
@@ -48,6 +64,26 @@ body {
   .header {
     padding: 0 3rem;
   }
+}
+
+@media screen and (min-width: 1024px) {
+
+  .header {
+    width: 1024px;
+  }
+  .container {
+   width: 1024px;
+   margin: 0 auto;
+  }
+
+  footer {
+    width: 1024px;
+  }
+}
+
+
+.header img, .header input {
+  width: 22px;
 }
 
 
@@ -72,9 +108,12 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 }
 
 .login-form {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(194, 194, 194, 0.59);
   border-radius: 1rem;
   padding: 2rem 1.5rem;
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
 
 }
 
@@ -91,8 +130,11 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 .login-form p {
   font-family: Montserrat , sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   margin-bottom: 2rem;
+  color: rgb(73, 73, 73);
+  font-weight: 600;
+  
 }
 
 .login-form input {
@@ -104,6 +146,8 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   outline: none;
   padding: 1rem;
   width: 100%;
+  border: 1px solid #f77f3f;
+  font-size: 1rem;
 }
 
 .login-form label {
@@ -112,15 +156,17 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 }
 
 .login-form button {
+  margin-top: 1.2rem;
   border: none;
   border-radius: 0.5rem;
   color: white;
   font-size: 1rem;
   padding: 1rem 2rem;
+  font-size: 1.2rem;
 }
 
 .login-form button:enabled {
-  background-color: rgba(255, 28, 3, 0.522);
+  background-color: rgba(255, 28, 3, 0.638);
   cursor: pointer;
 }
 
@@ -145,7 +191,7 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   background-color: #0000;
   display: fixed;
   margin: 1rem;
-  padding: 1rem 0;
+  /* padding: 0.5rem 0; */
 }
 
 .searchForm-container {
@@ -236,6 +282,10 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 @media screen and ( min-width : 500px ) {
 
+  .searchForm-container {
+    padding: 1rem 0;
+  }
+
   .search-types-container {
     display: flex;
   }
@@ -243,6 +293,7 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   .searchForm-container button {
     margin: 0 auto;
     width: 480px;
+    
   }
 
   .search-form-button-container {
@@ -267,24 +318,27 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 }
 
 .cards {
-  display: flex;
+  display: grid;
   flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 2.8rem;
 }
 
-.card {
-  background-color: rgba(253, 253, 253, 0.624);
+.card { 
   border-radius: 1rem;
   box-shadow: 7px 7px 6px 0 rgba(0, 0, 0, 0.47);
-  color: black;
+  color: white;
   margin: 0.4rem;
   text-align: center;
   text-decoration: none;
-  width: 145px;
+  max-width: 200px;
 }
 
 .card:hover {
-  color: rgb(25, 32, 223);
+  color: #000000
 }
 
 .card h2 {
@@ -298,16 +352,19 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   display: flex;
   height: 100%;
   justify-content: center;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
+  border-radius: 0 0 1rem 1rem;
+  background-color: #f8742c;
+  padding: 0.3rem;
 }
 
 .card-image-container {
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   overflow: hidden;
 }
 
 .card img {
-  border-radius: 1rem;
+  border-radius: 1rem 1rem 0 0;
   height: 100%;
   transition: transform 0.5s ease;
   width: 100%;
@@ -320,29 +377,53 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 .foodsAndDrinks-category-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  justify-items: center;
   padding: 0 0.5rem;
+  margin: 0 auto;
+  grid-gap: 5px;
 }
 
 .foodCategoryBtn {
-  background-color: #ff8340;
+  /* border:  1px solid #fa6d21; */
   border: none;
-  border-radius: 3px;
+  border-radius: 1rem;
   color: white;
   cursor: pointer;
   font-size: 1.1rem;
   margin: 5px;
-  padding: 0.5rem;
+  padding: 0.7rem;
+  width: 100%;
+  max-width: 8rem;
+  background-color: #f8742c;
 }
 
 .foodCategoryBtn:hover {
-  background-color: #cc6934;
+  color: white;
+  background-color: #c26532;
+}
+
+@media screen and (min-width: 525px){
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 780px){
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+  }
 }
 
 @media screen and ( min-width : 790px ) {
 
+  .foodsAndDrinks-category-container {
+    width: 75%;
+    margin-top: 0.5rem;
+  }
+
   .foodsAndDrinks-container {
     margin: 0 3rem;
+   
   }
 
   .card {
@@ -354,15 +435,6 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 
 /* ---- Foooter ----- */
-footer {
-  background-color: #ff4141;
-  bottom: 0;
-  height: 2.6rem;
-  padding: 0.3rem 1rem;
-  position: fixed;
-  width: 100%;
-  z-index: 99;
-}
 
 .footer-container {
   align-items: center;
@@ -451,7 +523,12 @@ footer {
   height: 50px;
   margin-left: 0.2rem;
   padding: 0.4rem;
+  transition: all .2s ease-in-out;
 
+}
+
+.foodButton:hover {
+  transform: scale(1.1);
 }
 
 .foodButton + .foodButton {
@@ -463,10 +540,20 @@ footer {
 }
 
 .ingredients {
+  padding: 1rem 0;
   font-size: 1.2rem;
   list-style-type: none;
   padding: 1rem 0;
+  font-weight: 600;
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
 }
+
+.ingredients li {
+  margin: 0.5rem;
+}
+
 
 .instructions {
   font-size: 1.2rem;
@@ -520,6 +607,14 @@ footer {
   display: flex;
   flex-direction: column;
   padding: 1rem 0;
+  width: 80%;
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}
+
+.ingredient-step + .ingredient-step {
+  margin-top: 0.5rem;
 }
 
 .ingredient-step input {
@@ -537,7 +632,7 @@ footer {
   width: 320px;
 }
 
-.rec-cards-container::-webkit-scrollbar {
+/* .rec-cards-container::-webkit-scrollbar {
   height: 20px;
 }
 
@@ -550,7 +645,7 @@ footer {
   background-color: #ff4140;
   border-radius: 1rem;
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
+} */
 
 .recomendation-img {
   width: 250px;
@@ -584,6 +679,7 @@ footer {
   margin-top: 0;
   max-width: 400px;
   padding: 0 1rem;
+  width: 100%;
 }
 
 .recipeDone-card {
@@ -598,9 +694,13 @@ footer {
   width: 100%;
 }
 
+.share-icon:hover, .favorite-button:hover {
+  transform: scale(1.2);
+}
+
 .recipe-info {
   padding-left: 2rem;
-  padding-right: 1rem;
+  padding-right: 1.4rem;
   width: 100%;
 }
 
@@ -667,11 +767,12 @@ footer {
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: 5rem 1rem;
+  padding: 1rem 1rem;
 }
 
 .profile-content h3 {
-  font-size: 1.4rem;
+  font-family: Montserrat, sans-serif;
+  font-size: 1.1rem;
   margin-bottom: 1rem;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -687,6 +788,11 @@ footer {
   font-size: 1.5rem;
   padding: 2rem 0;
   width: 100%;
+}
+
+.profileImg {
+  width: 150px;
+  margin-bottom: 1rem;
 }
 
 .profileBtn + .profileBtn {
@@ -710,14 +816,25 @@ footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 1rem;
+  justify-items: center;
+  grid-gap: 1rem
 }
 
 .explore-food-card {
-  background-color: rgba(237, 236, 236, 0.844);
+  background-color: #f77f3fc4;
   border-radius: 1rem;
   box-shadow: 7px 7px 6px 0 rgba(0, 0, 0, 0.47);
   text-align: center;
+  width: 180px;
+  color: black;
+  text-decoration: none;
+  padding: 0.3rem 0;
 }
+
+.explore-food-card:hover {
+  transform: scale(1.1);
+}
+
 
 .explore-food-card-container {
   background-color: rgba(233, 232, 232, 0.645);
@@ -726,24 +843,36 @@ footer {
   padding: 0.5rem;
 }
 
-.explore-food-card-container a {
-  color: black;
-  text-decoration: none;
+
+@media screen and (min-width: 610px) {
+  .explore-food-cards-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+}
+
+@media screen and (min-width: 1024px) {
+  .explore-food-cards-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 /* ---- Explore area ----- */
 .explore-area-select-container {
   display: flex;
   justify-content: center;
+  margin: 1rem
 }
 
 .explore-area-select-container select {
   background-color: white;
-  border: 2px solid black;
+  border: 2px solid #ff8340;
   border-radius: 3px;
   cursor: pointer;
   font-size: 1.1rem;
   padding: 0.8rem 1.5rem;
+  color:#ff8340;
+  outline: none;
 }
 
 /* ------- Favorite recipes page --------- */

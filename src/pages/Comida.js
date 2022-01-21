@@ -27,29 +27,30 @@ function Comida() {
   // Comando velha guarda =)
 
     Object.keys(currentMeal).length > 0 && (
-      <div className="pages-background-drink-food">
-        <HeaderHeader title="Comidas" />
-        <section className="food-details-container">
-          <section className="food-details">
-            <DishOrDrinkRecipeDetails
-              dishOrDrink={ currentMeal }
-              ingredientsAndMeasures={ ingredientsAndMeasures }
-            />
-            <iframe
-              className="recipe-video"
-              data-testid="video"
-              src={ currentMeal.strYoutube.replace('watch?v=', 'embed/') }
-              title={ currentMeal.strMeal }
-            />
-
-            <RecomendationCards page="comidas" />
-            <StartRecipeButton
-              dishOrDrink={ currentMeal }
-              page="comidas"
-              dishOrDrinkId={ currentMeal.idMeal }
-            />
+      <div className="pages-background">
+        <div className="container">
+          <HeaderHeader title="Comidas" />
+          <section className="food-details-container">
+            <section className="food-details">
+              <DishOrDrinkRecipeDetails
+                dishOrDrink={ currentMeal }
+                ingredientsAndMeasures={ ingredientsAndMeasures }
+              />
+              <iframe
+                className="recipe-video"
+                data-testid="video"
+                src={ currentMeal.strYoutube.replace('watch?v=', 'embed/') }
+                title={ currentMeal.strMeal }
+              />
+              <RecomendationCards page="comidas" />
+              <StartRecipeButton
+                dishOrDrink={ currentMeal }
+                page="comidas"
+                dishOrDrinkId={ currentMeal.idMeal }
+              />
+            </section>
           </section>
-        </section>
+        </div>
       </div>
     )
 

@@ -4,6 +4,7 @@ import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Ingredients from './Ingredients';
 import IngredientSteps from './IngredientSteps';
+import shareIcon from '../images/shareIcon.svg';
 
 function RecipeDetails({ dishOrDrink,
   ingredientsAndMeasures, onFavoriteButtonClick, page, isCopied,
@@ -37,14 +38,22 @@ function RecipeDetails({ dishOrDrink,
           {dishOrDrink.idMeal ? dishOrDrink.strCategory : dishOrDrink.strAlcoholic}
         </p>
         <div className="foodButtons ">
-          <button
+          <input
+            type="image"
+            className="foodButton"
+            data-testid="share-btn"
+            onClick={ () => handleShare() }
+            src={ shareIcon }
+            alt="Share icon"
+          />
+          {/* <button
             className="foodButton"
             type="button"
             data-testid="share-btn"
             onClick={ () => handleShare() }
           >
             Compartilhar
-          </button>
+          </button> */}
           <input
             type="image"
             className="foodButton"
