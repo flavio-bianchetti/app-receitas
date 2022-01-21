@@ -24,6 +24,7 @@ function AppDeReceitasProvider({ children }) {
   const [listMealsIngredients, setListMealsIngredients] = useState([]);
   const [listDrinksIngredients, setListDrinksIngredients] = useState([]);
   const [isClickedIngredientImage, setIsClickedIngredientImage] = useState(false);
+  const [isRecipeDone, setIsRecipeDone] = useState(false);
 
   useEffect(() => {
     dishesOrDrinksRequest(dishesIngredientsList())
@@ -136,6 +137,8 @@ function AppDeReceitasProvider({ children }) {
     listDrinksIngredients,
     isClickedIngredientImage,
     setIsClickedIngredientImage,
+    isRecipeDone,
+    setIsRecipeDone,
   };
 
   return (

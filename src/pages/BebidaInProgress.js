@@ -6,12 +6,15 @@ import { drinksById } from '../services/apiDrinks';
 import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 import FinishRecipeButton from '../components/FinishRecipeButton';
 import HeaderHeader from '../components/HeaderHeader';
+import isRecipeInStorage from '../services/isRecipeInStorage';
+import RecipeIsDone from '../components/RecipeIsDone';
 
 function BebidaInProgress() {
   const {
     currentDishOrDrink: currentDrink,
     setCurrentDishOrDrink: setCurrentDrink,
-    ingredientsAndMeasures } = useContext(AppDeReceitasContext);
+    ingredientsAndMeasures, isRecipeDone,
+    setIsRecipeDone } = useContext(AppDeReceitasContext);
 
   const { id } = useParams();
 
@@ -29,22 +32,35 @@ function BebidaInProgress() {
     }
   }, []);
 
+  useEffect(() => {
+    if (isRecipeInStorage(
+      JSON.parse(localStorage.getItem('doneRecipes')), currentDrink,
+    )) {
+      setIsRecipeDone(true);
+    } else {
+      console.log('false');
+      setIsRecipeDone(false);
+    }
+  }, [currentDrink]);
+
   return (
-    Object.keys(currentDrink).length > 0 && (
-      <div className="pages-background">
-        <div className="container">
-          <HeaderHeader title="Bebidas" />
-          <section className="food-details-container">
-            <section className="food-details">
-              <DishOrDrinkRecipeDetails
-                dishOrDrink={ currentDrink }
-                ingredientsAndMeasures={ ingredientsAndMeasures }
-              />
-              <FinishRecipeButton dishOrDrink={ currentDrink } />
+    isRecipeDone ? <RecipeIsDone /> : (
+      Object.keys(currentDrink).length > 0 && (
+        <div className="pages-background">
+          <div className="container center">
+            <HeaderHeader title="Bebidas" />
+            <section className="food-details-container">
+              <section className="food-details">
+                <DishOrDrinkRecipeDetails
+                  dishOrDrink={ currentDrink }
+                  ingredientsAndMeasures={ ingredientsAndMeasures }
+                />
+                <FinishRecipeButton dishOrDrink={ currentDrink } />
+              </section>
             </section>
-          </section>
+          </div>
         </div>
-      </div>
+      )
     )
   );
 }

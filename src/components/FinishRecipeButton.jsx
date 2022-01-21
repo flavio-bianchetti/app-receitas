@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
+import isRecipeInStorage from '../services/isRecipeInStorage';
 
 const getDoneRecipe = (dishOrDrink) => {
   const today = new Date().toLocaleDateString();
@@ -23,8 +24,6 @@ function FinishRecipeButton({ dishOrDrink }) {
   const [doneRecipesInStorage, setDoneRecipesInStorage] = useState([]);
   const { isRecipeButtonEnable } = useContext(AppDeReceitasContext);
   const history = useHistory();
-  const isRecipeInStorage = (storage) => storage
-    .find(({ id }) => id === dishOrDrink.idMeal || id === dishOrDrink.idDrink);
 
   useEffect(() => {
     if (localStorage.getItem('doneRecipes')) {
@@ -35,17 +34,12 @@ function FinishRecipeButton({ dishOrDrink }) {
   }, []);
 
   const onFinishRecipe = () => {
-    if (!isRecipeInStorage(doneRecipesInStorage)) {
+    if (!isRecipeInStorage(doneRecipesInStorage, dishOrDrink)) {
       localStorage.setItem('doneRecipes',
         JSON.stringify([...doneRecipesInStorage, getDoneRecipe(dishOrDrink)]));
       setDoneRecipesInStorage(
         [...doneRecipesInStorage, getDoneRecipe(dishOrDrink)],
       );
-    } else {
-      const newDoneRecipes = doneRecipesInStorage.filter(({ id }) => (
-        id !== dishOrDrink.idMeal && id !== dishOrDrink.idDrink));
-      localStorage.setItem('doneRecipes', JSON.stringify(newDoneRecipes));
-      setDoneRecipesInStorage(newDoneRecipes);
     }
     history.push('/receitas-feitas');
   };

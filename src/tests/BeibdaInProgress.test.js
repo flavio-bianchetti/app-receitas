@@ -16,6 +16,7 @@ const favoriteDrink = {
 
 beforeEach(() => {
   localStorage.setItem('favoriteRecipes', JSON.stringify([favoriteDrink]));
+  localStorage.setItem('doneRecipes', JSON.stringify([]));
 });
 
 beforeEach(() => {

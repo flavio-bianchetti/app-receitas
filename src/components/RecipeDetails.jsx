@@ -37,6 +37,7 @@ function RecipeDetails({ dishOrDrink,
         >
           {dishOrDrink.idMeal ? dishOrDrink.strCategory : dishOrDrink.strAlcoholic}
         </p>
+        {isCopied && <span>Link copiado!</span>}
         <div className="foodButtons ">
           <input
             type="image"
@@ -63,7 +64,6 @@ function RecipeDetails({ dishOrDrink,
             alt={ !isRecipeFavorite() ? 'white heart' : 'black heart' }
           />
         </div>
-        {isCopied && <span>Link copiado!</span>}
 
       </div>
       {!page.includes('in-progress')
