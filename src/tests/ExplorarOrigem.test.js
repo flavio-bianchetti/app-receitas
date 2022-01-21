@@ -1,15 +1,16 @@
 import React from 'react';
-import { screen, fireEvent } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
+// import ExplorarOrigem from '../pages/ExplorarOrigem';
 
 beforeEach(() => {
   renderWithRouterAndProvider(<App />, '/explorar/comidas/area');
 });
 
 const initialFoodCards = 4;
-const maxLengthCards = 12;
+// const maxLengthCards = 12;
 describe('Testa página de explorar origem', () => {
   it('Testa se página de origem renderizou', async () => {
     const originPageTitle = await screen.findByText('Explorar Origem');
@@ -40,19 +41,23 @@ describe('Testa explorar por origem', () => {
   it('Testa se existem 4 cards na tela inicialmente', async () => {
     const cards = await screen.findAllByTestId(/recipe-card/i);
     expect(cards.length).toBe(initialFoodCards);
+    const titleCards = await screen.findAllByTestId(/card-name/i);
+    expect(titleCards.length).toBe(initialFoodCards);
+    expect(titleCards[1].textContent).toBe('Callaloo Jamaican Style');
+    userEvent.click(cards[1]);
+    const recipePageTitle = await screen.findByText('Comidas');
+    expect(recipePageTitle).toBeInTheDocument();
+    const recipeTitle = await screen.findByText('Callaloo Jamaican Style');
+    expect(recipeTitle).toBeInTheDocument();
   });
 
-  it('Testa se as cards mudam ao buscar por origem', async () => {
-    // const dropdown = await screen.findByTestId('explore-by-area-dropdown');
-    // fireEvent.change(dropdown, { target: { value: 'American' } });
-    // userEvent.selectOptions(await screen
-    //   .findByTestId(), 'American');
-    // dropdown.simulate('change', { target: { value: 'American' } });
+  // it('Testa se as cards mudam ao buscar por origem', async () => {
+  // const dropdown = await screen.findByTestId('explore-by-area-dropdown');
+  // fireEvent.change(dropdown, { target: { value: 'American' } });
+  // userEvent.selectOptiit('Testa se as cards mudam ao buscar por origem', async () => {);
 
-    // expect(await screen.findByText('American').selected).toBe(true);
-
-    // await findByAltText('Banana Pancakes');
-    // const cards = await screen.findAllByTestId(/recipe-card/i);
-    // expect(cards.length).toBe(maxLengthCards);
-  });
+  // await findByAltText('Banana Pancakes');
+  // const cards = await screen.findAllByTestId(/recipe-card/i);
+  // expect(cards.length).toBe(maxLengthCards);
+  // });
 });
