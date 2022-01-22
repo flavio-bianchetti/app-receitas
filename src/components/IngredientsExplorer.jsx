@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
-  const { handleSearchDrinksNFoods } = useContext(AppDeReceitasContext);
+  const { handleSearchDrinksNFoods,
+    setIsLinkClicked } = useContext(AppDeReceitasContext);
   const numMaxIngredients = 12;
 
   function handleClickLink(ingredient) {
@@ -17,6 +19,7 @@ function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
         'search-ingredient', ingredient.strIngredient1, 'thecocktaildb',
       );
     }
+    setIsLinkClicked(true);
   }
 
   return (

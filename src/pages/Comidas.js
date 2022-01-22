@@ -11,7 +11,8 @@ const categorieBtnQuantity = 5;
 
 function Comidas() {
   const { handleSearchDrinksNFoods, setDishesOrDrinks,
-    setCategorieRequest } = useContext(AppDeReceitasContext);
+    setCategorieRequest, isLinkClicked,
+    setIsLinkClicked } = useContext(AppDeReceitasContext);
 
   const [dishCategories, setDishCategories] = useState([]);
   const [categorieButtonCick, setCategorieButtonCick] = useState('');
@@ -23,12 +24,15 @@ function Comidas() {
 
   useEffect(() => {
     let isApiSubscribed = true;
-    if (isApiSubscribed) {
+    if (!isLinkClicked) {
       getDishes();
-
-      getDishCategories()
-        .then(({ meals }) => setDishCategories([{ strCategory: 'All' }, ...meals]));
     }
+
+    getDishCategories()
+      .then(({ meals }) => (
+        isApiSubscribed && setDishCategories([{ strCategory: 'All' }, ...meals])));
+
+    setIsLinkClicked(false);
     return () => {
       isApiSubscribed = false;
     };

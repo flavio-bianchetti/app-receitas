@@ -19,6 +19,7 @@ function AppDeReceitasProvider({ children }) {
     { cocktails: {}, meals: {} },
   );
   const [isRecipeDone, setIsRecipeDone] = useState(false);
+  const [isLinkClicked, setIsLinkClicked] = useState(false);
 
   const onChangeProgressRecipe = ({ target }) => {
     const { value: ingredient } = target;
@@ -102,6 +103,8 @@ function AppDeReceitasProvider({ children }) {
     setIsRecipeButtonEnable,
     isRecipeDone,
     setIsRecipeDone,
+    isLinkClicked,
+    setIsLinkClicked,
   };
 
   return (
