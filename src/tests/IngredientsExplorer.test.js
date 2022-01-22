@@ -1,11 +1,7 @@
 import React from 'react';
-import userEvent from '@testing-library/user-event';
 import { screen } from '@testing-library/react';
 import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
 import App from '../App';
-import ExplorarComidasIngredientes from '../pages/ExplorarComidasIngredientes';
-
-const maxLengthIngredientsList = 12;
 
 beforeEach(() => {
   renderWithRouterAndProvider(<App />, '/explorar/comidas/ingredientes');
