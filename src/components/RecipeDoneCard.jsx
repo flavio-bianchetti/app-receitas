@@ -39,6 +39,7 @@ function RecipeDoneCard({ recipe, index }) {
           >
             { recipe.doneDate }
           </p>
+
           <input
             type="image"
             className="share-icon"
@@ -48,6 +49,7 @@ function RecipeDoneCard({ recipe, index }) {
             src={ shareIcon }
             alt="shareIcon"
           />
+
         </div>
         {
           isCopied && <span>Link copiado!</span>
@@ -65,7 +67,10 @@ function RecipeDoneCard({ recipe, index }) {
           ))
         }
       </div>
-      <Link to={ `/${recipe.type}s/${recipe.id}` }>
+      <Link
+        to={ `/${recipe.type}s/${recipe.id}` }
+        className="recipeDone-cardImg-container"
+      >
         <input
           type="image"
           className="recipeDoneCard-img"
