@@ -74,7 +74,7 @@ function IngredientSteps({ ingredientsAndMeasures }) {
               id={ `${ingredient}-${index}` }
               name={ ingredient }
               value={ ingredient }
-              defaultChecked={ progressRecipes[ingredient] }
+              checked={ progressRecipes[ingredient] }
               onChange={ (e) => onChangeProgressRecipe(e) }
             />
             {`${ingredient}: ${measure || 'up to you'}`}

@@ -29,6 +29,8 @@ function RecomendationCards({ page }) {
             index={ i }
             nameItem={ item.strDrink || item.strMeal }
             image={ item.strDrinkThumb || item.strMealThumb }
+            id={ item.idDrink || item.idMeal }
+            page={ page === 'comidas' ? 'bebidas' : 'comidas' }
           />
         ))}
     </div>

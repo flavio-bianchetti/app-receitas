@@ -13,7 +13,6 @@ function Comida() {
     currentDishOrDrink: currentMeal,
     setCurrentDishOrDrink: setCurrentMeal,
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -28,9 +27,7 @@ function Comida() {
 
   return (
 
-  // Comando velha guarda =)
-
-    Object.keys(currentMeal).length > 0 && (
+    currentMeal.strMeal !== undefined && (
       <div className="pages-background">
         <div className="container">
           <HeaderHeader title="Comidas" />

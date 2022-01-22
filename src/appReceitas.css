@@ -670,6 +670,13 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   width: 320px;
 }
 
+.recomendation-card {
+  color: black;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
 .recomendation-img {
   width: 250px;
 }
