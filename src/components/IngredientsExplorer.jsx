@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 
 function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
-  const { handleSearchDrinksNFoods,
-    setIsClickedIngredientImage } = useContext(AppDeReceitasContext);
+  const { handleSearchDrinksNFoods } = useContext(AppDeReceitasContext);
   const numMaxIngredients = 12;
 
   function handleClickLink(ingredient) {
@@ -18,7 +17,6 @@ function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
         'search-ingredient', ingredient.strIngredient1, 'thecocktaildb',
       );
     }
-    setIsClickedIngredientImage(true);
   }
 
   return (
@@ -31,9 +29,9 @@ function IngredientsExplorer({ ingredientsList, imageUrl, path }) {
                 to={ path }
                 onClick={ () => handleClickLink(ingredient) }
                 className="explore-food-card"
+                key={ ingredient.strIngredient || ingredient.strIngredient1 }
               >
                 <div
-                  key={ ingredient.strIngredient || ingredient.strIngredient1 }
                   data-testid={ `${index}-ingredient-card` }
                 >
                   <img

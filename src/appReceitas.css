@@ -65,16 +65,12 @@ body {
 
 @media screen and ( min-width : 1024px ) {
 
-  .header {
+  .header, .footer {
     width: 1024px;
   }
 
   .container {
     margin: 0 auto;
-    width: 1024px;
-  }
-
-  footer {
     width: 1024px;
   }
 }
@@ -825,6 +821,10 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 }
 
 .recipeIsDone-content {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  justify-content: center;
   margin: 0 auto;
   max-width: 500px;
   padding: 0 0.3rem;

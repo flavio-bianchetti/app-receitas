@@ -15,11 +15,15 @@ function Bebida() {
     ingredientsAndMeasures } = useContext(AppDeReceitasContext);
 
   const { id } = useParams();
-
   useEffect(() => {
+    let isAPiSubscribed = true;
     dishesOrDrinksRequest(drinksById(id))
-      .then(({ drinks }) => setCurrentDrink(drinks
+      .then(({ drinks }) => isAPiSubscribed && setCurrentDrink(drinks
         .find((drink) => drink.idDrink === id)));
+
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, []);
 
   return (

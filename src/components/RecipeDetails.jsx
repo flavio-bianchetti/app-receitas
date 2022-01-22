@@ -47,14 +47,6 @@ function RecipeDetails({ dishOrDrink,
             src={ shareIcon }
             alt="Share icon"
           />
-          {/* <button
-            className="foodButton"
-            type="button"
-            data-testid="share-btn"
-            onClick={ () => handleShare() }
-          >
-            Compartilhar
-          </button> */}
           <input
             type="image"
             className="foodButton"

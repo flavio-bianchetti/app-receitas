@@ -9,7 +9,7 @@ function RecipeIsDone() {
   return (
     currentDishOrDrink && (
       <section className="pages-background">
-        <div className="container center">
+        <div className="container">
           <div className="recipeIsDone-content">
             <h1 className="recipeIsDone-title">Essa receita já foi feita</h1>
             <button

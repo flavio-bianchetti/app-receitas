@@ -1,11 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import IngredientsExplorer from '../components/IngredientsExplorer';
-import AppDeReceitasContext from '../context/AppDeReceitasContext';
+import { dishesIngredientsList } from '../services/apiComidas';
+import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 
 function ExplorarComidasIngredientes() {
-  const { listMealsIngredients } = useContext(AppDeReceitasContext);
+  const [listMealsIngredients, setListMealsIngredients] = useState([]);
+  useEffect(() => {
+    dishesOrDrinksRequest(dishesIngredientsList())
+      .then(({ meals }) => setListMealsIngredients(meals))
+      .catch(() => setListMealsIngredients([]));
+  }, []);
   const imageUrl = 'https://www.themealdb.com/images/ingredients/';
   return (
     <div className="pages-background">

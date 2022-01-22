@@ -1,8 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import AppDeReceitasContext from './AppDeReceitasContext';
-import { dishesIngredientsList } from '../services/apiComidas';
-import { drinksIngredientsList } from '../services/apiDrinks';
 import dishesOrDrinksRequest, { searchByIngredient,
   searchByName, searchByLastLetter } from '../services/apiSearchDrinksNFoods';
 import { getIngredients, getMeasures,
@@ -20,41 +18,14 @@ function AppDeReceitasProvider({ children }) {
   const [storageRecipesProgress, setStorageRecipesProgress] = useState(
     { cocktails: {}, meals: {} },
   );
-  const [storageDoneRecipes, setStorageDoneRecipes] = useState([]);
-  const [listMealsIngredients, setListMealsIngredients] = useState([]);
-  const [listDrinksIngredients, setListDrinksIngredients] = useState([]);
-  const [isClickedIngredientImage, setIsClickedIngredientImage] = useState(false);
   const [isRecipeDone, setIsRecipeDone] = useState(false);
-
-  useEffect(() => {
-    dishesOrDrinksRequest(dishesIngredientsList())
-      .then(({ meals }) => setListMealsIngredients(meals))
-      .catch(() => setListMealsIngredients([]));
-
-    dishesOrDrinksRequest(drinksIngredientsList())
-      .then(({ drinks }) => setListDrinksIngredients(drinks))
-      .catch(() => setListDrinksIngredients([]));
-  }, []);
-
-  useEffect(() => {
-    if (!localStorage.getItem('doneRecipes')) {
-      localStorage.setItem('doneRecipes', JSON.stringify(
-        storageDoneRecipes,
-      ));
-    } else {
-      const recipes = JSON.parse(localStorage.getItem('doneRecipes'));
-      setStorageDoneRecipes(recipes);
-    }
-  }, []);
 
   const onChangeProgressRecipe = ({ target }) => {
     const { value: ingredient } = target;
-    console.log('da', ingredient);
     setProgressRecipes(
       { ...progressRecipes, [ingredient]: !progressRecipes[ingredient] },
     );
   };
-
   useEffect(() => {
     if (!localStorage.getItem('inProgressRecipes')) {
       localStorage.setItem('inProgressRecipes', JSON.stringify(
@@ -63,10 +34,6 @@ function AppDeReceitasProvider({ children }) {
     } else {
       const recipes = JSON.parse(localStorage.getItem('inProgressRecipes'));
       setStorageRecipesProgress(recipes);
-    }
-
-    if (!localStorage.getItem('doneRecipes')) {
-      localStorage.setItem('doneRecipes', JSON.stringify([]));
     }
   }, []);
 
@@ -133,10 +100,6 @@ function AppDeReceitasProvider({ children }) {
     storageRecipesProgress,
     isRecipeButtonEnable,
     setIsRecipeButtonEnable,
-    listMealsIngredients,
-    listDrinksIngredients,
-    isClickedIngredientImage,
-    setIsClickedIngredientImage,
     isRecipeDone,
     setIsRecipeDone,
   };

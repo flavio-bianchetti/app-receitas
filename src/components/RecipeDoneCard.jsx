@@ -27,11 +27,11 @@ function RecipeDoneCard({ recipe, index }) {
           }
         </h1>
         <Link to={ `/${recipe.type}s/${recipe.id}` }>
-          {/* <p
+          <p
             data-testid={ `${index}-horizontal-name` }
           >
             { recipe.name }
-          </p> */}
+          </p>
         </Link>
         <div className="recipeDone-date-share-container">
           <p

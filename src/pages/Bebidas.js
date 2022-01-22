@@ -10,8 +10,7 @@ import FoodCategorieBtn from '../components/FoodCategorieBtn';
 const categorieBtnQuantity = 5;
 function Bebidas() {
   const { handleSearchDrinksNFoods, setDishesOrDrinks,
-    setCategorieRequest, isClickedIngredientImage,
-    setIsClickedIngredientImage } = useContext(AppDeReceitasContext);
+    setCategorieRequest } = useContext(AppDeReceitasContext);
   const [drinkCategories, setDrinkCategories] = useState([]);
   const [categorieButtonCick, setCategorieButtonCick] = useState('');
 
@@ -21,14 +20,17 @@ function Bebidas() {
   };
 
   useEffect(() => {
-    if (!isClickedIngredientImage) {
+    let isApiSubscribed = true;
+    if (isApiSubscribed) {
       getDrinks();
 
       getDrinksCategories()
         .then(({ drinks }) => setDrinkCategories([{ strCategory: 'All' }, ...drinks]));
-    } else {
-      setIsClickedIngredientImage(false);
     }
+
+    return () => {
+      isApiSubscribed = false;
+    };
   }, []);
 
   const onCategorieButtonClick = async (drink) => {
