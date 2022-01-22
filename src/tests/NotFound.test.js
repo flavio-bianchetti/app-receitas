@@ -5,6 +5,6 @@ import renderWithRouterAndProvider from '../renderWithRouterAndProvider';
 
 it('Testa se notFound page renderizou', () => {
   renderWithRouterAndProvider(<App />, '/notFound');
-  const notFoundText = screen.getByText(/not found/i);
+  const notFoundText = screen.getByText(/receita queimou/i);
   expect(notFoundText).toBeInTheDocument();
 });

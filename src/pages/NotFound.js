@@ -8,7 +8,7 @@ function NotFound() {
       <div className="container">
         <div className="notFound-container">
           <div className="notFoundImg-container">
-            <img src={ failRecipe } alt="Receita má feita" />
+            <img className="notFoundImg" src={ failRecipe } alt="Receita má feita" />
           </div>
           <p>Receita queimou</p>
         </div>
