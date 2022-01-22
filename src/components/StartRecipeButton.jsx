@@ -60,8 +60,12 @@ StartRecipeButton.propTypes = {
     strMealThumb: PropTypes.string,
     strTags: PropTypes.string,
   }).isRequired,
-  dishOrDrinkId: PropTypes.string.isRequired,
+  dishOrDrinkId: PropTypes.string,
   page: PropTypes.string.isRequired,
+};
+
+StartRecipeButton.defaultProps = {
+  dishOrDrinkId: '',
 };
 
 export default StartRecipeButton;

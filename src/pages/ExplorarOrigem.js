@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Footer from '../components/Footer';
-import Header from '../components/HeaderSearch';
 import { dishesAreaCategories, dishesByArea } from '../services/apiComidas';
 import dishesOrDrinksRequest, { searchByName } from '../services/apiSearchDrinksNFoods';
 import AppDeReceitasContext from '../context/AppDeReceitasContext';
 import Cards from '../components/Cards';
+import HeaderSearch from '../components/HeaderSearch';
 
 function ExplorarOrigem() {
   const [areas, setAreas] = useState([]);
   const [currentArea, setCurrentArea] = useState('All');
 
-  const { setDishesOrDrinks } = useContext(AppDeReceitasContext);
+  const { setDishesOrDrinks,
+    handleSearchDrinksNFoods } = useContext(AppDeReceitasContext);
 
   const onChangeArea = ({ target }) => {
     const { value } = target;
@@ -44,7 +45,11 @@ function ExplorarOrigem() {
   return (
     <div className="pages-background">
       <div className="container">
-        <Header title="Explorar Origem" />
+        <HeaderSearch
+          title="Explorar Origem"
+          handleSearch={ handleSearchDrinksNFoods }
+          url="themealdb"
+        />
         <div className="explore-area-select-container">
           <select
             data-testid="explore-by-area-dropdown"

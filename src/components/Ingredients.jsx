@@ -5,7 +5,7 @@ function Ingredients({ ingredientsAndMeasures }) {
   return (
     <ul className="ingredients">
       {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
-        <div key={ ingredient }>
+        <div key={ `${ingredient}-${index}` }>
           <li
             data-testid={ `${index}-ingredient-name-and-measure` }
           >

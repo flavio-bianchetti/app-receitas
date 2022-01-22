@@ -45,43 +45,45 @@ function IngredientSteps({ ingredientsAndMeasures }) {
       .filter((recipeId) => recipeId === id);
 
     if (actualRecipe.length === 0) {
-      setProgressRecipes(progressRecipesCheckBoxes);
+      setProgressRecipes({ id, ...progressRecipesCheckBoxes });
     } else {
       const realActualRecipe = savedRecipeProgress[isDishOrDrink][id];
-      setProgressRecipes(realActualRecipe);
+      setProgressRecipes({ id, ...realActualRecipe });
     }
   }, []);
 
   useEffect(() => {
     const isActiveButton = Object.values(progressRecipes)
-      .every((element) => element === true);
+      .every((element) => !!element);
+
     setIsRecipeButtonEnable(!isActiveButton);
   }, [progressRecipes]);
 
   return (
     <div className="ingredient-steps">
-      {ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
-        <div className="ingredient-step" key={ ingredient }>
-          <label
-            htmlFor={ `${ingredient}-${index}` }
-            style={
-              { textDecoration: progressRecipes[ingredient] ? 'line-through' : 'none' }
-            }
-            data-testid={ `${index}-ingredient-step` }
-          >
-            <input
-              type="checkbox"
-              id={ `${ingredient}-${index}` }
-              name={ ingredient }
-              value={ ingredient }
-              checked={ progressRecipes[ingredient] }
-              onChange={ (e) => onChangeProgressRecipe(e) }
-            />
-            {`${ingredient}: ${measure || 'up to you'}`}
-          </label>
+      { progressRecipes.id === id
+       && ingredientsAndMeasures.map(({ ingredient, measure }, index) => (
+         <div className="ingredient-step" key={ `${ingredient}-${index}` }>
+           <label
+             htmlFor={ `${ingredient}-${index}` }
+             style={
+               { textDecoration: progressRecipes[ingredient] ? 'line-through' : 'none' }
+             }
+             data-testid={ `${index}-ingredient-step` }
+           >
+             <input
+               type="checkbox"
+               id={ `${ingredient}-${index}` }
+               name={ ingredient }
+               value={ ingredient }
+               checked={ progressRecipes[ingredient] }
+               onChange={ (e) => onChangeProgressRecipe(e) }
+             />
+             {`${ingredient}: ${measure || 'up to you'}`}
+           </label>
 
-        </div>
-      ))}
+         </div>
+       ))}
     </div>
   );
 }
