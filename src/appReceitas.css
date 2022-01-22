@@ -780,6 +780,7 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
+  border-radius: 1rem;
 }
 
 .recipeDoneCard-img {
