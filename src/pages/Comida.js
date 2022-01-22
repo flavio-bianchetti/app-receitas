@@ -20,7 +20,7 @@ function Comida() {
     dishesOrDrinksRequest(dishesById(id))
       .then(({ meals }) => setCurrentMeal(meals
         .find((meal) => meal.idMeal === id)));
-  }, [id]);
+  }, []);
 
   return (
 
