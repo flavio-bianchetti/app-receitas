@@ -11,8 +11,9 @@ function RecipeIsDone() {
       <section className="pages-background">
         <div className="container center">
           <div className="recipeIsDone-content">
-            <h1>Essa receita já foi feita</h1>
+            <h1 className="recipeIsDone-title">Essa receita já foi feita</h1>
             <button
+              className="recipeIsDone-button"
               type="button"
               onClick={ () => history.push(currentDishOrDrink.idMeal
                 ? history.push('/comidas')
