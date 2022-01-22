@@ -27,7 +27,7 @@ body {
 
 .pages-background {
   background-image: url('./images/pattern-5.jpeg');
-  min-height: 90vh;
+  min-height: 100vh;
 }
 
 .header {
@@ -817,13 +817,6 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   background-color: #c56734;
 }
 
-.center {
-  align-items: center;
-  display: flex;
-  height: 80vh;
-  justify-content: center;
-}
-
 /* ---- Profile page ---- */
 .profile-content {
   align-items: center;
@@ -960,4 +953,31 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 .favorite-recipe-share-name-container input + input {
   margin-left: 0.5rem;
+}
+
+/* ---------- Not found ------- */
+.notFound-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.notFound-container p {
+  color: #272727;
+  font-family: Montserrat , sans-serif;
+  font-size: 2rem;
+
+  /* font-weight: 600; */
+  margin-top: 1rem;
+}
+
+.notFoundImg-container {
+  max-width: 350px;
+}
+
+.notFoundImg-container img {
+  border-radius: 0.5rem;
+  width: 100%;
 }
