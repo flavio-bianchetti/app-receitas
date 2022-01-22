@@ -476,12 +476,19 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 900px;
   padding: 1rem;
 }
 
 .recipe-info h1 {
   font-size: 1.4rem;
+}
+
+.recipe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .recipe h1 {
@@ -494,12 +501,15 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 .recipe-photo {
   width: 100%;
+  max-width: 460px;
+  margin: 0 auto;
 }
 
 .foodButtons-n-foodType {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  width: 80%;
 }
 
 .foodButtons-n-foodType p {
@@ -556,8 +566,9 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 
 .instructions {
-  font-size: 1.2rem;
-  padding: 1rem 0;
+  font-size: 1.1rem;
+  padding: 2rem 0;
+  width: 80%;
 }
 
 .start-recipe-btn, .continue-recipe-btn {
@@ -586,8 +597,11 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   background-color: #ce6a34;
 }
 
-.recipe-viode {
+.recipe-video {
   width: 100%;
+  max-width: 500px;
+  height: 300px;
+
 }
 
 /* ----- Fodd progress page ---- */
@@ -638,6 +652,28 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 .rec-cards-container h1 {
   text-align: center;
+}
+
+@media screen and (min-width: 500px){
+  .rec-cards-container {
+    width: 450px;
+  }
+
+  .recomendation-img {
+    width: 350px;
+  }
+  
+}
+
+@media screen and (min-width: 700px){
+  .rec-cards-container {
+    width: 550px;
+  }
+
+  .recomendation-img {
+    width: 400px;
+  }
+  
 }
 
 
