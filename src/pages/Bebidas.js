@@ -21,12 +21,11 @@ function Bebidas() {
 
   useEffect(() => {
     let isApiSubscribed = true;
-    if (isApiSubscribed) {
-      getDrinks();
+    getDrinks();
 
-      getDrinksCategories()
-        .then(({ drinks }) => setDrinkCategories([{ strCategory: 'All' }, ...drinks]));
-    }
+    getDrinksCategories()
+      .then(({ drinks }) => (
+        isApiSubscribed && setDrinkCategories([{ strCategory: 'All' }, ...drinks])));
 
     return () => {
       isApiSubscribed = false;

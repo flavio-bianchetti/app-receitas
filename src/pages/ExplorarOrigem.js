@@ -17,18 +17,28 @@ function ExplorarOrigem() {
     setCurrentArea(value);
   };
   useEffect(() => {
+    let isAPiSubscribed = true;
     dishesOrDrinksRequest(dishesAreaCategories())
-      .then(({ meals }) => setAreas([{ strArea: 'All' }, ...meals]));
+      .then(({ meals }) => isAPiSubscribed && setAreas([{ strArea: 'All' }, ...meals]));
+
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, []);
 
   useEffect(() => {
+    let isAPiSubscribed = true;
     if (currentArea === 'All') {
       dishesOrDrinksRequest(searchByName('themealdb', 'All'))
-        .then(({ meals }) => setDishesOrDrinks(meals));
+        .then(({ meals }) => isAPiSubscribed && setDishesOrDrinks(meals));
     } else {
       dishesOrDrinksRequest(dishesByArea(currentArea))
-        .then(({ meals }) => setDishesOrDrinks(meals));
+        .then(({ meals }) => isAPiSubscribed && setDishesOrDrinks(meals));
     }
+
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, [currentArea]);
 
   return (

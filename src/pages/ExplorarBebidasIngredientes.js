@@ -8,10 +8,15 @@ import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 function ExplorarBebidasIngredientes() {
   const [listDrinksIngredients, setListDrinksIngredients] = useState([]);
   useEffect(() => {
+    let isAPiSubscribed = true;
     dishesOrDrinksRequest(drinksIngredientsList())
-      .then(({ drinks }) => setListDrinksIngredients(drinks))
-      .catch(() => setListDrinksIngredients([]));
+      .then(({ drinks }) => isAPiSubscribed && setListDrinksIngredients(drinks))
+      .catch(() => isAPiSubscribed && setListDrinksIngredients([]));
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, []);
+
   const imageUrl = 'https://www.thecocktaildb.com/images/ingredients/';
   return (
     <div className="pages-background">

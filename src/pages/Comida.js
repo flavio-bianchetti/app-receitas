@@ -17,9 +17,13 @@ function Comida() {
   const { id } = useParams();
 
   useEffect(() => {
+    let isAPiSubscribed = true;
     dishesOrDrinksRequest(dishesById(id))
-      .then(({ meals }) => setCurrentMeal(meals
+      .then(({ meals }) => isAPiSubscribed && setCurrentMeal(meals
         .find((meal) => meal.idMeal === id)));
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, []);
 
   return (

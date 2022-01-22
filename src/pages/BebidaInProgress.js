@@ -19,9 +19,13 @@ function BebidaInProgress() {
   const { id } = useParams();
 
   useEffect(() => {
+    let isAPiSubscribed = true;
     dishesOrDrinksRequest(drinksById(id))
-      .then(({ drinks }) => setCurrentDrink(drinks
+      .then(({ drinks }) => isAPiSubscribed && setCurrentDrink(drinks
         .find((drink) => drink.idDrink === id)));
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, []);
 
   useEffect(() => {
@@ -33,14 +37,18 @@ function BebidaInProgress() {
   }, []);
 
   useEffect(() => {
+    let isAPiSubscribed = true;
     if (isRecipeInStorage(
       JSON.parse(localStorage.getItem('doneRecipes')), currentDrink,
-    )) {
+    ) && isAPiSubscribed) {
       setIsRecipeDone(true);
     } else {
       console.log('false');
       setIsRecipeDone(false);
     }
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, [currentDrink]);
 
   return (

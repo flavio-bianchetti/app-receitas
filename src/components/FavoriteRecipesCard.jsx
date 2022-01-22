@@ -73,12 +73,12 @@ export default function FavoriteRecipesCard({ recipe, index, unFavorite }) {
 }
 
 FavoriteRecipesCard.propTypes = {
-  index: PropTypes.string.isRequired,
+  index: PropTypes.number.isRequired,
   recipe: PropTypes.shape({
     alcoholicOrNot: PropTypes.string,
     area: PropTypes.string.isRequired,
     category: PropTypes.string.isRequired,
-    doneDate: PropTypes.string.isRequired,
+    doneDate: PropTypes.string,
     id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -86,6 +86,12 @@ FavoriteRecipesCard.propTypes = {
       map: PropTypes.func,
     }),
     type: PropTypes.string.isRequired,
-  }).isRequired,
+  }),
   unFavorite: PropTypes.func.isRequired,
+};
+
+FavoriteRecipesCard.defaultProps = {
+  recipe: {
+    doneDate: '',
+  },
 };

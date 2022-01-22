@@ -8,9 +8,13 @@ import dishesOrDrinksRequest from '../services/apiSearchDrinksNFoods';
 function ExplorarComidasIngredientes() {
   const [listMealsIngredients, setListMealsIngredients] = useState([]);
   useEffect(() => {
+    let isAPiSubscribed = true;
     dishesOrDrinksRequest(dishesIngredientsList())
-      .then(({ meals }) => setListMealsIngredients(meals))
-      .catch(() => setListMealsIngredients([]));
+      .then(({ meals }) => isAPiSubscribed && setListMealsIngredients(meals))
+      .catch(() => isAPiSubscribed && setListMealsIngredients([]));
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, []);
   const imageUrl = 'https://www.themealdb.com/images/ingredients/';
   return (

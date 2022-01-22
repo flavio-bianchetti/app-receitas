@@ -32,14 +32,18 @@ function ComidaInProgress() {
   }, []);
 
   useEffect(() => {
+    let isAPiSubscribed = true;
     if (isRecipeInStorage(
       JSON.parse(localStorage.getItem('doneRecipes')), currentMeal,
-    )) {
+    ) && isAPiSubscribed) {
       setIsRecipeDone(true);
     } else {
       console.log('false');
       setIsRecipeDone(false);
     }
+    return () => {
+      isAPiSubscribed = false;
+    };
   }, [currentMeal]);
 
   return (
