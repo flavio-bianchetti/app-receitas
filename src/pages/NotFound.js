@@ -10,6 +10,7 @@ function NotFound() {
           <div className="notFoundImg-container">
             <img className="notFoundImg" src={ failRecipe } alt="Receita má feita" />
           </div>
+          <p>404 Page Not Found</p>
           <p>Receita queimou</p>
         </div>
         <Footer />

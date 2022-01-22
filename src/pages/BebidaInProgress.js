@@ -48,7 +48,7 @@ function BebidaInProgress() {
       Object.keys(currentDrink).length > 0 && (
         <div className="pages-background">
           <div className="container">
-            <HeaderHeader title="Comidas" />
+            <HeaderHeader title="Bebidas" />
             <section className="food-details-container">
               <section className="food-details">
                 <DishOrDrinkRecipeDetails

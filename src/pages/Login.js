@@ -28,6 +28,48 @@ function Login({ history }) {
     history.push('/comidas');
   }
 
+  const loginNav = () => (
+    <nav className="login-nav">
+      <ul className="login-nav-list">
+        <li className="login-nav-item">
+          <a
+            href="https://www.linkedin.com/in/brunobartolomeu/"
+            className="login-nav-link"
+          >
+            Bruno Bart.
+
+          </a>
+        </li>
+        <li className="login-nav-item">
+          <a
+            href="https://www.linkedin.com/in/flaviobianchetti/"
+            className="login-nav-link"
+          >
+            Flávio Bian.
+          </a>
+        </li>
+        <li className="login-nav-item">
+          <a
+            href="https://www.linkedin.com/in/erivamjr/"
+            className="login-nav-link"
+          >
+            José Eriv.
+
+          </a>
+        </li>
+        <li className="login-nav-item">
+          <a
+            href="https://www.linkedin.com/in/matt-pessoa/"
+            className="login-nav-link"
+          >
+            Matheus Pess.
+
+          </a>
+        </li>
+      </ul>
+    </nav>
+  );
+
   return (
     <section className="appReceitas">
       <form onSubmit={ handleSubmit } className="login-form">
@@ -65,6 +107,9 @@ function Login({ history }) {
           Entrar
         </button>
       </form>
+      <footer className="login-footer">
+        {loginNav()}
+      </footer>
     </section>
   );
 }

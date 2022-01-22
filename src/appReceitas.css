@@ -45,7 +45,7 @@ body {
   z-index: 99;
 }
 
-footer {
+.footer {
   background-color: #ff4141;
   border-radius: 15px 15px 0 0;
   bottom: 0;
@@ -100,6 +100,7 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   justify-content: center;
   padding: 1rem;
@@ -112,7 +113,6 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
   flex-direction: column;
   justify-self: center;
   padding: 2rem 1.5rem;
-
 }
 
 .login-form h1, .login-form p {
@@ -172,6 +172,39 @@ https://files.wallpaperpass.com/2019/10/food%20wallpaper%20131%20-%201920x1080.j
 
 .login-form button:hover:enabled {
   background-color: rgba(46, 30, 146, 0.522);
+}
+
+.login-footer {
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+}
+
+.login-nav-list {
+  display: flex;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.login-nav-item {
+  list-style: none;
+}
+
+.login-nav-item + .login-nav-item {
+  margin-left: 0.7rem;
+}
+
+.login-nav-link {
+  color: #f87e3c;
+  cursor: pointer;
+
+  /* text-decoration: none; */
+}
+
+.login-nav-link:hover {
+  color: #fa5700;
 }
 
 /* ----- Header Search ------ */
