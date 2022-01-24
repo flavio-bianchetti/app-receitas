@@ -12,7 +12,7 @@ O _Receitas da Vovó_ has a login screen, two lists, one with food and another w
 
 ![receitas-da-vovo](https://docs.google.com/uc?id=1qlezNmmBXPu4NUvKmnmyve3v_iDgXzMO)
 
-_[Link](https://github.com/tryber/sd-015-b-project-recipes-app/)_ for the application _Receitas da Vovó_.
+_[Link](https://receitasdavovo-g1.surge.sh/)_ for the application _Receitas da Vovó_(surge.sh).
 
 
 ## Project information
@@ -73,7 +73,7 @@ O _Receitas da Vovó_ possui uma tela de login, duas listas, uma com comidas e o
 
 ![receitas-da-vovo](https://docs.google.com/uc?id=1qlezNmmBXPu4NUvKmnmyve3v_iDgXzMO)
 
-_[Link](https://github.com/tryber/sd-015-b-project-recipes-app/)_ para a aplicação _Receitas da Vovó_.
+_[Link](https://receitasdavovo-g1.surge.sh/)_ para a aplicação _Receitas da Vovó_(surge.sh).
 
 
 ## Informações sobre o projeto
