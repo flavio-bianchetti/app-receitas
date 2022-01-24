@@ -10,7 +10,7 @@ The original documentation can be found at this _[link](https://github.com/trybe
 
 O _Receitas da Vovó_ has a login screen, two lists, one with food and another with drinks retrieved from API's (_[TheMealDB](https://www.themealdb.com/)_ and _[TheCocktailDB](https:/ /www.thecocktaildb.com/api.php)_). The application allows you to consult foods and drinks by ingredient, recipe name and first letter, shows the recipe details, has videos on how to make it, there is the possibility of favorite recipes and several other features.
 
-![receitas-da-vovo](https://docs.google.com/uc?id=1qlezNmmBXPu4NUvKmnmyve3v_iDgXzMO)
+![receitas-da-vovo](./app-receitas-da-vovo.gif)
 
 _[Link](https://receitasdavovo-g1.surge.sh/)_ for the application _Receitas da Vovó_(surge.sh).
 
@@ -71,7 +71,7 @@ A documentação original pode ser consultada neste _[link](https://github.com/t
 
 O _Receitas da Vovó_ possui uma tela de login, duas listas, uma com comidas e outra com bebidas recuperadas de API's (_[TheMealDB](https://www.themealdb.com/)_ e _[TheCocktailDB](https://www.thecocktaildb.com/api.php)_). A aplicação permite fazer consultas de comidas e bebidas por ingrediente, nome da receita e primeira letra, mostra os detalhes da receita, tem vídeos de como fazer, há possiblidade de favoritar as receitas e várias outras funcionalidades.
 
-![receitas-da-vovo](https://docs.google.com/uc?id=1qlezNmmBXPu4NUvKmnmyve3v_iDgXzMO)
+![receitas-da-vovo](./app-receitas-da-vovo.gif)
 
 _[Link](https://receitasdavovo-g1.surge.sh/)_ para a aplicação _Receitas da Vovó_(surge.sh).
 
