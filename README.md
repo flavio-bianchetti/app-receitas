@@ -1,6 +1,69 @@
+Se você não está acostumando(a) com a leitura em _inglês_, há uma versão deste documento em _português [aqui](#versão-em-português)_.
+
 ---
 
-# Bem-vindo(a) à Aplicação de receitas chamada de _'Receitas da Vovó'_ !
+# Welcome to the recipe app called _'Receitas da Vovó'_ !
+
+This application was developed as a final requirement of module 19 of the _[Trybe](https://www.betrybe.com/)_ web development course, with the aim of fixing the learned contents of HTML, CSS, JavaScript, React and Soft Skills.
+
+The original documentation can be found at this _[link](https://github.com/tryber/sd-015-b-project-recipes-app/)_.
+
+O _Receitas da Vovó_ has a login screen, two lists, one with food and another with drinks retrieved from API's (_[TheMealDB](https://www.themealdb.com/)_ and _[TheCocktailDB](https:/ /www.thecocktaildb.com/api.php)_). The application allows you to consult foods and drinks by ingredient, recipe name and first letter, shows the recipe details, has videos on how to make it, there is the possibility of favorite recipes and several other features.
+
+![receitas-da-vovo](https://docs.google.com/uc?id=1qlezNmmBXPu4NUvKmnmyve3v_iDgXzMO)
+
+_[Link](https://github.com/tryber/sd-015-b-project-recipes-app/)_ for the application _Receitas da Vovó_.
+
+
+## Project information
+
+### Development time
+- 10 days
+
+### Development group
+_Receitas da Vovó_ was developed by the _'Netos da Vovó'_ team, composed of:
+
+- [Bruno Bartolomeu](https://github.com/BrunoCBart)
+- [Flávio Bianchetti](https://github.com/flavio-bianchetti)
+- [José Erivam](https://github.com/erivamjr)
+- [Matheus Pessoa](https://github.com/matt-pessoa)
+- [Vinicius Vargas](https://github.com/vvargas17)
+
+
+### Technologies Used
+#### Agile methodologies:
+- _[Trello](https://trello.com/)_ was used as a kanban tool to organize activities and division of tasks.
+- We used the layout provided by Trybe on _[Figma](https://www.figma.com/)_ to direct the development of the application.
+
+#### Communication
+- Meetings were done through _[Zoom](https://zoom.us/)_ and asynchronous communications through _[Slack](https://slack.com)_.
+
+#### Development
+-In the development of the application were used:
+
+- HTML
+- CSS
+- JS
+- REACT
+
+## Challenges and lessons learned:
+- During development the team did not pay attention to part of the documentation that specified the LocalStorage structure. We have to refactor a part of the code because of this. The group's biggest lesson in this project was to read all the documentation before starting to program.
+ 
+## Next steps:
+- This project will be modified by me, according to the following plan, with no start and end date:
+--Change the communication logic with the API's, making the code simpler.
+--Change the structure of the created components in order to improve the level of specialization.
+--Improve the structure and logic of the tests produced, leaving the code cleaner and more concise.
+--Change the layout using a framework or library for styling.
+
+###### by _[Flavio Bianchetti](https://github.com/flavio-bianchetti)_.
+---
+
+---
+# Versão em português
+
+
+# Bem-vindo(a) à aplicação de receitas chamada de _'Receitas da Vovó'_ !
 
 Esta aplicação foi desenvolvida como requisito final do módulo 19 do curso de desenvolvimento Web da _[Trybe](https://www.betrybe.com/)_, com o objetivo de fixar os conteúdos aprendidos de HTML, CSS, JavaScript, React e Soft Skills.
 
@@ -8,13 +71,7 @@ A documentação original pode ser consultada neste _[link](https://github.com/t
 
 O _Receitas da Vovó_ possui uma tela de login, duas listas, uma com comidas e outra com bebidas recuperadas de API's (_[TheMealDB](https://www.themealdb.com/)_ e _[TheCocktailDB](https://www.thecocktaildb.com/api.php)_). A aplicação permite fazer consultas de comidas e bebidas por ingrediente, nome da receita e primeira letra, mostra os detalhes da receita, tem vídeos de como fazer, há possiblidade de favoritar as receitas e várias outras funcionalidades.
 
-<section
-style="display: flex; flex-direction: row; justify-content: center"
->
-<video width="320" height="570" controls>
-  <source src="https://docs.google.com/uc?id=1JTVtwSZIn6yfErQ1LWBJuhv26YWVX8G_" type="video/mp4">
-</video>
-</section>
+![receitas-da-vovo](https://docs.google.com/uc?id=1qlezNmmBXPu4NUvKmnmyve3v_iDgXzMO)
 
 _[Link](https://github.com/tryber/sd-015-b-project-recipes-app/)_ para a aplicação _Receitas da Vovó_.
 
@@ -27,100 +84,12 @@ _[Link](https://github.com/tryber/sd-015-b-project-recipes-app/)_ para a aplica�
 ### Grupo de desenvolvimento
 O _Receitas da Vovó_ foi desenvolvido pela equipe _'Netos da Vovó'_, composta por:
 
-<section
-  style="display: flex; flex-flow: row wrap; justify-content: center"
->
-  <div
-  style="width: 25%; margin: 20px; text-align: center;"
-  >
-    <a
-      href="https://github.com/BrunoCBart"
-      target="_blank"
-    >
-      <img
-        align="center"
-        alt="Bruno Bartolomeu"
-        height="100"
-        rel="noreferrer"
-      src="https://avatars.githubusercontent.com/u/78077213?v=4"
-        style="border-radius: 50px"
-      />
-      Bruno Bartolomeu
-    </a>
-  </div>
-  <div
-    style="width: 25%; margin: 20px; text-align: center;"
-  >
-    <a
-      href="https://github.com/flavio-bianchetti"
-      target="_blank"
-    >
-      <img
-        align="center"
-        alt="Flávio Bianchetti"
-        height="100"
-        rel="noreferrer"
-      src="https://avatars.githubusercontent.com/u/86604584?v=4"
-        style="border-radius: 50px"
-      />
-      Flávio Bianchetti
-    </a>
-  </div>
-  <div
-    style="width: 25%; margin: 20px; text-align: center;"
-  >
-    <a
-      href="https://github.com/erivamjr"
-      target="_blank"
-    >
-      <img
-        align="center"
-        alt="José Erivam"
-        height="100"
-        rel="noreferrer"
-      src="https://avatars.githubusercontent.com/u/87549274?v=4"
-        style="border-radius: 50px"
-      />
-      José Erivam
-    </a>
-  </div>
-  <div
-    style="width: 25%; margin: 20px; text-align: center;"
-  >
-    <a
-      href="https://github.com/matt-pessoa"
-      target="_blank"
-    >
-      <img
-        align="center"
-        alt="Matheus Pessoa"
-        height="100"
-        rel="noreferrer"
-      src="https://avatars.githubusercontent.com/u/54649950?v=4"
-        style="border-radius: 50px"
-      />
-      Matheus Pessoa
-    </a>
-  </div>
-  <div
-    style="width: 25%; margin: 20px; text-align: center;"
-  >
-    <a
-      href="https://github.com/vvargas17"
-      target="_blank"
-    >
-      <img
-        align="center"
-        alt="Vinicius Vargas"
-        height="100"
-        rel="noreferrer"
-      src="https://avatars.githubusercontent.com/u/76969608?v=4"
-        style="border-radius: 50px"
-      />
-      Vinícius Vargas
-    </a>
-  </div>
-</section>
+- [Bruno Bartolomeu](https://github.com/BrunoCBart)
+- [Flávio Bianchetti](https://github.com/flavio-bianchetti)
+- [José Erivam](https://github.com/erivamjr)
+- [Matheus Pessoa](https://github.com/matt-pessoa)
+- [Vinicius Vargas](https://github.com/vvargas17)
+
 
 ### Tecnologias Utilizadas
 #### Metodologias ágeis:
@@ -133,40 +102,10 @@ O _Receitas da Vovó_ foi desenvolvido pela equipe _'Netos da Vovó'_, composta 
 #### Desenvolvimento
 -No desenvolvimento da aplicação foram utilizados:
 
-<section style="display: inline-block;">
-  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">
-    <img
-      align="center"
-      height="30"
-      src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
-      target="_blank"
-    />
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">
-    <img
-      align="center"
-      height="30"
-      src="https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white"
-      target="_blank"
-    />
-  </a>
-  <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-    <img
-      align="center"
-      height="30"
-      src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-      target="_blank"
-    />
-  </a>
-  <a href="https://reactjs.org/" target="_blank">
-    <img
-      align="center"
-      height="30"
-      src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
-      target="_blank"
-    />
-  </a>
-</section>
+- HTML
+- CSS
+- JS
+- REACT
 
 ## Desafios e aprendizados:
 - Durante o desenvolvimento a equipe não teve atenção para parte da documentação que especificava a estrutura do LocalStorage. Tivermos que refatorar uma parte do código por causa disso. A maior lição do grupo neste projeto foi a de fazer a leitura total documentação antes de começar a programar.
@@ -178,5 +117,5 @@ O _Receitas da Vovó_ foi desenvolvido pela equipe _'Netos da Vovó'_, composta 
 --Melhorar a estrutura e lógica dos testes produzidos, deixando o código mais limpo e conciso.
 --Alterar o layout utilizando um framework ou biblioteca para estilização.
 
-##### por Flávio Bianchetti
+###### por _[Flavio Bianchetti](https://github.com/flavio-bianchetti)_.
 ---

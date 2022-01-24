@@ -25,15 +25,6 @@ yarn-error.log*
 .vscode
 
 
-# cypress/screenshots/
-# cypress/videos/
-# cypress/reports
-
-/.trybe
-/cypress
-/.cypress.json
-/describe-only.png
-/only-all-green.png
-/pull-request-para-branch-do-grupo.png
-/.stylelintrc.json
-/trybe.yml
+cypress/screenshots/
+cypress/videos/
+cypress/reports
