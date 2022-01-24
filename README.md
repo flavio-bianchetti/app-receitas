@@ -51,10 +51,10 @@ _Receitas da Vovó_ was developed by the _'Netos da Vovó'_ team, composed of:
  
 ## Next steps:
 - This project will be modified by me, according to the following plan, with no start and end date:
---Change the communication logic with the API's, making the code simpler.
---Change the structure of the created components in order to improve the level of specialization.
---Improve the structure and logic of the tests produced, leaving the code cleaner and more concise.
---Change the layout using a framework or library for styling.
+-- Change the communication logic with the API's, making the code simpler.
+-- Change the structure of the created components in order to improve the level of specialization.
+-- Improve the structure and logic of the tests produced, leaving the code cleaner and more concise.
+-- Change the layout using a framework or library for styling.
 
 ###### by _[Flavio Bianchetti](https://github.com/flavio-bianchetti)_.
 ---
@@ -112,10 +112,10 @@ O _Receitas da Vovó_ foi desenvolvido pela equipe _'Netos da Vovó'_, composta 
  
 ## Próximos passos:
 - Este projeto será modificado por mim, obedecendo o seguinte planejamento, sem data para início e término:
---Alterar a lógica de comunicação com as API's, deixando o código mais simples.
---Alterar a estrutura dos componentes criados de forma a melhorar o nível de especialização.
---Melhorar a estrutura e lógica dos testes produzidos, deixando o código mais limpo e conciso.
---Alterar o layout utilizando um framework ou biblioteca para estilização.
+-- Alterar a lógica de comunicação com as API's, deixando o código mais simples.
+-- Alterar a estrutura dos componentes criados de forma a melhorar o nível de especialização.
+-- Melhorar a estrutura e lógica dos testes produzidos, deixando o código mais limpo e conciso.
+-- Alterar o layout utilizando um framework ou biblioteca para estilização.
 
 ###### por _[Flavio Bianchetti](https://github.com/flavio-bianchetti)_.
 ---
